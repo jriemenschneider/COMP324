@@ -1,0 +1,191 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
+#filter{
+    list-style-type: none;
+    margin-left: 20px;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+}
+#filter li{
+    padding: 10px;
+    float:left;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: black;
+}
+
+#filter a{
+    text-decoration:none;
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: black;
+    width:5%;
+}
+nav{
+    width: 100%;
+    margin: 0px; 
+    box-sizing: border-box;
+    
+}
+nav ul{
+    list-style: none;
+    width: 100%; 
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+    
+}
+nav ul li{
+    width: calc(100% / 9);
+    list-style-type: none;
+    align-items: stretch;
+    justify-content: space-between;
+    display: inline-block;
+    
+    text-align:center;
+}
+nav ul li a{
+    font-family: 'Roboto';
+    font-size: 20px;
+    font: bolder;
+    color: black;
+    padding-top: 20px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+    
+    
+}
+nav ul li img{
+    display: inline-block;
+    height: 65px;
+    line-height: 65px;
+    vertical-align: top;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+#title h1{
+    padding-top: 20px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+h2{
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: black;
+    line-height: 1.6em;
+}
+
+h3{
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: black;
+    line-height: 1.6em;
+}
+
+.container{/*change name to that shaded left side block*/
+    background-color: #fcfcfc;
+    outline-color: #ccc9c9;
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 1.4em;
+    width: 20%;
+    
+}
+#subfont{
+    /*the tiny font under the brand name(the drop name)*/
+    font-family: 'Roboto';
+    font-size: 12px;
+    color: black;
+    line-height: 1.3em;
+}
+
+#dates{
+/*need to have a diff font size for dates in container*/
+    font-family: 'Playfair Display';
+    font-size: 19px;
+    color: black;
+    line-height: 1.3em;
+}
+/*add an id to the large "some really cool..." if you need to in HTML to change size*/
+#alphabetic-sort ul{
+    list-style: none;
+    width: 100%; 
+    margin-left: 0px;
+    margin-right: 0px;
+    display: inline-block; 
+    
+}
+#alphabetic-sort li{
+    width: calc(90% / 30);
+    list-style-type: none;
+    display: inline-block;
+    text-align:center;
+    float: none;
+}
+#alphabetic-sort li a{
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    line-height: 1.5em;
+    font: normal;
+    color: black;
+    text-align:center;
+    
+}
+
+table{
+    width: 100%;
+    border-spacing: 60px;
+    font-family: Roboto;
+    font-size: 18px;
+}
+.Alphabet {
+    font-family: 'Playfair Display';
+    font-size: 55px;
+    color: black;
+  }
+
+hr{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+footer{
+    width: 100%; 
+    margin-left: 0px;
+    margin-right: 0px;
+    display: inline-block; 
+    text-align:center;
+}
+
+#footer-left{
+    width: calc(100%/3);
+    float:left;
+
+}
+
+#footer-middle{
+    width: calc(100%/3);
+    float: none;
+}
+#footer-right{
+}
+#footer-right li{
+    list-style-type : none;
+    display: block;
+    text-align:center;
+    float: right;
+    padding: 20px
+}
