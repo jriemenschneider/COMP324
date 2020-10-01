@@ -1,3 +1,7 @@
+html {
+    font-size: 16px;
+}
+
 body{
     margin: 0px;
     padding: 0px;
@@ -31,15 +35,33 @@ nav{
     width: 100%;
     margin: 0px;
     box-sizing: border-box;
-
+    display: flex;
+    padding: 1em 0;
 }
+
+#nav-bar-left, #nav-bar-right {
+    width: 45%;
+    min-width: 30%;
+}
+
+#logo{
+    background-image: url("logo.jpg");
+    margin: auto;
+    background-position: center;
+    width: 10%;
+    min-width: 8em;
+    background-repeat: no-repeat;
+    height: 4em;
+}
+
 nav ul{
     list-style: none;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin: auto;
 
 }
 nav ul li{
@@ -48,8 +70,9 @@ nav ul li{
     align-items: stretch;
     justify-content: space-between;
     display: inline-block;
-
+    width: auto;
     text-align:center;
+    margin-right: 3em;
 }
 nav ul li a{
     font-family: 'Roboto';
@@ -60,9 +83,8 @@ nav ul li a{
     text-align:center;
     text-decoration: none;
     display: inline-block;
-
-
 }
+
 nav ul li img{
     display: inline-block;
     height: 65px;
@@ -117,6 +139,11 @@ h3{
     color: black;
     line-height: 1.3em;
 }
+
+#alphabetic-sort {
+    text-align: center;
+}
+
 /*add an id to the large "some really cool..." if you need to in HTML to change size*/
 #alphabetic-sort ul{
     list-style: none;
