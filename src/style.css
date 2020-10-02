@@ -36,7 +36,7 @@ nav{
     margin: 0px;
     box-sizing: border-box;
     display: flex;
-    padding: 1em 0;
+    padding: 1em 0 2em 0;
 }
 
 #nav-bar-left, #nav-bar-right {
@@ -52,6 +52,11 @@ nav{
     min-width: 8em;
     background-repeat: no-repeat;
     height: 4em;
+}
+
+#logo ul {
+    height: 100%;
+    width: 100%;
 }
 
 nav ul{
@@ -95,7 +100,6 @@ nav ul li img{
 }
 
 #title h1{
-    padding-top: 20px;
     width:100%;
     display: flex;
     justify-content: center;
@@ -193,21 +197,28 @@ footer{
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
-    display: inline-block;
+    display: flex;
     text-align:center;
+    margin-bottom: 2em; 
 }
 
 #footer-left{
-    width: calc(100%/3);
-    float:left;
-
+    width: 20%;
+    float: left;
+    padding-top: auto;
+    height: 100%;
+    margin-top: auto;
 }
 
 #footer-middle{
-    width: calc(100%/3);
+    width: 60%;
     float: none;
 }
 #footer-right{
+    width: 20%;
+    padding-top: auto;
+    height: 100%;
+    margin-top: auto;
 }
 #footer-right li{
     list-style-type : none;
@@ -216,6 +227,40 @@ footer{
     float: right;
     padding: 20px
 }
+
+button {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border: 2px solid #CCC9C9;
+}
+
+input {
+    width: 40%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 0px;
+    border: 2px solid #CCC9C9;
+}
+
+#follow-icons {
+    display: flex;
+    justify-content: center;
+}
+
+#follow-icons p {
+    background-color: black;
+    height: 2em;
+    width: 2em;
+    margin: 0 0.5em;
+}
+
 .sidenav{
   height: 200%;
   width: 300;
