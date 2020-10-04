@@ -6,17 +6,18 @@ body{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-
 }
 
-#filter{
+.filter{
     list-style-type: none;
     margin-left: 20px;
     padding: 0;
     overflow: hidden;
     display: block;
+    margin-bottom: 1em;
 }
-#filter li{
+
+.filter li{
     padding: 10px;
     float:left;
     font-family: 'Roboto';
@@ -24,13 +25,69 @@ body{
     color: black;
 }
 
-#filter a{
+.filter a{
     text-decoration:none;
     font-family: 'Roboto';
     font-size: 18px;
     color: black;
     width:5%;
 }
+
+
+
+
+/* For the In Stock Page*/
+.in-stock-item {
+    width: 17em;
+    height: 30em;
+    margin: 1em;
+}
+
+.in-stock-img {
+    height: 80%;
+    background-color: black;
+    margin-top: 0;
+}
+
+.in-stock-text {
+    height: 20%;
+    vertical-align: bottom;
+    margin-top: 0;
+}
+
+.in-stock-text p {
+   margin: 0.2em 0.2em;
+}
+
+#in-stock-container {
+    margin-top: auto;
+    display: flex;
+    
+}
+
+#left-side {
+    max-width: 25em;
+    min-width: 20em;
+    list-style: none;
+}
+
+#left-side li {
+    margin-left: 25px;
+}
+
+
+#right-side {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+/*End of In Stock*/
+
+
+
+
+
+/*Start of navigation bar*/
 nav{
     width: 100%;
     margin: 0px;
@@ -98,6 +155,9 @@ nav ul li img{
     align-items: stretch;
     justify-content: space-between;
 }
+/*End of navigation bar*/
+
+
 
 #title h1{
     width:100%;
@@ -228,6 +288,17 @@ footer{
     padding: 20px
 }
 
+#footer-right li a {
+    font-family: 'Roboto';
+    font-size: 16px;
+    font: bolder;
+    color: black;
+    padding-top: 20px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+}
+
 button {
     background-color: black; /* Green */
     border: none;
@@ -275,7 +346,7 @@ input {
 }
 .sidenav a {
   padding: 6px 8px 6px 16px;
-  fontsize: 30 px;
+  font-size: 30px;
   color: #090a0a ;
   text-align: left;
   display: block;
