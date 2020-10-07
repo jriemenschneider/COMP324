@@ -38,9 +38,9 @@ body{
 
 /* For the In Stock Page*/
 .in-stock-item {
-    width: 17em;
-    height: 30em;
-    margin: 1em;
+    width: 16em;
+    height: 29em;
+    margin: 1.5em;
 }
 
 .in-stock-img {
@@ -85,6 +85,70 @@ body{
 
 
 
+/*Start of Calendar page*/
+#calendar-header {
+    height: 3em;
+}
+
+#calendar-header-day {
+    border: none;
+    text-align: center;
+    position: relative;
+}
+
+#calendar-header-day h1{
+    padding-top: 0;
+    font-size: 48px;
+}
+
+.calendar-row {
+    height: 10em;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3em 0;
+}
+
+.calendar-day {
+    border: 1px solid grey;
+    height: 100%;
+    width: 11em;
+}
+
+#has-event {
+    background-color: #FCFCFC;
+}
+
+.calendar-event {
+    width: 5.5em;
+}
+.calendar-event p{
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+
+#calendar-event-button {
+    width: 100%;
+    height: 1.2em;
+    font-size: 12px;
+    background-color: #FCFCFC;
+    padding: auto;
+    vertical-align: top;
+}
+
+.calendar-day-date {
+    font-size: 32px;
+    display: inline-block;
+    height: 25%;
+}
+
+.calendar-day-date p {
+    margin-top: 0;
+    margin-left: 0.15em;
+}
+
+/*End of Calendar page*/
 
 
 /*Start of navigation bar*/
