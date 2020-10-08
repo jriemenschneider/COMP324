@@ -6,22 +6,30 @@
     </head>
     <body>
         <nav>
-            <div id = "nav-bar-left">
-                <ul>
-                    <li>
-                        <a href=Brands.html>BRANDS</a>
-                    </li>
-                    <li>
-                        <a href=#>CALENDAR</a>
-                    </li>
-                    <li>
-                        <a href=#>DROPS</a>
-                    </li>
-                    <li>
+            <div class="mobile-nav">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                    <div class="dropdown-content" id="nav-dropdown">
+                        <a href="Brands.html">BRANDS</a>
+                        <a href="#">CALENDAR</a>
+                        <a href="#">DROPS</a>
                         <a href=#>IN STOCK</a>
-                    </li>
-                </ul>
+                        <a href=#>PROFILE</a>
+                        <a href=#>SAVED</a>
+                    </div>
+                </div>
+                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+                <button class="cartbtn">CART</button>
             </div>
+            <div class="full-nav">
+                <div id = "nav-bar-left">
+                    <ul>
+                        <li><a href=Brands.html>BRANDS</a></li>
+                        <li><a href=#>CALENDAR</a></li>
+                        <li><a href=#>DROPS</a></li>
+                        <li><a href=#>IN STOCK</a></li>
+                    </ul>
+                </div>
             
                 <div id = "logo">
                     <a href = "homepage.html">
@@ -30,21 +38,14 @@
                     </a>
                 </div>
             
-            <div id = "nav-bar-right">
-                <ul>
-                    <li>
-                        <a href=#>SEARCH</a>
-                    </li>
-                    <li>
-                        <a href=#>PROFILE</a>
-                    </li>
-                    <li>
-                        <a href=#>SAVED</a>
-                    </li>
-                    <li>
-                        <a href=#>CART</a>
-                    </li>
-              </ul>
+                <div id = "nav-bar-right">
+                    <ul>
+                        <li><a href=#>SEARCH</a></li>
+                        <li><a href=#>PROFILE</a></li>
+                        <li><a href=#>SAVED</a></li>
+                        <li><a href=#>CART</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
@@ -217,7 +218,7 @@
                 <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                 <div id = "email-container">
                         <input type="email" id="email" name="email">
-                        <button type="button">Subscribe</button>
+                        <button id="sub-btn">Subscribe</button>
                 </div>
             </div>
             <div id = "footer-right">

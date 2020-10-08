@@ -31,17 +31,22 @@ body{
     color: black;
     width:5%;
 }
-nav{
+.full-nav{
     width: 100%;
     margin: 0px;
     box-sizing: border-box;
     display: flex;
+    flex-direction: row;
     padding: 1em 0 2em 0;
+    justify-content: space-between;
 }
 
-#nav-bar-left, #nav-bar-right {
-    width: 45%;
-    min-width: 30%;
+#nav-bar-left {
+    justify-content: flex-start;
+}
+
+#nav-bar-right {
+    justify-content: flex-end;
 }
 
 #logo{
@@ -59,7 +64,7 @@ nav{
     width: 100%;
 }
 
-nav ul{
+.full-nav ul{
     list-style: none;
     width: 100%;
     box-sizing: border-box;
@@ -69,7 +74,7 @@ nav ul{
     margin: auto;
 
 }
-nav ul li{
+.full-nav ul li{
     width: calc(100% / 9);
     list-style-type: none;
     align-items: stretch;
@@ -79,7 +84,7 @@ nav ul li{
     text-align:center;
     margin-right: 3em;
 }
-nav ul li a{
+.full-nav ul li a{
     font-family: 'Roboto';
     font-size: 20px;
     font: bolder;
@@ -90,7 +95,7 @@ nav ul li a{
     display: inline-block;
 }
 
-nav ul li img{
+.full-nav ul li img{
     display: inline-block;
     height: 65px;
     line-height: 65px;
@@ -228,7 +233,7 @@ footer{
     padding: 20px
 }
 
-button {
+#sub-btn {
     background-color: black; /* Green */
     border: none;
     color: white;
@@ -286,3 +291,86 @@ input {
 .sidenav a:hover {
   color: #5d735f;
 }
+
+.mobile-nav {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .full-nav {
+        display: none;
+    }
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+    .mobile-nav {
+        width: 100%;
+        margin: 0px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        padding: 1em 2em 2em 2em;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mobile-nav a {
+        float: left;
+        font-size: 20px;
+        text-align: center;
+        padding: 14px, 16px;
+        text-decoration: none;
+    }
+    #mobile-logo {
+        justify-content: center;
+        width: 100px;
+        height: 75px;
+    }
+    .dropbtn {
+        justify-content: flex-start;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 14px, 16px;
+        font-family: inherit;
+        background-color: inherit;
+    }
+
+    .cartbtn {
+        font-size: 20px;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 14px, 16px;
+        font-family: inherit;
+        background-color: inherit;
+        justify-content: flex-end;
+    }
+
+    .dropdown-content {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #CCC9C9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      .show {
+          display: flex;
+      }
+    
+}
+
