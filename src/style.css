@@ -44,14 +44,14 @@ a {
 .in-stock-item {
     width: 16em;
     height: 29em;
-    margin: 1.5em;
+    margin: 1.5em 1.5em 5em 1.5em;
 }
 
 .in-stock-text p {
     text-decoration: none;
     font-family: 'Roboto';
     color: black;
-    width:5%;
+    width:100%;
 }
 
 .in-stock-img {

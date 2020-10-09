@@ -3,9 +3,10 @@
     <head>
         <title>In Stock</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
     </head>
     <body>
-        <nav>
+        <nav >
             <div id = "nav-bar-left">
                 <ul>
                     <li>
@@ -42,7 +43,7 @@
                         <a href=#>SAVED</a>
                     </li>
                     <li>
-                        <a href=#>CART</a>
+                        <a href=# id = "cart">CART</a>
                     </li>
               </ul>
             </div>
@@ -73,13 +74,47 @@
                 <hr>
             </div>
             <div id = "in-stock-main">
+                <div class = "in-stock-item" >
+                    <a href=#>
+                        <p class = "in-stock-img"></p>
+                        <div class = "in-stock-text">
+                            <p><strong>PLEASURES</strong></p>
+                            <p>Freaks T-Shirt</p>
+                            <p>$38</p>
+                            <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Cart</button>
+                        </div>
+                    </a>
+                </div>
                 <div class = "in-stock-item">
                     <a href=#>
                         <p class = "in-stock-img"></p>
                         <div class = "in-stock-text">
-                            <p><strong>Brand</strong></p>
-                            <p>Name</p>
-                            <p>Price</p>
+                            <p><strong>FEAR OF GOD</strong></p>
+                            <p>Pleated Suit Pant</p>
+                            <p>$320</p>
+                            <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Cart</button>
+                        </div>
+                    </a>
+                </div>
+                <div class = "in-stock-item">
+                    <a href=#>
+                        <p class = "in-stock-img"></p>
+                        <div class = "in-stock-text">
+                            <p><strong>JACQUEMUS</strong></p>
+                            <p>Le T-Shirt Jacques</p>
+                            <p>$130</p>
+                            <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Cart</button>
+                        </div>
+                    </a>
+                </div>
+                <div class = "in-stock-item">
+                    <a href=#>
+                        <p class = "in-stock-img"></p>
+                        <div class = "in-stock-text">
+                            <p><strong>MONCLER GENIUS</strong></p>
+                            <p>x JW Anderson T-Shirt</p>
+                            <p>$345</p>
+                            <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Cart</button>
                         </div>
                     </a>
                 </div>
@@ -90,6 +125,7 @@
                             <p><strong>Brand</strong></p>
                             <p>Name</p>
                             <p>Price</p>
+                            <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Cart</button>
                         </div>
                     </a>
                 </div>
@@ -100,41 +136,14 @@
                             <p><strong>Brand</strong></p>
                             <p>Name</p>
                             <p>Price</p>
-                        </div>
-                    </a>
-                </div>
-                <div class = "in-stock-item">
-                    <a href=#>
-                        <p class = "in-stock-img"></p>
-                        <div class = "in-stock-text">
-                            <p><strong>Brand</strong></p>
-                            <p>Name</p>
-                            <p>Price</p>
-                        </div>
-                    </a>
-                </div>
-                <div class = "in-stock-item">
-                    <a href=#>
-                        <p class = "in-stock-img"></p>
-                        <div class = "in-stock-text">
-                            <p><strong>Brand</strong></p>
-                            <p>Name</p>
-                            <p>Price</p>
-                        </div>
-                    </a>
-                </div>
-                <div class = "in-stock-item">
-                    <a href=#>
-                        <p class = "in-stock-img"></p>
-                        <div class = "in-stock-text">
-                            <p><strong>Brand</strong></p>
-                            <p>Name</p>
-                            <p>Price</p>
+                            <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Cart</button>
                         </div>
                     </a>
                 </div>                                    
             </div>
         </div>
+
+        
             
 
 
@@ -152,7 +161,7 @@
                     <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                     <div id = "email-container">
                             <input type="email" id="email" name="email">
-                            <button type="button">Subscribe</button>
+                            <button type="button" id = "subscribe-button">Subscribe</button>
                     </div>
                 </div>
                 <div id = "footer-right">
