@@ -348,9 +348,9 @@ input {
         display: none;
         flex-direction: column;
         position: absolute;
-        background-color: #CCC9C9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        background-color: #FCFCFC;
+        min-width: 200px;
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
         z-index: 1;
       }
     .dropdown-content a {
@@ -360,6 +360,10 @@ input {
         text-decoration: none;
         display: block;
         text-align: left;
+        border-bottom-style: solid;
+        border-bottom-color: #CCC9C9;
+        border-bottom-width: 1px;
+
       }
       .show {
           display: flex;
