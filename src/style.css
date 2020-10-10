@@ -38,7 +38,7 @@ body{
     display: flex;
     flex-direction: row;
     padding: 1em 0 2em 0;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 #nav-bar-left {
@@ -47,26 +47,27 @@ body{
 
 #nav-bar-right {
     justify-content: flex-end;
+    margin-left: 4%;
 }
 
 #logo{
-    background-image: url("logo.jpg");
     margin: auto;
     background-position: center;
-    width: 10%;
-    min-width: 8em;
-    background-repeat: no-repeat;
-    height: 4em;
+    max-width: 8em;
+    max-height: 4em;
+    justify-content: center;
+    min-width: 4em;
+    min-height: 2em;
 }
 
-#logo ul {
-    height: 100%;
+#logo img {
     width: 100%;
+    height: auto;
 }
 
 .full-nav ul{
     list-style: none;
-    width: 100%;
+    /* width: 100%; */
     box-sizing: border-box;
     display: flex;
     align-items: stretch;
@@ -86,7 +87,7 @@ body{
 }
 .full-nav ul li a{
     font-family: 'Roboto';
-    font-size: 20px;
+    font-size: 1.5vw;
     font: bolder;
     color: black;
     padding-top: 20px;
@@ -95,19 +96,11 @@ body{
     display: inline-block;
 }
 
-.full-nav ul li img{
-    display: inline-block;
-    height: 65px;
-    line-height: 65px;
-    vertical-align: top;
-    align-items: stretch;
-    justify-content: space-between;
-}
-
 #title h1{
     width:100%;
     display: flex;
     justify-content: center;
+
 }
 
 h2{
@@ -323,7 +316,7 @@ input {
     }
     #mobile-logo {
         justify-content: center;
-        width: 100px;
+        width: 125px;
         height: 75px;
     }
     .dropbtn {
