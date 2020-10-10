@@ -6,45 +6,45 @@
     </head>
     <body>
         <nav>
-            <div id = "nav-bar-left">
-                <ul>
-                    <li>
-                        <a href=Brands.html>BRANDS</a>
-                    </li>
-                    <li>
-                        <a href=#>CALENDAR</a>
-                    </li>
-                    <li>
-                        <a href=#>DROPS</a>
-                    </li>
-                    <li>
+            <div class="mobile-nav">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                    <div class="dropdown-content" id="nav-dropdown">
+                        <a href="Brands.html">BRANDS</a>
+                        <a href="#">CALENDAR</a>
+                        <a href="#">DROPS</a>
                         <a href=#>IN STOCK</a>
-                    </li>
-                </ul>
+                        <a href=#>PROFILE</a>
+                        <a href=#>SAVED</a>
+                    </div>
+                </div>
+                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+                <button class="cartbtn">CART</button>
             </div>
+            <div class="full-nav">
+                <div id = "nav-bar-left">
+                    <ul>
+                        <li><a href=Brands.html>BRANDS</a></li>
+                        <li><a href=#>CALENDAR</a></li>
+                        <li><a href=#>DROPS</a></li>
+                        <li><a href=#>INSTOCK</a></li>
+                    </ul>
+                </div>
             
                 <div id = "logo">
                     <a href = "homepage.html">
-                        <ul>
-                        </ul>
+                        <img src="logo.jpg" alt="Thread Core">
                     </a>
                 </div>
             
-            <div id = "nav-bar-right">
-                <ul>
-                    <li>
-                        <a href=#>SEARCH</a>
-                    </li>
-                    <li>
-                        <a href=#>PROFILE</a>
-                    </li>
-                    <li>
-                        <a href=#>SAVED</a>
-                    </li>
-                    <li>
-                        <a href=#>CART</a>
-                    </li>
-              </ul>
+                <div id = "nav-bar-right">
+                    <ul>
+                        <li><a href=#>SEARCH</a></li>
+                        <li><a href=#>PROFILE</a></li>
+                        <li><a href=#>SAVED</a></li>
+                        <li><a href=#>CART</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
@@ -217,7 +217,7 @@
                 <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                 <div id = "email-container">
                         <input type="email" id="email" name="email">
-                        <button type="button">Subscribe</button>
+                        <button id="sub-btn">Subscribe</button>
                 </div>
             </div>
             <div id = "footer-right">
@@ -226,5 +226,24 @@
                 <li>About</li>
             </div>
         </footer>
+
+        <script>
+            /* When the user clicks on the button, 
+            toggle between hiding and showing the dropdown content */
+            function showDropdown() {
+              document.getElementById("nav-dropdown").classList.toggle("show");
+            }
+            
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(e) {
+              if (!e.target.matches('.dropbtn')) {
+              var navDropdown = document.getElementById("nav-dropdown");
+                if (navDropdown.classList.contains('show')) {
+                  navDropdown.classList.remove('show');
+                }
+              }
+            }
+        </script>
+
     </body>
 </html>
