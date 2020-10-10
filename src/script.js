@@ -14,6 +14,11 @@ window.onload = function() {
         ele.innerHTML = newCart;
     } 
     this.console.log(JSON.parse(window.localStorage.getItem('items')))
+
+    //If on the in-cart page, display the items
+    if (this.document.title == 'Cart') {
+        displayCart();
+    }
 }
 
 
@@ -49,6 +54,32 @@ function addItemToCart(button) {
     //Add item to the array and save it in the local storage
     itemsInCartArray.push(item);
     localStorage.setItem('items', JSON.stringify(itemsInCartArray));
+}
+
+
+/*
+*   Basis for displaying the items in the cart once on the in-cart page
+*/
+function displayCart() {
+    let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
+    let ele = document.getElementById('start-cart');
+
+    //If cart is empty
+    if(itemsInCartArray == null) {
+        let cart = "<p>Cart is empty</p>";
+        ele.innerHTML = cart;
+
+    //If cart is not empty
+    } else {
+        let cart = ""
+        for (let i = 0; i < itemsInCartArray.length; i++) {
+            cart += "<h2>" + itemsInCartArray[i].brand + "</h2>";
+            cart += "<p>" + itemsInCartArray[i].name + "</p>";
+            cart += "<p>" + itemsInCartArray[i].price + "</p><br>";
+        }
+        ele.innerHTML = cart;
+        ele.innerHTML = cart;
+    }
 }
 
 
