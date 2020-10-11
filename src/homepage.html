@@ -5,48 +5,47 @@
     <script src="script.js"></script>
   </head>
   <body>
-        <nav>
+    <nav>
+        <div class="mobile-nav">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                <div class="dropdown-content" id="nav-dropdown">
+                    <a href="Brands.html">BRANDS</a>
+                    <a href="calendar.html">CALENDAR</a>
+                    <a href="#">DROPS</a>
+                    <a href=inStock.html>IN STOCK</a>
+                    <a href=#>PROFILE</a>
+                    <a href=#>SAVED</a>
+                </div>
+            </div>
+            <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+            <button class="cartbtn">CART</button>
+        </div>
+
+        <div class="full-nav">
             <div id = "nav-bar-left">
                 <ul>
-                    <li>
-                        <a href=Brands.html>BRANDS</a>
-                    </li>
-                    <li>
-                        <a href=calendar.html>CALENDAR</a>
-                    </li>
-                    <li>
-                        <a href=#>DROPS</a>
-                    </li>
-                    <li>
-                        <a href=inStock.html>IN STOCK</a>
-                    </li>
+                    <li><a href=Brands.html>BRANDS</a></li>
+                    <li><a href=calendar.html>CALENDAR</a></li>
+                    <li><a href=#>DROPS</a></li>
+                    <li><a href=inStock.html>INSTOCK</a></li>
                 </ul>
             </div>
-            
-                <div id = "logo">
-                    <a href = "homepage.html">
-                        <ul>
-                        </ul>
-                    </a>
-                </div>
-            
+            <div id = "logo">
+                <a href = "homepage.html">
+                    <img src="logo.jpg" alt="Thread Core">
+                </a>
+            </div>
             <div id = "nav-bar-right">
                 <ul>
-                    <li>
-                        <a href=#>SEARCH</a>
-                    </li>
-                    <li>
-                        <a href=#>PROFILE</a>
-                    </li>
-                    <li>
-                        <a href=#>SAVED</a>
-                    </li>
-                    <li>
-                        <a href=# id = cart>CART</a>
-                    </li>
+                    <li><a href=#>SEARCH</a></li>
+                    <li><a href=#>PROFILE</a></li>
+                    <li><a href=#>SAVED</a></li>
+                    <li id = "cart"><a href=Cart.html>CART</a></li>
                 </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
     <div class="sidenav">
       <h2>UPCOMING RELEASES</h2>
       <a href="#">02/10</a>

@@ -10,7 +10,7 @@ window.onload = function() {
     let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
     let ele = document.getElementById("cart");
     if (itemsInCartArray) {
-        let newCart = "Cart (" + (itemsInCartArray.length) + ")";
+        let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length + 1) + ")</a>";
         ele.innerHTML = newCart;
     } 
     this.console.log(JSON.parse(window.localStorage.getItem('items')))
@@ -35,7 +35,7 @@ function addItemToCart(button) {
 
     //Gets the HTML cart element from the nav bar to update the number 
     let ele = document.getElementById("cart");
-    let newCart = "Cart (" + (itemsInCartArray.length + 1) + ")";
+    let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length + 1) + ")</a>";
     ele.innerHTML = newCart;
 
     //Gets the item details from the HTML
@@ -62,7 +62,7 @@ function addItemToCart(button) {
 */
 function displayCart() {
     let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
-    let ele = document.getElementById('start-cart');
+    let ele = document.getElementById('Items');
 
     //If cart is empty
     if(itemsInCartArray == null) {
@@ -74,10 +74,9 @@ function displayCart() {
         let cart = ""
         for (let i = 0; i < itemsInCartArray.length; i++) {
             cart += "<h2>" + itemsInCartArray[i].brand + "</h2>";
-            cart += "<p>" + itemsInCartArray[i].name + "</p>";
-            cart += "<p>" + itemsInCartArray[i].price + "</p><br>";
+            cart += "<h3>" + itemsInCartArray[i].name + "</h3>";
+            cart += "<h5 id = \"Price\">" + itemsInCartArray[i].price + "</h5><br>";
         }
-        ele.innerHTML = cart;
         ele.innerHTML = cart;
     }
 }
