@@ -40,6 +40,7 @@ a {
 
 
 
+
 /* For the In Stock Page*/
 .in-stock-item {
     width: 16em;
@@ -162,37 +163,45 @@ a {
 
 
 /*Start of navigation bar*/
-nav{
+
+.full-nav{
+
     width: 100%;
     margin: 0px;
     box-sizing: border-box;
     display: flex;
+    flex-direction: row;
     padding: 1em 0 2em 0;
+    justify-content: center;
 }
 
-#nav-bar-left, #nav-bar-right {
-    width: 45%;
-    min-width: 30%;
+#nav-bar-left {
+    justify-content: flex-start;
+}
+
+#nav-bar-right {
+    justify-content: flex-end;
+    margin-left: 4%;
 }
 
 #logo{
-    background-image: url("logo.jpg");
     margin: auto;
     background-position: center;
-    width: 10%;
-    min-width: 8em;
-    background-repeat: no-repeat;
-    height: 4em;
+    max-width: 8em;
+    max-height: 4em;
+    justify-content: center;
+    min-width: 4em;
+    min-height: 2em;
 }
 
-#logo ul {
-    height: 100%;
+#logo img {
     width: 100%;
+    height: auto;
 }
 
-nav ul{
+.full-nav ul{
     list-style: none;
-    width: 100%;
+    /* width: 100%; */
     box-sizing: border-box;
     display: flex;
     align-items: stretch;
@@ -200,7 +209,7 @@ nav ul{
     margin: auto;
 
 }
-nav ul li{
+.full-nav ul li{
     width: calc(100% / 9);
     list-style-type: none;
     align-items: stretch;
@@ -210,9 +219,9 @@ nav ul li{
     text-align:center;
     margin-right: 3em;
 }
-nav ul li a{
+.full-nav ul li a{
     font-family: 'Roboto';
-    font-size: 20px;
+    font-size: 1.5vw;
     font: bolder;
     color: black;
     padding-top: 20px;
@@ -220,6 +229,7 @@ nav ul li a{
     text-decoration: none;
     display: inline-block;
 }
+
 
 nav ul li img{
     display: inline-block;
@@ -233,10 +243,12 @@ nav ul li img{
 
 
 
+
 #title h1{
     width:100%;
     display: flex;
     justify-content: center;
+
 }
 
 h2{
@@ -362,6 +374,7 @@ footer{
     padding: 20px
 }
 
+
 #footer-right li a {
     font-family: 'Roboto';
     font-size: 16px;
@@ -373,7 +386,8 @@ footer{
     display: inline-block;
 }
 
-button {
+
+#sub-btn {
     background-color: black; /* Green */
     border: none;
     color: white;
@@ -431,3 +445,90 @@ input {
 .sidenav a:hover {
   color: #5d735f;
 }
+
+.mobile-nav {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .full-nav {
+        display: none;
+    }
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+    .mobile-nav {
+        width: 100%;
+        margin: 0px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        padding: 1em 2em 2em 2em;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mobile-nav a {
+        float: left;
+        font-size: 20px;
+        text-align: center;
+        padding: 14px, 16px;
+        text-decoration: none;
+    }
+    #mobile-logo {
+        justify-content: center;
+        width: 125px;
+        height: 75px;
+    }
+    .dropbtn {
+        justify-content: flex-start;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 14px, 16px;
+        font-family: inherit;
+        background-color: inherit;
+    }
+
+    .cartbtn {
+        font-size: 20px;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+        outline: none;
+        color: black;
+        padding: 14px, 16px;
+        font-family: inherit;
+        background-color: inherit;
+        justify-content: flex-end;
+    }
+
+    .dropdown-content {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: #FCFCFC;
+        min-width: 200px;
+        box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+        z-index: 1;
+      }
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        border-bottom-style: solid;
+        border-bottom-color: #CCC9C9;
+        border-bottom-width: 1px;
+
+      }
+      .show {
+          display: flex;
+      }
+    
+}
+
