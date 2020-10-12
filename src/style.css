@@ -802,6 +802,28 @@ img{
     text-align:center;
 
 }
+/* molly's css for Cherry LA*/
+#BrandProduct img {
+    height: 50%;
+    width: auto; 
+    padding-right: 20;
+    padding-left: 20;
+
+}
+#text li {
+    list-style-type:none;
+}
+#title2 h1{
+    width:100%;
+    display: flex;
+    justify-content: left;
+    margin: 30px;
+}
+.captionContainer{
+    margin:20px;
+    position: relative;
+    text-align: center;
+}
 
 
 
