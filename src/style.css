@@ -532,3 +532,109 @@ input {
     
 }
 
+/* --------------------MY NEW STUFF-----------------------------------------------------------*/
+#Content{
+    width: 100%;
+}
+hr{
+    width:96%;
+}
+
+#Items{
+    list-style-type: none;
+    display: block;
+    float: left;
+    padding-right: 50px;
+    width: 55%;
+    padding-left: 4%;
+}
+#Items h3{
+    padding: 0px;
+    margin:0px;
+    font-weight: normal;
+}
+#Items h4{
+    padding: 0px;
+    margin:0px;
+    font-weight: normal;
+}
+#Items a{
+    text-decoration: none;
+    font-weight: normal;
+    font-family: sans-serif;
+    font-size: 13px;
+    float: right;
+    color:black;
+}
+
+#Items hr{
+    width: 105%;
+    margin-left: -1%;
+}
+
+#Items img{
+    width: 16%;
+    display: block;
+    float: left;
+    height: auto;
+    padding-left: 1%;
+    padding-right: 30px;
+}
+#OrderSummary{
+    list-style-type: none;
+    display: block;
+    float: right;
+    width: 27%;
+    text-align: center;
+    padding-bottom: 20px;
+    border: 1px solid silver;
+    border-spacing: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+
+#Checkout {
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto';
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: black;
+    text-align: center;
+
+}
+a{
+    text-decoration:  none;
+}
+
+#SameLine{
+    width: 35%;
+    display: block;
+    float:left;
+}
+
+#Price{
+    width: 60%;
+    font-size: 25px;
+}
+
+#subSummary{
+    width: 50%;
+    float: left;
+    font-weight: normal;
+    font-size: 19px;
+}
+
+
+
+#Total{
+    width: 50%;
+    float: left;
+    font-size: 22px;
+}
+
+
