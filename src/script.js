@@ -6,19 +6,21 @@
 */
 
 window.onload = function() {
-    //Sets cart to correct number in nav bar
-    let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
-    let ele = document.getElementById("cart");
-    if (itemsInCartArray) {
-        let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length) + ")</a>";
-        ele.innerHTML = newCart;
-    } 
-    this.console.log(JSON.parse(window.localStorage.getItem('items')))
 
     //If on the in-cart page, display the items
     if (this.document.title == 'Cart') {
         displayCart();
     }
+
+    if (this.document.title == 'In Stock') {
+        //this.inStockPictures();
+    }
+
+    //Sets cart to correct number in nav bar
+    let itemsInCartArray = JSON.parse(window.localStorage.getItem('items')); 
+    this.updateNav(itemsInCartArray);
+    
+
 }
 
 
@@ -33,27 +35,42 @@ function addItemToCart(button) {
         itemsInCartArray = [];
     }
 
-    //Gets the HTML cart element from the nav bar to update the number 
-    let ele = document.getElementById("cart");
-    let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length + 1) + ")</a>";
-    ele.innerHTML = newCart;
-
     //Gets the item details from the HTML
     let details = button.parentElement.getElementsByTagName("p");
     let b = details[0].textContent;
     let n = details[1].textContent;
     let p = details[2].textContent;
 
+    //Gets url for item image
+    let i = button.parentElement.parentElement.getElementsByTagName("p")[0].getElementsByTagName("img")[0].src;
+    
+
     //Creates an item object too save in array
     const item = {
         brand: b,
         name: n,
-        price: p
+        price: p,
+        img: i,
+        qty: 1
+    }
+
+    //Checks to see if item is already in the cart
+    let found = false;
+    for (let i = 0; i < itemsInCartArray.length; i ++) {
+        if (itemsInCartArray[i].brand == item.brand && itemsInCartArray[i].name == item.name) {
+            found = true;
+            itemsInCartArray[i].qty += 1;
+        }
     }
 
     //Add item to the array and save it in the local storage
-    itemsInCartArray.push(item);
+    if (!found) {
+        itemsInCartArray.push(item);
+    }
     localStorage.setItem('items', JSON.stringify(itemsInCartArray));
+
+    //Gets the HTML cart element from the nav bar to update the number 
+    updateNav(itemsInCartArray);
 }
 
 
@@ -77,22 +94,23 @@ function displayCart() {
         numItems += 1;
         let cart = "";
         for (let i = 0; i < itemsInCartArray.length; i++) {
-            totalPrice += parseInt(itemsInCartArray[i].price.slice(1))
+            totalPrice += parseInt(itemsInCartArray[i].price.slice(1)) * itemsInCartArray[i].qty;
             cart += `
             <li id= "Items">
                 <hr>
                 <a href=#>X</a>
-                <img src="CartImageExample.png">
+                <img src="${itemsInCartArray[i].img}">
                 <h2>${itemsInCartArray[i].brand}</h2>
                 <h3>${itemsInCartArray[i].name}</h3>
                 <br>
                 <h4 id="SameLine">SIZE &#x2228</h4>
-                <h4 id="SameLine">QTY 1 &#x2228</h4>
+                <h4 id="SameLine">QTY ${itemsInCartArray[i].qty} &#x2228</h4>
                 <h5 id="Price">${itemsInCartArray[i].price}</h5>
                 <hr>
             </li>
             `
         }
+
         ele.innerHTML = cart + `
         <li id="OrderSummary">
             <h1>Order Summary</h1>
@@ -110,5 +128,18 @@ function displayCart() {
         `           
         }
     }
+
+function updateNav(itemsInCartArray) {
+    //Gets the HTML cart element from the nav bar to update the number 
+    let ele = document.getElementById("cart");
+    let numItems = 0;
+    for (let i = 0; i < itemsInCartArray.length; i++) {
+        numItems += itemsInCartArray[i].qty;
+    }
+    let newCart = "<a href=Cart.html>Cart (" + (numItems) + ")</a>";
+    ele.innerHTML = newCart;
+}
+
+
 
 
