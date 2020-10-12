@@ -1,88 +1,267 @@
-<html>
-  <head>
-    <title>Thread Core</title> <!Home?>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-        <div class="mobile-nav">
-            <div class="dropdown">
-                <button class="dropbtn" onclick="showDropdown()">MENU</button>
-                <div class="dropdown-content" id="nav-dropdown">
-                    <a href="Brands.html">BRANDS</a>
-                    <a href="calendar.html">CALENDAR</a>
-                    <a href="#">DROPS</a>
-                    <a href=inStock.html>IN STOCK</a>
-                    <a href=#>PROFILE</a>
-                    <a href=#>SAVED</a>
+<html><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Thread Core</title> <!--Home?-->
+        <link rel="stylesheet" type="text/css" href="style.css">
+      </head>
+      <body>
+        <nav>
+            <div class="mobile-nav">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                    <div class="dropdown-content" id="nav-dropdown">
+                        <a href="Brands.html">BRANDS</a>
+                        <a href="calendar.html">CALENDAR</a>
+                        <a href="#">DROPS</a>
+                        <a href=inStock.html>IN STOCK</a>
+                        <a href=#>PROFILE</a>
+                        <a href=#>SAVED</a>
+                    </div>
+                </div>
+                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+                <button class="cartbtn">CART</button>
+            </div>
+            <div class="full-nav">
+                <div id = "nav-bar-left">
+                    <ul>
+                        <li><a href=Brands.html>BRANDS</a></li>
+                        <li><a href=calendar.html>CALENDAR</a></li>
+                        <li><a href=#>DROPS</a></li>
+                        <li><a href=inStock.html>INSTOCK</a></li>
+                    </ul>
+                </div>
+                <div id = "logo">
+                    <a href = "homepage.html">
+                        <img src="logo.jpg" alt="Thread Core">
+                    </a>
+                </div>
+                <div id = "nav-bar-right">
+                    <ul>
+                        <li><a href=#>SEARCH</a></li>
+                        <li><a href=#>PROFILE</a></li>
+                        <li><a href=#>SAVED</a></li>
+                        <li id = "cart"><a href=Cart.html>CART</a></li>
+                    </ul>
                 </div>
             </div>
-            <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
-            <button class="cartbtn">CART</button>
-        </div>
-
-        <div class="full-nav">
-            <div id = "nav-bar-left">
-                <ul>
-                    <li><a href=Brands.html>BRANDS</a></li>
-                    <li><a href=calendar.html>CALENDAR</a></li>
-                    <li><a href=#>DROPS</a></li>
-                    <li><a href=inStock.html>INSTOCK</a></li>
-                </ul>
+        </nav>
+        <br>
+        <div class="flex-container">
+            <div class="sidenav">
+                <br>
+                <div id= "secondh4">UPCOMING RELEASES</div>
+            <div class = "flex-container">
+                <div>
+                <br>
+                <a href="#">2/10</a>
+                <br>
+                <br>
+                <div id="brandName">GOLF WANG</div>
+                <div id="subfont">Winter Drop 2</div>
+                </div>
+                <img src="golf-wang.JPG" alt="test" width="140" height="165">
             </div>
-            <div id = "logo">
-                <a href = "homepage.html">
-                    <img src="logo.jpg" alt="Thread Core">
-                </a>
+            <br>
+            <div class = "flex-container">
+                <div>
+                    <br>
+                    <a href="#">3/10</a>
+                    <br>
+                    <br>
+                    <div id="brandName">CAR SERVICE</div>
+                    <div id="subfont">X DICKIES</div>
+                </div>
+                <img src="car-service.JPG" alt="test" width="140" height="165">
             </div>
-            <div id = "nav-bar-right">
-                <ul>
-                    <li><a href=#>SEARCH</a></li>
-                    <li><a href=#>PROFILE</a></li>
-                    <li><a href=#>SAVED</a></li>
-                    <li id = "cart"><a href=Cart.html>CART</a></li>
-                </ul>
+            <br>
+            <div class = "flex-container">
+                <div>
+                    <br>
+                    <a href="#">4/15</a>
+                    <br>
+                    <div id="subfont">EXCLUSIVE</div>
+                    <div id="brandName">CHERRY LA</div>
+                    <div id="subfont">Capsule Collection</div>
+                </div>
+                <img src="cherry-la.JPG" alt="test" width="140" height="165">
+            </div>
+            <br>
+            <div class = "flex-container">
+                <div>
+                    <a href="#">6/20</a>
+                    <br>
+                    <br>
+                    <div id="brandName">NB X PATTA</div>
+                    <div id="subfont">New Balance Drop</div>
+                </div>
+                <img src="nb-patta.JPG" alt="test" width="140" height="165">
+            </div>
+            <br>
+            <div class = "flex-container">
+                <div>
+                    <a href="#">7/23</a>
+                    <br>
+                    <br>
+                    <div id="brandName">CONVERSE</div>
+                    <div id="subfont">X A-COLD-WALL</div>
+                </div>
+                <img src="converse.JPG" alt="test" width="140" height="165">
+            </div>
+            <br>
+            <div class = "flex-container">
+                <div>
+                    <a href="#">8/4</a>
+                    <br>
+                    <br>
+                    <div id="brandName">GRAMACCI</div>
+                    <div id="subfont">COLLECTION</div>
+                </div>
+                <img src="gramacci-collection.JPG" alt="test" width="140" height="165">
+            </div>
+            <br>
+            <div class = "flex-container">
+                <div>
+                    <a href="#">9/14</a>
+                    <br>
+                    <br>
+                    <div id="brandName">DR.MARTENS</div>
+                    <div id="subfont">X MARC JACOBS</div>
+                </div>
+                <img src="dr-martens.JPG" alt="test" width="140" height="165">
+                </div>
+            </div>
+            <div class="mainColumn">
+                <div class="grid-container">
+                <div class="flex-container">
+                    <div>
+                        <div id="headline">
+                        SOME REALLY COOL
+                        <br>
+                        BRAND ANNOUNCES
+                        <br>
+                        COLLAB WITH A
+                        <br>
+                        WELL KNOWN ARTIST.
+                        </div>
+                        <br>
+                        <br>
+                        <div id="subheadline">
+                        Here are some words about this collab.
+                        <br>
+                        This tagline will be very catchy and
+                        <br>
+                        attention grabbing. People will be interested
+                        <br>
+                        in this drop. It is clearly a must buy.
+                        </div>
+                        <div id = "credit">
+                            author, 01/29/20
+                        </div>
+                    </div>
+                        <img src="threadcore1.JPG" alt="test" width="620" height="350">
+                </div>
+                <div id= "instock">IN STOCK NOW</div>
+                 <div class = "flex-container">
+                    <a href="#">
+                        <div class="inStockContainers">
+                                <br>
+                                <br>
+                                <br>
+                                <img src="yeezy.JPG" alt="test" width="100" height="80">
+                                <br>
+                                <div id="smallInStock">YEEZY</div>
+                                <div id="typePrice">Blue & Grey Boost</div>
+                                <div id="typePrice">$230</div>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="inStockContainers">
+                                <br>
+                                <br>
+                                <img src="givenchy.JPG" alt="test" width="80" height="100">
+                                <br>
+                                <div id="smallInStock">GIVENCHY</div>
+                                <div id="typePrice">Rainbow Logo Hoodie</div>
+                                <div id="typePrice">$980</div>
+                            </div>
+                       </a>
+                       <a href="#">
+                            <div class="inStockContainers">
+                                <br>
+                                <br>
+                                <br>
+                                <img src="hat.JPG" alt="test" width="100" height="80">
+                                <br>
+                                <div id="smallInStock">FENTY</div>
+                                <div id="typePrice">No Cap</div>
+                                <div id="typePrice">$140</div>
+                            </div>
+                        </a>
+                        <a href="#">
+                                <div class="inStockContainers">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <img src="sporty.JPG" alt="test" width="100" height="80">
+                                    <br>
+                                    <div id="smallInStock">SPORTY</div>
+                                    <div id="typePrice">Wellness Ivy Crewneck</div>
+                                    <div id="typePrice">$159</div>
+                                </div>
+                            </a>
+                 </div>
+                 <div class="flex-container">
+                     <div class="pictureContainers">
+                        <img src="emily-rat.JPG" alt="test" width="300" height="300">
+                        <div id="secondh4">EMILY RATAJKOWSKI <br> DROPS INAMORATA SS20</div>
+                     </div>
+                    <div class="pictureContainers">
+                    <img src="lunay.JPG" alt="test" width="300" height="300">
+                    <div id="secondh4">LUNAY LAUNCHES <br> SICK019 COLLECTION</div>
+                    </div>
+                    <div class="pictureContainers">
+                    <img src="edward-cullen.JPG" alt="test" width="300" height="300">
+                    <div id="secondh4">ROBERT PATTINSON'S<br>ANTI-STYLE STYLE</div>
+                    </div>
+                 </div>
+                 <div id="instock">LATEST DROPS</div>
+                 <div class="flex-container">
+                    <div class="pictureContainers">
+                    <img src="aries.JPG" alt="test" width="475" height="190">
+                    <div id="secondh4">ARIES SPRING COLLECTION</div>
+                    </div>
+                    <div class="pictureContainers">
+                        <img src="sporty-rich.JPG" alt="test" width="475" height="190">
+                        <div id="secondh4">SPORTY AND RICH SPRING DROP 1</div>
+                    </div>
+                 </div>
+                </div>
+            </div>
             </div>
         </div>
-    </nav>
-    <div class="sidenav">
-      <h2>UPCOMING RELEASES</h2>
-      <a href="#">02/10</a>
-      <br>
-      <br>
-      <a href="#">Event2</a>
-      <a href="#">Event3</a>
-      <a href="#">Event4</a>
-    </div>
-  </main>
-
-  <hr>
-  <footer>
-        <div id = "footer-left">
-            <p>Follow Us</p>
-            <div id = "follow-icons">
-                <p></p>
-                <p></p>
-                <p></p>
+        </div>
+        <br>
+        <br>
+        <footer>
+            <div id = "footer-left">
+                <p>Follow Us</p>
+                <div id = "follow-icons">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
             </div>
-        </div>
-        <div id = "footer-middle">
-            <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
-            <div id = "email-container">
-                    <input type="email" id="email" name="email">
-                    <button type="button">Subscribe</button>
+            <div id = "footer-middle">
+                <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
+                <div id = "email-container">
+                        <input type="email" id="email" name="email">
+                        <button type="button">Subscribe</button>
+                </div>
             </div>
-        </div>
-        <div id = "footer-right">
-            <li>FAQs</li>
-            <li>Contact</li>
-            <li>About</li>
-        </div>
-    </footer>
-
-
-  </body>
-
-
-</html>
+            <div id = "footer-right">
+                <li>FAQs</li>
+                <li>Contact</li>
+                <li>About</li>
+            </div>
+        </footer>
+    </body>
+    </html>
