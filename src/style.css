@@ -791,9 +791,15 @@ img{
     margin: 20px;
     position: relative;
     text-align: center;
-
-
+}
+.sidebarcontainers{
+    margin: 2px;
+    position: relative;
+    text-align:center;
 
 }
+
+
+
  
 
