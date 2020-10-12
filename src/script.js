@@ -10,7 +10,7 @@ window.onload = function() {
     let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
     let ele = document.getElementById("cart");
     if (itemsInCartArray) {
-        let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length + 1) + ")</a>";
+        let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length) + ")</a>";
         ele.innerHTML = newCart;
     } 
     this.console.log(JSON.parse(window.localStorage.getItem('items')))
@@ -62,23 +62,53 @@ function addItemToCart(button) {
 */
 function displayCart() {
     let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
-    let ele = document.getElementById('Items');
+    let ele = document.getElementById('Content');
+    let totalPrice = 0;
+    let numItems = 0;
+    
 
     //If cart is empty
     if(itemsInCartArray == null) {
-        let cart = "<p>Cart is empty</p>";
+        let cart = "<li id = \"Items\"><p>Cart is empty</p></li>";
         ele.innerHTML = cart;
 
     //If cart is not empty
     } else {
-        let cart = ""
+        numItems += 1;
+        let cart = "";
         for (let i = 0; i < itemsInCartArray.length; i++) {
-            cart += "<h2>" + itemsInCartArray[i].brand + "</h2>";
-            cart += "<h3>" + itemsInCartArray[i].name + "</h3>";
-            cart += "<h5 id = \"Price\">" + itemsInCartArray[i].price + "</h5><br>";
+            totalPrice += parseInt(itemsInCartArray[i].price.slice(1))
+            cart += `
+            <li id= "Items">
+                <hr>
+                <a href=#>X</a>
+                <img src="CartImageExample.png">
+                <h2>${itemsInCartArray[i].brand}</h2>
+                <h3>${itemsInCartArray[i].name}</h3>
+                <br>
+                <h4 id="SameLine">SIZE &#x2228</h4>
+                <h4 id="SameLine">QTY 1 &#x2228</h4>
+                <h5 id="Price">${itemsInCartArray[i].price}</h5>
+                <hr>
+            </li>
+            `
         }
-        ele.innerHTML = cart;
+        ele.innerHTML = cart + `
+        <li id="OrderSummary">
+            <h1>Order Summary</h1>
+            <h3 id="subSummary">SUBTOTAL</h3>
+            <h3 id="subSummary">$ ${totalPrice}</h3>
+            <h3 id="subSummary">SHIPPING</h3>
+            <h3 id="subSummary">$ 5</h3>
+            <h3 id="subSummary">SALES TAX</h3>
+            <h3 id="subSummary">$ 3.07</h3>
+            <h2 id="Total">TOTAL</h2>
+            <h2 id="Total">$ ${totalPrice + 8.07}</h2>
+            <a href="#" id="Checkout">CHECKOUT</a> 
+            <!--Will eventually link to the checkout page--> 
+        </li>
+        `           
+        }
     }
-}
 
 
