@@ -592,6 +592,10 @@ hr{
     margin-left: 30px;
     margin-right: 30px;
     margin-bottom: 30px;
+    position: fixed; 
+    top: 100px; 
+    left: 67%; 
+    z-index : 1;
 }
 
 
