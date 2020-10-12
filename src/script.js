@@ -13,11 +13,14 @@ window.onload = function() {
         let newCart = "<a href=Cart.html>Cart (" + (itemsInCartArray.length) + ")</a>";
         ele.innerHTML = newCart;
     } 
-    this.console.log(JSON.parse(window.localStorage.getItem('items')))
 
     //If on the in-cart page, display the items
     if (this.document.title == 'Cart') {
         displayCart();
+    }
+
+    if (this.document.title == 'In Stock') {
+        //this.inStockPictures();
     }
 }
 
@@ -44,11 +47,16 @@ function addItemToCart(button) {
     let n = details[1].textContent;
     let p = details[2].textContent;
 
+    //Gets url for item image
+    let i = button.parentElement.parentElement.getElementsByTagName("p")[0].getElementsByTagName("img")[0].src;
+    
+
     //Creates an item object too save in array
     const item = {
         brand: b,
         name: n,
-        price: p
+        price: p,
+        img: i
     }
 
     //Add item to the array and save it in the local storage
@@ -82,7 +90,7 @@ function displayCart() {
             <li id= "Items">
                 <hr>
                 <a href=#>X</a>
-                <img src="CartImageExample.png">
+                <img src="${itemsInCartArray[i].img}">
                 <h2>${itemsInCartArray[i].brand}</h2>
                 <h3>${itemsInCartArray[i].name}</h3>
                 <br>
@@ -93,6 +101,7 @@ function displayCart() {
             </li>
             `
         }
+
         ele.innerHTML = cart + `
         <li id="OrderSummary">
             <h1>Order Summary</h1>
@@ -110,5 +119,7 @@ function displayCart() {
         `           
         }
     }
+
+
 
 
