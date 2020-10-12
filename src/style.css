@@ -63,6 +63,9 @@ a {
 
 .in-stock-img img {
     height: 100%;
+    margin: 0;
+    padding-left: 0;
+    width: 100%;
 }
 
 .in-stock-text {
@@ -201,6 +204,7 @@ a {
 #logo img {
     width: 100%;
     height: auto;
+    margin: 0;
 }
 
 .full-nav ul{
