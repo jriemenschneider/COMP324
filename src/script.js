@@ -75,6 +75,36 @@ function addItemToCart(button) {
 
 
 /*
+*   Removes item from a cart
+*   The item will be completly removed, does not consider qty
+*/
+function removeItemFromCart(button) {
+    //Gets the array of items already in the cart from local storage
+    let itemsInCartArray = JSON.parse(window.localStorage.getItem('items'));
+    if(itemsInCartArray == null) {
+        itemsInCartArray = [];
+    }
+
+    //Get details of the item to be removed
+    let itemToRemoveBrand = button.parentElement.getElementsByTagName("h2")[0].innerText;
+    let itemToRemoveName = button.parentElement.getElementsByTagName("h3")[0].innerText;
+    console.log(itemToRemoveBrand, itemToRemoveName);
+
+    //Finds the item in the array that needs to be removed
+    for (let i = 0; i < itemsInCartArray.length; i++) {
+        if (itemsInCartArray[i].name == itemToRemoveName && itemsInCartArray[i].brand == itemToRemoveBrand) {
+            itemsInCartArray.splice(i, 1);
+            console.log(itemsInCartArray);
+        }
+    }
+    localStorage.setItem('items', JSON.stringify(itemsInCartArray));
+
+    displayCart();
+    updateNav(itemsInCartArray);
+}
+
+
+/*
 *   Basis for displaying the items in the cart once on the in-cart page
 */
 function displayCart() {
@@ -98,7 +128,7 @@ function displayCart() {
             cart += `
             <li id= "Items">
                 <hr>
-                <a href=#>X</a>
+                <a href=# onclick = "removeItemFromCart(this)">X</a>
                 <img src="${itemsInCartArray[i].img}">
                 <h2>${itemsInCartArray[i].brand}</h2>
                 <h3>${itemsInCartArray[i].name}</h3>
@@ -127,6 +157,7 @@ function displayCart() {
         </li>
         `           
         }
+        updateNav(itemsInCartArray);
     }
 
 function updateNav(itemsInCartArray) {
