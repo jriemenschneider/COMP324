@@ -36,41 +36,56 @@ function addItemToCart(button) {
     }
 
     //Gets the item details from the HTML
-    let details = button.parentElement.getElementsByTagName("p");
+    let details = button.parentElement.getElementsByClassName("product-description");
     let b = details[0].textContent;
     let n = details[1].textContent;
     let p = details[2].textContent;
 
     //Gets url for item image
-    let i = button.parentElement.parentElement.getElementsByTagName("p")[0].getElementsByTagName("img")[0].src;
+    let i = button.parentElement.parentElement.getElementsByTagName('div')[0].getElementsByTagName("img")[0].src;
+
+
+    //Gets the size of the item
+    let s = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('div')[2].getElementsByTagName('button')[0].innerText;
+    console.log(s.length);
+
+    if (s.length > 11) {
+        s = s.slice(13, 14);
+        console.log(s);
+    } else {
+        s = null;
+    }
     
 
-    //Creates an item object too save in array
-    const item = {
-        brand: b,
-        name: n,
-        price: p,
-        img: i,
-        qty: 1
-    }
-
-    //Checks to see if item is already in the cart
-    let found = false;
-    for (let i = 0; i < itemsInCartArray.length; i ++) {
-        if (itemsInCartArray[i].brand == item.brand && itemsInCartArray[i].name == item.name) {
-            found = true;
-            itemsInCartArray[i].qty += 1;
+    if (s){
+        //Creates an item object too save in array
+        const item = {
+            brand: b,
+            name: n,
+            price: p,
+            img: i,
+            qty: 1,
+            size:s
         }
-    }
 
-    //Add item to the array and save it in the local storage
-    if (!found) {
-        itemsInCartArray.push(item);
-    }
-    localStorage.setItem('items', JSON.stringify(itemsInCartArray));
+        //Checks to see if item is already in the cart
+        let found = false;
+        for (let i = 0; i < itemsInCartArray.length; i ++) {
+            if (itemsInCartArray[i].brand == item.brand && itemsInCartArray[i].name == item.name && item.size == itemsInCartArray[i].size) {
+                found = true;
+                itemsInCartArray[i].qty += 1;
+            }
+        }
 
-    //Gets the HTML cart element from the nav bar to update the number 
-    updateNav(itemsInCartArray);
+        //Add item to the array and save it in the local storage
+        if (!found) {
+            itemsInCartArray.push(item);
+        }
+        localStorage.setItem('items', JSON.stringify(itemsInCartArray));
+
+        //Gets the HTML cart element from the nav bar to update the number 
+        updateNav(itemsInCartArray);
+    }
 }
 
 
@@ -88,11 +103,12 @@ function removeItemFromCart(button) {
     //Get details of the item to be removed
     let itemToRemoveBrand = button.parentElement.getElementsByTagName("h2")[0].innerText;
     let itemToRemoveName = button.parentElement.getElementsByTagName("h3")[0].innerText;
-    console.log(itemToRemoveBrand, itemToRemoveName);
+    let itemToRemoveSize = button.parentElement.getElementsByTagName("h4")[0].innerText.slice(5,6);
+    console.log(itemToRemoveBrand, itemToRemoveName, itemToRemoveSize);
 
     //Finds the item in the array that needs to be removed
     for (let i = 0; i < itemsInCartArray.length; i++) {
-        if (itemsInCartArray[i].name == itemToRemoveName && itemsInCartArray[i].brand == itemToRemoveBrand) {
+        if (itemsInCartArray[i].name == itemToRemoveName && itemsInCartArray[i].brand == itemToRemoveBrand && itemsInCartArray[i].size == itemToRemoveSize) {
             itemsInCartArray.splice(i, 1);
             console.log(itemsInCartArray);
         }
@@ -133,7 +149,7 @@ function displayCart() {
                 <h2>${itemsInCartArray[i].brand}</h2>
                 <h3>${itemsInCartArray[i].name}</h3>
                 <br>
-                <h4 id="SameLine">SIZE &#x2228</h4>
+                <h4 id="SameLine">SIZE ${itemsInCartArray[i].size}&#x2228</h4>
                 <h4 id="SameLine">QTY ${itemsInCartArray[i].qty} &#x2228</h4>
                 <h5 id="Price">${itemsInCartArray[i].price}</h5>
                 <hr>
@@ -172,5 +188,27 @@ function updateNav(itemsInCartArray) {
 }
 
 
+function setSize(size, button) {
+    console.log(size);
+    console.log(button.parentElement.parentElement);
+    let container = button.parentElement.parentElement;
+    container.innerHTML = `
+        <button onclick = "openSizeSelector(this)">Select Size: ${size}</button>
+    `
+    
+}
 
+function openSizeSelector(button) {
+    console.log(button.parentElement);
+    let container = button.parentElement;
+    console.log(container);
+    button.parentElement.innerHTML = `
+        <button onclick = "openSizeSelector(this)">Select Size</button>
+        <ul>
+            <li onclick="setSize(\`Small\`, this)">Small</li>
+            <li onclick="setSize(\`Medium\`, this)">Medium</li>
+            <li onclick="setSize(\`Large\`, this)">Large</li>
+        </ul>
+    `;
+}
 

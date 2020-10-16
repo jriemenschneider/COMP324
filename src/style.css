@@ -40,6 +40,107 @@ a {
 
 
 
+/*---------------- Product Page ----------------------------------------------------------*/
+
+#product-page-container {
+    display: flex;
+}
+#product-page-image {
+    width: 50%;
+}
+
+#product-page-image img {
+    float: right;
+    padding-right: 2em;
+    height: 75%;
+}
+
+#product-page-description {
+    padding-left: 5em;
+    
+}
+
+#product-page-description h1{
+    font-size: 48px;
+}
+
+#product-page-description h2{
+    font-weight: normal;
+    font-size: 24px;
+}
+
+#product-page-details {
+    margin-bottom: 2em;
+}
+
+.size-dropdown {
+    margin-top: 2em;
+    width: 90%;
+    height: 2em;
+    text-align: center;
+}
+
+.size-dropdown button {
+    border: 2px solid grey;
+    border-radius: 2px;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    width: 350px;
+    padding: 0.25em 0;
+}
+
+.size-selector {
+    position: relative;
+}
+
+.size-selector ul {
+    position: absolute;
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start  ;
+    list-style: none;
+    border: 2px solid grey;
+    border-radius: 2px;
+}
+
+.size-selector li {
+    background-color: white;
+    width: 120%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -40px; 
+}
+
+.size-selector li:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+
+#add-to-cart-button {
+    margin-top: 2em;
+    border: 2px solid grey;
+    border-radius: 2px;
+    background-color: black;
+    font-size: 24px;
+    padding: 0.25em 0;
+    width: 350px;
+    color: white;
+
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+
+
+
 
 /* For the In Stock Page*/
 .in-stock-item {
