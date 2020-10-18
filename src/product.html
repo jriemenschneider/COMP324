@@ -16,7 +16,7 @@
                         <a href="#">DROPS</a>
                         <a href=inStock.html>IN STOCK</a>
                         <a href=#>PROFILE</a>
-                        <a href=#>SAVED</a>
+                        <a href=saved.html>SAVED</a>
                     </div>
                 </div>
                 <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
@@ -41,7 +41,7 @@
                     <ul>
                         <li><a href=#>SEARCH</a></li>
                         <li><a href=#>PROFILE</a></li>
-                        <li><a href=#>SAVED</a></li>
+                        <li><a href=saved.html>SAVED</a></li>
                         <li id = "cart"><a href=Cart.html>CART</a></li>
                     </ul>
                 </div>
@@ -65,7 +65,10 @@
                         <button onclick = "openSizeSelector(this)">Select Size</button>
                     </div>
                 </div>
-               <button id = "add-to-cart-button" onclick = "addItemToCart(this)">Add To Bag</button>
+                
+               <button id = "add-to-cart-button" onclick = "addItem(this, 'cartItems')">Add To Bag</button>
+               <button id = "save-item-button" onclick = "addItem(this, 'savedItems')">Save Item</button>
+               
             </div>
         </div>
 
