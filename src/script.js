@@ -17,7 +17,7 @@ window.onload = function() {
     }
 
     if (this.document.title == "Saved") {
-        //this.loadSavedItems();
+        this.displaySavedItems()
     }
 
     //Sets cart to correct number in nav bar
@@ -83,6 +83,7 @@ function addItem(button, location) {
         if (!found) {
             list.push(item);
         }
+        console.log(location, list);
         localStorage.setItem(location, JSON.stringify(list));
 
         //Gets the HTML cart element from the nav bar to update the number 
@@ -177,6 +178,42 @@ function displayCart() {
         }
         updateNav(list);
     }
+
+
+function displaySavedItems() {
+    let list = JSON.parse(window.localStorage.getItem('savedItems'));
+    let ele = document.getElementById('saved-items-main');
+    console.log(list);
+    let items = ""
+
+    //If cart is empty
+    if(list == null) {
+        items = "<li id = \"Items\"><p>No saved items</p></li>";
+        ele.innerHTML = items;
+
+    //If cart is not empty
+    } else {
+        for (let i = 0; i < list.length; i++) {
+            items += `
+            <div class = "saved-item" >
+                <a href=#>
+                    <div>
+                        <a href=#>X</a>
+                    </div>
+                    <div>
+                        <img src="${list[i].img}">
+                        <h2>${list[i].brand}</h2>
+                        <p>${list[i].name}</p>
+                        <p>${list[i].price}</p>
+                    </div>
+                </a>
+            </div>
+            `
+        }
+    }
+    ele.innerHTML = items;
+}
+
 
 function updateNav(list) {
     //Gets the HTML cart element from the nav bar to update the number 
