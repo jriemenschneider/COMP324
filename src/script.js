@@ -20,6 +20,10 @@ window.onload = function() {
         this.displaySavedItems()
     }
 
+    if (this.document.title == "Product") {
+        this.displayProduct()
+    }
+
     //Sets cart to correct number in nav bar
     let list = JSON.parse(window.localStorage.getItem('cartItems')); 
     this.updateNav(list);
@@ -180,6 +184,7 @@ function displayCart() {
     }
 
 
+//Displays the list of saved items
 function displaySavedItems() {
     let list = JSON.parse(window.localStorage.getItem('savedItems'));
     let ele = document.getElementById('saved-items-main');
@@ -204,7 +209,7 @@ function displaySavedItems() {
                         <img src="${list[i].img}">
                         <h2>${list[i].brand}</h2>
                         <p>${list[i].name}</p>
-                        <p>${list[i].price}</p>
+                        <p id = "saved-last-text">${list[i].price}</p>
                     </div>
                 </a>
             </div>
@@ -212,6 +217,49 @@ function displaySavedItems() {
         }
     }
     ele.innerHTML = items;
+}
+
+
+
+//Saves item to display it as a product
+function saveCurrentItem(loc) {
+    let item = {
+        brand: loc.getElementsByTagName('p')[1].innerText,
+        name: loc.getElementsByTagName('p')[2].innerText,
+        price: loc.getElementsByTagName('p')[3].innerText,
+        img: loc.getElementsByTagName('img')[0].src
+    }
+    
+    localStorage.setItem('product', JSON.stringify(item)); 
+}
+
+//Displays a product on product page
+function displayProduct() {
+    let product = JSON.parse(window.localStorage.getItem('product'));
+    let ele = document.getElementById("product-page-container");
+    ele.innerHTML = `
+         <div id = "product-page-image">
+            <img src = "${product.img}">
+        </div>
+        <div id = "product-page-description">
+            <div id = "product-page-details">
+                <h1 class = "product-description">${product.brand}</h1>
+                <h2 class = "product-description">${product.name}</h2>
+                <h2 class = "product-description">${product.price}</h2>
+            </div>
+            <h3>Color: N/A</h3>
+            <h3>Drop: N/A</h3>
+            <div class = "size-dropdown">
+                <div class = "size-selector">
+                    <button onclick = "openSizeSelector(this)">Select Size</button>
+                </div>
+            </div>
+            
+            <button id = "add-to-cart-button" onclick = "addItem(this, 'cartItems')">Add To Bag</button>
+            <button id = "save-item-button" onclick = "addItem(this, 'savedItems')">Save Item</button>
+            
+        </div>
+    `
 }
 
 

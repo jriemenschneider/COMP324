@@ -213,17 +213,30 @@ a {
 /*----------------Saved Items------------------------------------*/
 
 #saved-items-container {
-    width: 80%;
+    width: 85%;
+    margin: auto;
+    
+}
+
+#saved-items-main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: flex-start;
     margin: auto;
 }
 
 .saved-item img {
-    height: 15em;
+    height: 20em;
+    width: 14em;
     margin: 0.25em 2em 0 1.25em;
 }
 
 .saved-item {
     border: 2px solid grey;
+    margin: 1em 2em;
+    align-self: flex-start;
+    margin-right: auto;
 }
 
 .saved-item a {
@@ -231,7 +244,7 @@ a {
 }
 
 .saved-item h2{
-    margin: 0 0 0 1.75em;
+    margin: 0.5em 0 0 1.75em;
 }
 
 .saved-item p{
@@ -239,6 +252,12 @@ a {
     padding: 0;
     font-size: 14px;
 }
+
+#saved-last-text {
+    margin-bottom: 0.5em;
+}
+
+
 
 /*---------------------------------------------------------------*/
 
