@@ -57,7 +57,6 @@ function addItem(button, location) {
     let s = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('div')[2].getElementsByTagName('button')[0].innerText;
     if (s.length > 11) {
         s = s.slice(13, 14);
-        console.log(s);
     } else {
         s = null;
     }
@@ -87,7 +86,6 @@ function addItem(button, location) {
         if (!found) {
             list.push(item);
         }
-        console.log(location, list);
         localStorage.setItem(location, JSON.stringify(list));
 
         //Gets the HTML cart element from the nav bar to update the number 
@@ -97,33 +95,45 @@ function addItem(button, location) {
 
 
 /*
-*   Removes item from a cart
-*   The item will be completly removed, does not consider qty
+*   Removes item from cart or saved items list
 */
-function removeItemFromCart(button) {
+function removeItem(button, location) {
     //Gets the array of items already in the cart from local storage
-    let list = JSON.parse(window.localStorage.getItem('cartItems'));
+    let list = JSON.parse(window.localStorage.getItem(location));
     if(list == null) {
         list = [];
     }
-
-    //Get details of the item to be removed
-    let itemToRemoveBrand = button.parentElement.getElementsByTagName("h2")[0].innerText;
-    let itemToRemoveName = button.parentElement.getElementsByTagName("h3")[0].innerText;
-    let itemToRemoveSize = button.parentElement.getElementsByTagName("h4")[0].innerText.slice(5,6);
-    console.log(itemToRemoveBrand, itemToRemoveName, itemToRemoveSize);
+    let itemToRemoveBrand = null;
+    let itemToRemoveName = null;
+    let itemToRemoveSize = null;
+    
+    //Gets details if a cart item is being removed
+    if (location == 'cartItems') {
+        itemToRemoveBrand = button.parentElement.getElementsByTagName("h2")[0].innerText;
+        itemToRemoveName = button.parentElement.getElementsByTagName("h3")[0].innerText;
+        itemToRemoveSize = button.parentElement.getElementsByTagName("h4")[0].innerText.slice(5,6);
+    
+    //Gets details if a saved item is being removed
+    } else {
+        itemToRemoveBrand = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('h2')[0].innerText;
+        itemToRemoveName = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('p')[0].innerText;
+    }
+    
 
     //Finds the item in the array that needs to be removed
     for (let i = 0; i < list.length; i++) {
         if (list[i].name == itemToRemoveName && list[i].brand == itemToRemoveBrand && list[i].size == itemToRemoveSize) {
             list.splice(i, 1);
-            console.log(list);
         }
     }
-    localStorage.setItem('cartItems', JSON.stringify(list));
+    localStorage.setItem(location, JSON.stringify(list));
 
-    displayCart();
-    updateNav(list);
+    if (location == 'cartItems') {
+        displayCart();
+        updateNav(list);
+    } else {
+        displaySavedItems();
+    }
 }
 
 
@@ -151,7 +161,7 @@ function displayCart() {
             cart += `
             <li id= "Items">
                 <hr>
-                <a href=# onclick = "removeItemFromCart(this)">X</a>
+                <a href=# onclick = "removeItem(this, 'cartItems')">X</a>
                 <img src="${list[i].img}">
                 <h2>${list[i].brand}</h2>
                 <h3>${list[i].name}</h3>
@@ -188,7 +198,6 @@ function displayCart() {
 function displaySavedItems() {
     let list = JSON.parse(window.localStorage.getItem('savedItems'));
     let ele = document.getElementById('saved-items-main');
-    console.log(list);
     let items = ""
 
     //If cart is empty
@@ -203,7 +212,7 @@ function displaySavedItems() {
             <div class = "saved-item" >
                 <a href=#>
                     <div>
-                        <a href=#>X</a>
+                    <a href=# onclick = "removeItem(this, 'savedItems')">X</a>
                     </div>
                     <div>
                         <img src="${list[i].img}">
@@ -276,8 +285,6 @@ function updateNav(list) {
 
 
 function setSize(size, button) {
-    console.log(size);
-    console.log(button.parentElement.parentElement);
     let container = button.parentElement.parentElement;
     container.innerHTML = `
         <button onclick = "openSizeSelector(this)">Select Size: ${size}</button>
@@ -286,9 +293,6 @@ function setSize(size, button) {
 }
 
 function openSizeSelector(button) {
-    console.log(button.parentElement);
-    let container = button.parentElement;
-    console.log(container);
     button.parentElement.innerHTML = `
         <button onclick = "openSizeSelector(this)">Select Size</button>
         <ul>
