@@ -231,7 +231,7 @@ function displaySavedItems() {
 
 //Saves item to display it as a product
 function saveCurrentItem(loc) {
-    let item = {
+    const item = {
         brand: loc.getElementsByTagName('p')[1].innerText,
         name: loc.getElementsByTagName('p')[2].innerText,
         price: loc.getElementsByTagName('p')[3].innerText,
