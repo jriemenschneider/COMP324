@@ -4,7 +4,6 @@
 /*
 *   This function will call immediatly when the page loads.
 */
-
 window.onload = function() {
 
     //If on the in-cart page, display the items
@@ -76,11 +75,12 @@ function addItem(button, location) {
         //Checks to see if item is already in the cart
         let found = false;
         for (let i = 0; i < list.length; i ++) {
-            if (list[i].brand == item.brand && list[i].name == item.name && item.size == list[i].size) {
+            if (list[i].brand == item.brand && list[i].name == item.name && (item.size == list[i].size || location == 'savedItems')) {
                 found = true;
                 list[i].qty += 1;
             }
         }
+        console.log(i);
 
         //Add item to the array and save it in the local storage
         if (!found) {
@@ -88,8 +88,10 @@ function addItem(button, location) {
         }
         localStorage.setItem(location, JSON.stringify(list));
 
-        //Gets the HTML cart element from the nav bar to update the number 
-        updateNav(list);
+        if (location == 'cartItems') {
+            //Gets the HTML cart element from the nav bar to update the number 
+            updateNav(list);
+        }
     }
 }
 
@@ -115,14 +117,14 @@ function removeItem(button, location) {
     
     //Gets details if a saved item is being removed
     } else {
-        itemToRemoveBrand = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('h2')[0].innerText;
-        itemToRemoveName = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('p')[0].innerText;
+        itemToRemoveBrand = button.parentElement.getElementsByTagName('div')[0].getElementsByTagName('p')[0].innerText;
+        itemToRemoveName = button.parentElement.getElementsByTagName('div')[0].getElementsByTagName('p')[1].innerText;
     }
     
 
     //Finds the item in the array that needs to be removed
     for (let i = 0; i < list.length; i++) {
-        if (list[i].name == itemToRemoveName && list[i].brand == itemToRemoveBrand && list[i].size == itemToRemoveSize) {
+        if (list[i].name == itemToRemoveName && list[i].brand == itemToRemoveBrand && (list[i].size == itemToRemoveSize || location == 'savedItems')) {
             list.splice(i, 1);
         }
     }
@@ -144,7 +146,6 @@ function displayCart() {
     let list = JSON.parse(window.localStorage.getItem('cartItems'));
     let ele = document.getElementById('Content');
     let totalPrice = 0;
-    let numItems = 0;
     
 
     //If cart is empty
@@ -154,7 +155,6 @@ function displayCart() {
 
     //If cart is not empty
     } else {
-        numItems += 1;
         let cart = "";
         for (let i = 0; i < list.length; i++) {
             totalPrice += parseInt(list[i].price.slice(1)) * list[i].qty;
@@ -209,16 +209,16 @@ function displaySavedItems() {
     } else {
         for (let i = 0; i < list.length; i++) {
             items += `
-            <div class = "saved-item" >
-                <a href=#>
-                    <div>
-                    <a href=# onclick = "removeItem(this, 'savedItems')">X</a>
-                    </div>
-                    <div>
-                        <img src="${list[i].img}">
-                        <h2>${list[i].brand}</h2>
-                        <p>${list[i].name}</p>
-                        <p id = "saved-last-text">${list[i].price}</p>
+            <div class = "saved-item">
+            <a href=# onclick = "removeItem(this, 'savedItems')">X</a>
+                <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "saved-item-img">
+                        <img src = "${list[i].img}">
+                    </p>
+                    <div class = "saved-item-text">
+                        <p><strong>${list[i].brand}</strong></p>
+                        <p class = 'saved-item-name'>${list[i].name}</p>
+                        <p>${list[i].price}</p>
                     </div>
                 </a>
             </div>
@@ -227,7 +227,6 @@ function displaySavedItems() {
     }
     ele.innerHTML = items;
 }
-
 
 
 //Saves item to display it as a product
@@ -241,6 +240,7 @@ function saveCurrentItem(loc) {
     
     localStorage.setItem('product', JSON.stringify(item)); 
 }
+
 
 //Displays a product on product page
 function displayProduct() {
@@ -271,7 +271,7 @@ function displayProduct() {
     `
 }
 
-
+//Updates the nav bar to show the correct number of items in the cart
 function updateNav(list) {
     //Gets the HTML cart element from the nav bar to update the number 
     let ele = document.getElementById("cart");
@@ -284,14 +284,7 @@ function updateNav(list) {
 }
 
 
-function setSize(size, button) {
-    let container = button.parentElement.parentElement;
-    container.innerHTML = `
-        <button onclick = "openSizeSelector(this)">Select Size: ${size}</button>
-    `
-    
-}
-
+//Sets HTML for the size selector in the product page
 function openSizeSelector(button) {
     button.parentElement.innerHTML = `
         <button onclick = "openSizeSelector(this)">Select Size</button>
@@ -303,3 +296,11 @@ function openSizeSelector(button) {
     `;
 }
 
+//Sets the HTML after size for a product is selected
+function setSize(size, button) {
+    let container = button.parentElement.parentElement;
+    container.innerHTML = `
+        <button onclick = "openSizeSelector(this)">Select Size: ${size}</button>
+    `
+    
+}
