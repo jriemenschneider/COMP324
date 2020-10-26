@@ -286,14 +286,20 @@ function updateNav(list) {
 
 //Sets HTML for the size selector in the product page
 function openSizeSelector(button) {
-    button.parentElement.innerHTML = `
-        <button onclick = "openSizeSelector(this)">Select Size</button>
-        <ul>
-            <li onclick="setSize(\`Small\`, this)">Small</li>
-            <li onclick="setSize(\`Medium\`, this)">Medium</li>
-            <li onclick="setSize(\`Large\`, this)">Large</li>
-        </ul>
-    `;
+    if (button.parentElement.getElementsByTagName('ul').length == 0) {
+        button.parentElement.innerHTML = `
+            <button onclick = "openSizeSelector(this)">Select Size</button>
+            <ul>
+                <li onclick="setSize(\`Small\`, this)">Small</li>
+                <li onclick="setSize(\`Medium\`, this)">Medium</li>
+                <li onclick="setSize(\`Large\`, this)">Large</li>
+            </ul>
+        `;
+    } else {
+        button.parentElement.innerHTML = `
+            <button onclick = "openSizeSelector(this)">Select Size</button>
+        `;
+    } 
 }
 
 //Sets the HTML after size for a product is selected
@@ -303,4 +309,37 @@ function setSize(size, button) {
         <button onclick = "openSizeSelector(this)">Select Size: ${size}</button>
     `
     
+}
+
+
+//Displays the filter on the in-stock pagee
+function displayFilterType(button, filter) {
+    if (filter == 'category') {
+        if ($('.filter-list')[0].style.display == 'block') {
+            $('#category-list').hide();
+        } else {
+            $('#category-list').show();
+        }
+
+    } else if (filter == 'brand') {
+        if ($('.filter-list')[1].style.display == 'block') {
+            $('#brand-list').hide();
+        } else {
+            $('#brand-list').show();
+        }
+
+    } else if (filter == 'color') {
+        if ($('.filter-list')[2].style.display == 'block') {
+            $('#color-list').hide();
+        } else {
+            $('#color-list').show();
+        }
+
+    } else if (filter == 'size') {
+        if ($('.filter-list')[3].style.display == 'block') {
+            $('#size-list').hide();
+        } else {
+            $('#size-list').show();
+        }
+    }
 }

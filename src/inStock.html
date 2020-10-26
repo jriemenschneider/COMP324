@@ -4,6 +4,7 @@
         <title>In Stock</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
     </head>
     <body>
         <nav>
@@ -52,7 +53,6 @@
             <br>
             <h1>IN STOCK</h1>
         </div>
-
         <div class = "filter" id = "in-stock-filter">
             <li><strong>SORT</strong></li>
             <li><a href=#>Newest</a></li>
@@ -61,16 +61,39 @@
         </div>
 
         <div id = "in-stock-container">
-            <div id = "left-side">
+            <div id = "left-side-full">
                 <hr>
-                <li>Categories</li>
+                <li onclick = "displayFilterType(this, 'category')">Categories</li>
+                <ul class = "filter-list" id = "category-list">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                </ul>
                 <hr>
-                <li>Brand</li>
+                <li onclick = "displayFilterType(this, 'brand')">Brand</li>
+                <ul class = "filter-list" id = "brand-list">
+                    <li>Brand 1</li>
+                    <li>Brand 2</li>
+                    <li>Brand 3</li>
+                </ul>
                 <hr>
-                <li>Color</li>
+                <li onclick = "displayFilterType(this, 'color')">Color</li>
+                <ul class = "filter-list" id = "color-list">
+                    <li>Color 1</li>
+                    <li>Color 2</li>
+                    <li>Color 3</li>
+                </ul>
                 <hr>
-                <li>Size</li>
+                <li onclick = "displayFilterType(this, 'size')">Size</li>
+                <ul class = "filter-list" id = "size-list">
+                    <li>Color 1</li>
+                    <li>Color 2</li>
+                    <li>Color 3</li>
+                </ul>
                 <hr>
+            </div>
+            <div id = "left-side-mobile">
+                <h2>Filters</h2>
             </div>
             <div id = "in-stock-main">
                 <div class = "in-stock-item" >
@@ -132,17 +155,7 @@
                             <p>$399</p>
                         </div>
                     </a>
-                </div>
-                <div class = "in-stock-item">
-                    <a href=#>
-                        <p class = "in-stock-img"></p>
-                        <div class = "in-stock-text">
-                            <p><strong>Brand</strong></p>
-                            <p>Name</p>
-                            <p>Price</p>
-                        </div>
-                    </a>
-                </div>                                    
+                </div>                                  
             </div>
         </div>
 
