@@ -543,7 +543,7 @@ input {
     
 }
 
-/* --------------------MY NEW STUFF-----------------------------------------------------------*/
+/* --------------------MY NEW STUFF-Jaimie-----------------------------------------------------------*/
 #Content{
     width: 100%;
 }
@@ -832,8 +832,37 @@ img{
     position: relative;
     text-align: center;
 }
+/*Specifics for Jaimie's Sign-In Page CSS!*/
+.SignInContent{
+    width:100%;
+    text-align: center;
+}
+#SubfontSignIn{
+    font-size: 14px;
+    font-weight: normal;
+    width:100%;
+    text-align:left; 
+    margin-left: 30%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.SignInContent input{
+    margin-top:0px;
+    padding-left:8px;
+    /*padding-top: 0px;*/
+}
 
-
+.SignInContent button{
+    width: 40%;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    padding-top: .2%;
+    padding-bottom: .2%;
+    outline-color: black;
+    margin-top: 3%;
+    margin-bottom: 4%;
+}
 
  
 
