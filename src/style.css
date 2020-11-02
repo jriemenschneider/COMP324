@@ -40,66 +40,251 @@ a {
 
 
 
+/*---------------- Product Page ----------------------------------------------------------*/
 
-/* For the In Stock Page*/
-.in-stock-item {
+#product-page-container {
+    display: flex;
+}
+#product-page-image {
+    width: 50%;
+}
+
+#product-page-image img {
+    float: right;
+    padding-right: 2em;
+    height: 75%;
+}
+
+#product-page-description {
+    padding-left: 5em;
+    
+}
+
+#product-page-description h1{
+    font-size: 48px;
+}
+
+#product-page-description h2{
+    font-weight: normal;
+    font-size: 24px;
+}
+
+#product-page-details {
+    margin-bottom: 2em;
+}
+
+.size-dropdown {
+    margin-top: 2em;
+    width: 90%;
+    height: 2em;
+    text-align: center;
+}
+
+.size-dropdown button {
+    border: 2px solid grey;
+    border-radius: 2px;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    width: 350px;
+    padding: 0.25em 0;
+}
+
+.size-selector {
+    position: relative;
+    margin-left: 0px;
+    float: left;
+}
+
+.size-selector ul {
+    position: absolute;
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start  ;
+    list-style: none;
+    border: 2px solid grey;
+    border-radius: 2px;
+}
+
+.size-selector li {
+    background-color: white;
+    width: 120%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -40px; 
+}
+
+.size-selector li:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+
+#add-to-cart-button, #save-item-button {
+    margin-top: 1.25em;
+    border: 2px solid grey;
+    border-radius: 2px;
+    background-color: black;
+    font-size: 24px;
+    padding: 0.25em 0;
+    width: 350px;
+    color: white;
+}
+
+#save-item-button {
+    display: block;
+    background: white;
+    color: black;
+    margin-top: 0.75em;
+}
+
+/*----------------------------------------------------------------------------------------*/
+
+
+/* For the In Stock and Saved Items Page*/
+
+.filter-list {
+    display: none;
+}
+#left-side-mobile {
+    display: none;
+}
+.in-stock-item, 
+.saved-item {
     width: 16em;
     height: 29em;
-    margin: 1.5em 1.5em 5em 1.5em;
+    margin: auto 0 auto 25px;
+    padding: 1em;
 }
 
-.in-stock-text p {
-    text-decoration: none;
-    font-family: 'Roboto';
-    color: black;
-    width:100%;
-}
-
-.in-stock-img {
+.in-stock-img,
+.saved-item-img{
     height: 80%;
     background-color: black;
     margin-top: 0;
 }
 
-.in-stock-img img {
+.in-stock-img img,
+.saved-item img {
     height: 100%;
     margin: 0;
     padding-left: 0;
     width: 100%;
 }
 
-.in-stock-text {
+.in-stock-text,
+.saved-item-text {
     height: 20%;
     vertical-align: bottom;
     margin-top: 0;
 }
 
-.in-stock-text p {
+.in-stock-text p,
+.saved-item-text p {
    margin: 0.2em 0.2em;
+   text-decoration: none;
+    font-family: 'Roboto';
+    color: black;
+    width:100%;
 }
 
-#in-stock-container {
+#in-stock-container,
+#saved-items-container {
     margin-top: auto;
     display: flex;
+    justify-content: space-evenly;
     
 }
 
-#left-side {
+#left-side-full {
     max-width: 25em;
     min-width: 20em;
     list-style: none;
+    margin-right: auto;
 }
 
-#left-side li {
+#left-side-full li {
     margin: 1em 0 25px 1em;
+    cursor: pointer;
 }
 
-#in-stock-main {
+#in-stock-main,
+#saved-items-main {
     width: 75%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
-/*End of In Stock*/
+
+#saved-items-main {
+    width: 85%;
+}
+
+.saved-item {
+    border: 2px solid grey;
+    margin-bottom: 2em;
+}
+
+#remove-button {
+    margin: 5em 0 0 0.5em;
+    color: black;
+}
+
+@media screen and (max-width: 975px) { 
+    .in-stock-item {
+        margin: auto;
+    }
+
+    #in-stock-container {
+        display: block;
+    }
+
+    #left-side-full,
+    #in-stock-filter {
+        display: none;
+    }
+
+
+    #left-side-mobile {
+        display: flex;
+        background: lightblue;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    #left-side-mobile button {
+        width: 50%;
+        height: 2em;
+        border-radius: 0;
+        font-size: 20px;
+        background: white;
+        border: 1px solid black;
+    }
+    #left-side-mobile button:hover {
+        background: lightgrey;
+        cursor: pointer;
+    }
+
+    #in-stock-main {
+        display: block;
+        margin: 0 auto;
+        align-items: center;
+    }
+    .break {
+        height: 0;
+        flex-basis: 100%;
+    }
+    .in-stock-mobile-lower {
+        display: none;
+    }
+}
+/*End of In Stock And Saved Items*/
 
 
 
@@ -721,9 +906,6 @@ img{
     margin: 35px;
     position: relative;
     text-align: center;
-
-
-
 }
 
 #typePrice{
