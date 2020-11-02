@@ -92,9 +92,19 @@
                 </ul>
                 <hr>
             </div>
+
             <div id = "left-side-mobile">
-                <h2>Filters</h2>
+                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('sort')">Sort</button>
+                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('filter')">Filters</button>
+                <div class = "break"></div>
+                <div class = "in-stock-mobile-lower" id = "mobile-sort">
+                    <p>Text</p>
+                </div>
+                <div class = "in-stock-mobile-lower" id = "mobile-filter">
+                        <p>Text2</p>
+                    </div>
             </div>
+
             <div id = "in-stock-main">
                 <div class = "in-stock-item" >
                     <a href=product.html onclick="saveCurrentItem(this)">

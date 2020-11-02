@@ -343,3 +343,21 @@ function displayFilterType(button, filter) {
         }
     }
 }
+
+function displayMobileFilters(action) {
+    if (action == 'sort') {
+        if ($('#mobile-sort')[0].style.display == 'block') {
+            $('#mobile-sort').hide();
+        } else {
+            $('#mobile-sort').show();
+        }
+        $('#mobile-filter').hide();
+    } else {
+        if ($('#mobile-filter')[0].style.display == 'block') {
+            $('#mobile-filter').hide();
+        } else {
+            $('#mobile-filter').show();
+        }
+        $('#mobile-sort').hide();
+    }
+}

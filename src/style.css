@@ -236,7 +236,7 @@ a {
     color: black;
 }
 
-@media screen and (max-width: 975px) {
+@media screen and (max-width: 975px) { 
     .in-stock-item {
         margin: auto;
     }
@@ -245,18 +245,43 @@ a {
         display: block;
     }
 
-    #left-side-full {
+    #left-side-full,
+    #in-stock-filter {
         display: none;
     }
 
+
     #left-side-mobile {
-        display: block;
+        display: flex;
+        background: lightblue;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    #left-side-mobile button {
+        width: 50%;
+        height: 2em;
+        border-radius: 0;
+        font-size: 20px;
+        background: white;
+        border: 1px solid black;
+    }
+    #left-side-mobile button:hover {
+        background: lightgrey;
+        cursor: pointer;
     }
 
     #in-stock-main {
         display: block;
         margin: 0 auto;
         align-items: center;
+    }
+    .break {
+        height: 0;
+        flex-basis: 100%;
+    }
+    .in-stock-mobile-lower {
+        display: none;
     }
 }
 /*End of In Stock And Saved Items*/
