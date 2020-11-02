@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<head>
+    <title>Sign-In</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="mobile-nav">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                <div class="dropdown-content" id="nav-dropdown">
+                    <a href="Brands.html">BRANDS</a>
+                    <a href="calendar.html">CALENDAR</a>
+                    <a href="#">DROPS</a>
+                    <a href=inStock.html>IN STOCK</a>
+                    <a href=#>PROFILE</a>
+                    <a href=#>SAVED</a>
+                </div>
+            </div>
+            <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+            <button class="cartbtn">CART</button>
+        </div>
+
+        <div class="full-nav">
+            <div id = "nav-bar-left">
+                <ul>
+                    <li><a href=Brands.html>BRANDS</a></li>
+                    <li><a href=calendar.html>CALENDAR</a></li>
+                    <li><a href=#>DROPS</a></li>
+                    <li><a href=inStock.html>INSTOCK</a></li>
+                </ul>
+            </div>
+            <div id = "logo">
+                <a href = "homepage.html">
+                    <img src="logo.jpg" alt="Thread Core">
+                </a>
+            </div>
+            <div id = "nav-bar-right">
+                <ul>
+                    <li><a href=#>SEARCH</a></li>
+                    <li><a href=#>PROFILE</a></li>
+                    <li><a href=#>SAVED</a></li>
+                    <li id = "cart"><a href=Cart.html>CART</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <div id = "title">
+            <br>
+            <h1>SIGN UP</h1>
+        </div>
+        <div class="SignInContent">
+        <h3 id="SubfontSignIn">Name</h3>
+        <input placeholder="First Last" type="text" id="Name" name="Name">
+        <h3 id="SubfontSignIn">Email</h3>
+        <input placeholder="firstnamelastname@email.com" type="email" id="email" name="email">
+        <h3 id="SubfontSignIn">Password</h3>
+        <input placeholder="***************" type="password" id="password" name="password">
+        <h3 id="SubfontSignIn">Confirm Password</h3>
+        <input placeholder="***************" type="password" id="ConfirmPassword" name="ConfirmPassword">
+        <br>
+        <button type="button">Create Account</button><!--Or should I instead make this a button?-->
+    </div>
+    <hr>
+    <footer>
+        <div id = "footer-left">
+            <p>Follow Us</p>
+            <div id = "follow-icons">
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+        <div id = "footer-middle">
+            <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
+            <div id = "email-container">
+                    <input type="email" id="email" name="email">
+                    <button type="button">Subscribe</button>
+            </div>
+        </div>
+        <div id = "footer-right">
+            <li>FAQs</li>
+            <li>Contact</li>
+            <li>About</li>
+        </div>
+    </footer>
+</body>
