@@ -1,32 +1,33 @@
-// initializing database
+
+
 var config = {
     apiKey: "AIzaSyD8wJ0bFPY0Q9sQ2v4B2EXL_KWDwXZwNs0",
     authDomain: "comp-224.firebaseapp.com",
     databaseURL: "https://comp-224.firebaseio.com/",
     storageBucket: "comp-224.appspot.com"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(config); 
+const database = firebase.database();
+const userref = database.ref('users');
 
-  // Get a reference to the database service
-var database = firebase.database();
+function createUser() {
+    email = document.getElementById("createEmail").value;
+    password = document.getElementById("createPassword").value;
+    name = document.getElementById("createName").value;
 
-function createUser(email, password, name, cart) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
         var user = firebase.auth().currentUser;
-        addUser(user); // Optional
+        
+        userref.child(user.uid).set({
+            // "user": user.value,
+            "fullname": name,
+            "saveditems": null,
+            "email": email
+            // "cartitems": cart.value
+        });
     }, function(error) {
     // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
     });
-    function addUser(user) {
-       var ref = firebase.database().ref("users");
-        var obj = {
-            "user": user,
-            "fullname": name,
-            "saveditems": null,
-            "cartitems": cart
-        };
-        ref.push(obj); // or however you wish to update the node
-    }
 }

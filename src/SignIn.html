@@ -3,8 +3,18 @@
     <title>Sign-In</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js"></script>
+    
 </head>
-<body>
+<body onload = "initializeDB()">
+             <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="databasescripts.js"></script>
+
     <nav>
         <div class="mobile-nav">
             <div class="dropdown">
@@ -50,17 +60,18 @@
             <br>
             <h1>SIGN UP</h1>
         </div>
+
         <div class="SignInContent">
         <h3 id="SubfontSignIn">Name</h3>
-        <input placeholder="First Last" type="text" id="Name" name="Name">
+        <input placeholder="First Last" type="text" id="createName" name="Name">
         <h3 id="SubfontSignIn">Email</h3>
-        <input placeholder="firstnamelastname@email.com" type="email" id="email" name="email">
+        <input placeholder="firstnamelastname@email.com" type="email" id="createEmail" name="email">
         <h3 id="SubfontSignIn">Password</h3>
-        <input placeholder="***************" type="password" id="password" name="password">
+        <input placeholder="***************" type="password" id="createPassword" name="password">
         <h3 id="SubfontSignIn">Confirm Password</h3>
         <input placeholder="***************" type="password" id="ConfirmPassword" name="ConfirmPassword">
         <br>
-        <button type="button">Create Account</button><!--Or should I instead make this a button?-->
+        <button type="button" onclick="createUser()">Create Account</button><!--Or should I instead make this a button?-->
     </div>
     <hr>
     <footer>
