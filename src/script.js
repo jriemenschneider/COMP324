@@ -241,6 +241,18 @@ function saveCurrentItem(loc) {
     localStorage.setItem('product', JSON.stringify(item)); 
 }
 
+function saveBrandItem(loc) {
+    let container = loc.parentElement.getElementsByTagName('div')[1];
+    const item = {
+        brand: document.getElementById('title2').getElementsByTagName('h1')[0].innerText,
+        name: container.getElementsByTagName('h2')[0].innerText,
+        price: container.getElementsByTagName('h3')[0].innerText,
+        img: loc.getElementsByTagName('img')[0].src
+    }
+    console.log(item);
+    localStorage.setItem('product', JSON.stringify(item));
+}
+
 
 //Displays a product on product page
 function displayProduct() {
@@ -345,19 +357,23 @@ function displayFilterType(button, filter) {
 }
 
 function displayMobileFilters(action) {
-    if (action == 'sort') {
-        if ($('#mobile-sort')[0].style.display == 'block') {
+    if (action == 'filter') {
+        if ($('#mobile-sort')[0].style.display == 'flex') {
             $('#mobile-sort').hide();
         } else {
-            $('#mobile-sort').show();
+            $('#mobile-sort').css('display', 'flex');
         }
         $('#mobile-filter').hide();
     } else {
-        if ($('#mobile-filter')[0].style.display == 'block') {
+        if ($('#mobile-filter')[0].style.display == 'flex') {
             $('#mobile-filter').hide();
         } else {
-            $('#mobile-filter').show();
+            $('#mobile-filter').css('display', 'flex');
         }
         $('#mobile-sort').hide();
     }
 }
+
+
+
+
