@@ -34,7 +34,7 @@
                     </ul>
                 </div>
                 <div id = "logo">
-                    <a href = "homepage.html">
+                    <a href = "index.html">
                         <img src="logo.jpg" alt="Thread Core">
                     </a>
                 </div>
@@ -86,22 +86,56 @@
                 <hr>
                 <li onclick = "displayFilterType(this, 'size')">Size</li>
                 <ul class = "filter-list" id = "size-list">
-                    <li>Color 1</li>
-                    <li>Color 2</li>
-                    <li>Color 3</li>
+                    <li>Size 1</li>
+                    <li>Size 2</li>
+                    <li>Size 3</li>
                 </ul>
                 <hr>
             </div>
 
             <div id = "left-side-mobile">
-                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('sort')">Sort</button>
-                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('filter')">Filters</button>
+                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('filter')">Sort</button>
+                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('sort')">Filter</button>
                 <div class = "break"></div>
-                <div class = "in-stock-mobile-lower" id = "mobile-sort">
-                    <p>Text</p>
-                </div>
                 <div class = "in-stock-mobile-lower" id = "mobile-filter">
-                        <p>Text2</p>
+                    <div>
+                        <h2>Category</h2>
+                        <ul>
+                            <li>Category 1</li>
+                            <li>Category 2</li>
+                            <li>Category 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Color</h2>
+                        <ul>
+                            <li>Color 1</li>
+                            <li>Color 2</li>
+                            <li>Color 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Brand</h2>
+                        <ul>
+                            <li>Brand 1</li>
+                            <li>Brand 2</li>
+                            <li>Brand 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Size</h2>
+                        <ul>
+                            <li>Size 1</li>
+                            <li>Size 2</li>
+                            <li>Size 3</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class = "in-stock-mobile-lower" id = "mobile-sort">
+                        <h2>Newest</h2>
+                        <h2>Trending</h2>
+                        <h2>Price</h2>
                     </div>
             </div>
 
