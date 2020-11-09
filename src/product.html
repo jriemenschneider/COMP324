@@ -6,6 +6,28 @@
         <script src="script.js"></script>
     </head>
     <body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="databasescripts.js"></script>
+        <script>
+
+            let locator = getProductLocator();
+            
+            var ref = database.ref('items').orderByChild('locator').equalTo(locator);
+            console.log(ref);
+            ref.once('value')
+            .then((snapshot) => {
+                let product = snapshot.val();   
+                product = Object.values(product);
+                displayProduct(product[0]);
+            });
+
+        </script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -58,7 +80,7 @@
                     <h2 class = "product-description">Le T-Shirt Jacques</h2>
                     <h2 class = "product-description">$130</h2>
                 </div>
-                <h3>Color: White</h3>
+                <h3>Color: DEFAULT</h3>
                 <h3>Drop: Jacquemus SS20</h3>
                 <div class = "size-dropdown">
                     <div class = "size-selector">
