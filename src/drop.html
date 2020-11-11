@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>DROP</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="mobile-nav">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                    <div class="dropdown-content" id="nav-dropdown">
+                        <a href="Brands.html">BRANDS</a>
+                        <a href="calendar.html">CALENDAR</a>
+                        <a href="#">DROPS</a>
+                        <a href=inStock.html>IN STOCK</a>
+                        <a href=#>PROFILE</a>
+                        <a href=saved.html>SAVED</a>
+                    </div>
+                </div>
+                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+                <button class="cartbtn">CART</button>
+            </div>
+
+            <div class="full-nav">
+                <div id = "nav-bar-left">
+                    <ul>
+                        <li><a href=Brands.html>BRANDS</a></li>
+                        <li><a href=calendar.html>CALENDAR</a></li>
+                        <li><a href=#>DROPS</a></li>
+                        <li><a href=inStock.html>INSTOCK</a></li>
+                    </ul>
+                </div>
+                <div id = "logo">
+                    <a href = "index.html">
+                        <img src="logo.jpg" alt="Thread Core">
+                    </a>
+                </div>
+                <div id = "nav-bar-right">
+                    <ul>
+                        <li><a href=#>SEARCH</a></li>
+                        <li><a href=#>PROFILE</a></li>
+                        <li><a href=saved.html>SAVED</a></li>
+                        <li id = "cart"><a href=Cart.html>CART</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id = "title">
+            <br>
+            <h1>THE SEVENTH COLLECTION</h1>
+        </div>
+        <div class= "flex-container">
+            <div class = "pictureContainers" style="margin-left: 130px;">
+                <h1>Fear Of God</h1>
+            </div>
+            <div class="vr" style="margin-left: 80px;"></div>
+            <div class = "text" style="margin-left: 50px;">
+                
+                <p>Seven: The Number Of Completeness And Perfection. <br> The Offering: An Immovable Narrative, Rooted in Perpetuity And Unbound By Time.</p>
+                <p> Two Years In The Making, The 7th Collection Rooted in Easy Elegance, Our History <br>
+                    And Your Reality, Introduces Suiting, Knits And Accessories To Our Audience For <br> The First Time.</p>
+                <p>Inspired By Our Own Journey Navigating The Path From Nowness To Eternality,<br> The Seventh Collection Marks Our Coming Of Age.</p>
+                
+                
+            </div>   
+        </div>
+        
+        <div id = "in-stock-container">
+            <div id = "left-side-full">
+                <hr>
+                <li onclick = "displayFilterType(this, 'category')">Categories</li>
+                <ul class = "filter-list" id = "category-list">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                </ul>
+               
+                <hr>
+                <li onclick = "displayFilterType(this, 'color')">Color</li>
+                <ul class = "filter-list" id = "color-list">
+                    <li>Color 1</li>
+                    <li>Color 2</li>
+                    <li>Color 3</li>
+                </ul>
+                <hr>
+                <li onclick = "displayFilterType(this, 'size')">Size</li>
+                <ul class = "filter-list" id = "size-list">
+                    <li>Size 1</li>
+                    <li>Size 2</li>
+                    <li>Size 3</li>
+                </ul>
+                <hr>
+            </div>
+
+            <div id = "left-side-mobile">
+                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('filter')">Sort</button>
+                <button class = "in-stock-mobile-button" onclick = "displayMobileFilters('sort')">Filter</button>
+                <div class = "break"></div>
+                <div class = "in-stock-mobile-lower" id = "mobile-filter">
+                    <div>
+                        <h2>Category</h2>
+                        <ul>
+                            <li>Category 1</li>
+                            <li>Category 2</li>
+                            <li>Category 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Color</h2>
+                        <ul>
+                            <li>Color 1</li>
+                            <li>Color 2</li>
+                            <li>Color 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Brand</h2>
+                        <ul>
+                            <li>Brand 1</li>
+                            <li>Brand 2</li>
+                            <li>Brand 3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Size</h2>
+                        <ul>
+                            <li>Size 1</li>
+                            <li>Size 2</li>
+                            <li>Size 3</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id = "drop-main">
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                        <p class = "drop img">
+                            <img src = "DropImages/FEAR OF GOD-The Negro Leagues.jpg">
+                        </p>
+                        <div class = "drop-text">
+                            <p><strong>FEAR OF GOD</strong></p>
+                            <p>The Negro Leagues Crewneck</p>
+                            <p>$250</p>
+                        </div>
+                    </a>
+                </div>
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                        <p class = "drop img">
+                            <img src = "DropImages/FEAR OF GOD- Pleated Suit Pant.jpg">
+                        </p>
+                        <div class = "drop-text">
+                            <p><strong>FEAR OF GOD</strong></p>
+                            <p>Pleated Suit Pant</p>
+                            <p>$320</p>
+                        </div>
+                    </a>
+                </div>
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                        <p class = "drop img">
+                            <img src = "DropImages/FEAR OF GOD- Double Breasted Suit Jacket.jpg">
+                        </p>
+                        <div class = "drop-text">
+                            <p><strong>FEAR OF GOD</strong></p>
+                            <p>Double Breasted Suit Jacket</p>
+                            <p>$595</p>
+                        </div>
+                    </a>
+                </div>
+                <div class = "drop-item">
+                        <a href=product.html onclick="saveCurrentItem(this)">
+                        <p class = "drop img">
+                            <img src = "DropImages/FEAR OF GOD- Grays Short Sleeve Crewneck.jpg">
+                        </p>
+                        <div class = "drop-text">
+                            <p><strong>FEAR OF GOD</strong></p>
+                            <p>Gray Short Sleeved Crewneck</p>
+                            <p>$210</p>
+                        </div>
+                    </a>
+                </div>
+                <div class = "drop-item">
+                        <a href=product.html onclick="saveCurrentItem(this)">
+                        <p class = "drop img">
+                            <img src = "DropImages/FEAR OF GOD- Reflective Lined Blazer.jpg">
+                        </p>
+                        <div class = "drop-text">
+                            <p><strong>FEAR OF GOD</strong></p>
+                            <p>Reflective Lined Blazer</p>
+                            <p>$620</p>
+                        </div>
+                    </a>
+                </div> 
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "drop img">
+                        <img src = "DropImages/FEAR OF GOD-Reflective Collared Coat.jpg">
+                    </p>
+                    <div class = "drop-text">
+                        <p><strong>FEAR OF GOD</strong></p>
+                        <p>Reflective Collared Coat</p>
+                        <p>$760</p>
+                    </div>
+                    </a>
+                </div>     
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "drop img">
+                        <img src = "DropImages/FEAR OF GOD- Black Utility Jumpsuit.jpg">
+                    </p>
+                    <div class = "drop-text">
+                        <p><strong>FEAR OF GOD</strong></p>
+                        <p>Black Utility Jumpsuit</p>
+                        <p>$455</p>
+                    </div>
+                    </a>
+                </div>
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "drop img">
+                        <img src = "DropImages/FEAR OF GOD- Oversized White Shirt.jpg">
+                    </p>
+                    <div class = "drop-text">
+                        <p><strong>FEAR OF GOD</strong></p>
+                        <p>Oversized White Shirt</p>
+                        <p>$375</p>
+                    </div>
+                    </a>
+                </div>
+                <div class = "drop-item">
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "drop img">
+                        <img src = "DropImages/FEAR OF GOD- Cream Knit Jogger.jpg">
+                    </p>
+                    <div class = "drop-text">
+                        <p><strong>FEAR OF GOD</strong></p>
+                        <p>Cream Knit Jogger</p>
+                        <p>$230</p>
+                    </div>
+                    </a>
+                </div>                                    
+            </div>
+        </div>
+
+        
+            
+
+
+        <hr>
+        <footer>
+                <div id = "footer-left">
+                    <p>Follow Us</p>
+                    <div id = "follow-icons">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div id = "footer-middle">
+                    <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
+                    <div id = "email-container">
+                            <input type="email" id="email" name="email">
+                            <button type="button" id = "subscribe-button">Subscribe</button>
+                    </div>
+                </div>
+                <div id = "footer-right">
+                    <li><a href = #>FAQs</a></li>
+                    <li><a href = #>Contacts</a></li>
+                    <li><a href = #>About</a></li>
+                </div>
+            </footer>
+    </body>
+</html>
