@@ -9,10 +9,10 @@ var config = {
 firebase.initializeApp(config); 
 const database = firebase.database();
 const userref = database.ref('users');
+const storageRef = firebase.storage().ref();
 
 
-var storageRef = firebase.storage().ref();
-storageRef.child('images/logo.jpg').getDownloadURL().then(function(url) {
+storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
     img.src = url;
 }, function(error) {});
