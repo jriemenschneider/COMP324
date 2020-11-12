@@ -159,8 +159,10 @@ a {
 .saved-item {
     width: 16em;
     height: 29em;
-    margin: auto 0 auto 25px;
+    margin: auto 0;
     padding: 1em;
+    justify-self: center;
+    align-self: center;
 }
 
 .in-stock-img,
@@ -202,6 +204,7 @@ a {
     
 }
 
+
 #left-side-full {
     max-width: 25em;
     min-width: 20em;
@@ -216,10 +219,10 @@ a {
 
 #in-stock-main,
 #saved-items-main {
+    display: grid;
+    grid: auto / repeat(3, 1fr);
+    grid-gap: 40px 25px;
     width: 75%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 #saved-items-main {
