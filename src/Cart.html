@@ -3,6 +3,7 @@
     <head>
         <title>Cart</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
         <script src="script.js"></script>
     </head>
     <body>
@@ -19,7 +20,7 @@
                         <a href=#>SAVED</a>
                     </div>
                 </div>
-                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+                <!--<img src="test" alt = "ThreadCore">Changed-->
                 <button class="cartbtn">CART</button>
             </div>
 
@@ -32,11 +33,10 @@
                         <li><a href=inStock.html>INSTOCK</a></li>
                     </ul>
                 </div>
-                <div id = "logo">
-                    <a href = "homepage.html">
-                        <img src="logo.jpg" alt="Thread Core">
-                    </a>
-                </div>
+                
+                        <img id="mylogo" alt = "ThreadCore">
+                    
+                
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
@@ -48,7 +48,7 @@
             </div>
         </nav>
 
-        <div id = "title">
+        <div id = "titleTest">
             <br>
             <h1>MY CART</h1>
         </div>
@@ -102,7 +102,31 @@
                 <li>About</li>
             </div>
         </footer>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
 
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+
+    <script id = "MainScript">
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyD8wJ0bFPY0Q9sQ2v4B2EXL_KWDwXZwNs0",
+            authDomain: "comp-224.firebaseapp.com",
+            databaseURL: "https://comp-224.firebaseio.com",
+            projectId: "comp-224",
+            storageBucket: "comp-224.appspot.com",
+            messagingSenderId: "344747179562",
+            appId: "1:344747179562:web:16d2b4aeb3917950ee0d53",
+            measurementId: "G-4R99TYPPK8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        </script>
     </body>
 
     </html>
