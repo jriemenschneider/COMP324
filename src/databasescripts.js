@@ -16,6 +16,35 @@ storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
     img.src = url;
 }, function(error) {});
+storageRef.child('images/CherryLALogo.jpg').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryLALogo');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/CherryFall:Winter1.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryFW1');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/CherryFall:Winter2.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryFW2');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/CherryFall:Winter3.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryFW3');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/CherryFall:Winter4.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryFW4');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/CherryFall:Winter5.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryFW5');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/CherryFall:Winter6.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('CherryFW6');
+    img.src = url;
+}, function(error) {});
+
 
 function createUser() {
     email = document.getElementById("createEmail").value;
