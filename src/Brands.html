@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Brands</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
@@ -41,7 +42,30 @@
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
-                        <li><a href=#>PROFILE</a></li>
+                        <li><button class="modalbtn" onclick="document.getElementById('id01').style.display='block'" >PROFILE</button></li> 
+                            <div id="id01" class="modal">
+                                <span onclick="document.getElementById('id01').style.display='none'" 
+                                class="close" title="Close Modal">&times;</span>
+                            
+                                <form class= "modal-content animate" action="/action_page.php">
+                                    <div class="container" width="auto">
+                                        <label for="uname"><b>Email</b></label>
+                                        <input type="email" placeholder="Enter Email" name="uname" required>
+
+                                        <label for="psw"><b>Password</b></label>
+                                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                                        <button type="submit">Login</button>
+                                    </div>
+
+                                    <div class="container" style="background-color:#f1f1f1">
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                        <span class="psw"><a href="#">Forgot Password?</a></span>
+                                        <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
+                                    </div>
+                                </form>
+                            </div> 
+                        
                         <li><a href=saved.html>SAVED</a></li>
                         <li id = "cart"><a href=Cart.html>CART</a></li>
                     </ul>
