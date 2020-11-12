@@ -6,42 +6,15 @@ var config = {
     databaseURL: "https://comp-224.firebaseio.com/",
     storageBucket: "comp-224.appspot.com"
 };
-firebase.initializeApp(config); 
+firebase.initializeApp(config); //This is where the issue is stemming from for me
 const database = firebase.database();
+var rootRef = firebase.database().ref();
 const userref = database.ref('users');
 const storageRef = firebase.storage().ref();
 
 
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryLALogo.jpg').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryLALogo');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryFall:Winter1.png').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryFW1');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryFall:Winter2.png').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryFW2');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryFall:Winter3.png').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryFW3');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryFall:Winter4.png').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryFW4');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryFall:Winter5.png').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryFW5');
-    img.src = url;
-}, function(error) {});
-storageRef.child('images/CherryFall:Winter6.png').getDownloadURL().then(function(url) {
-    var img = document.getElementById('CherryFW6');
     img.src = url;
 }, function(error) {});
 
