@@ -10,6 +10,13 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const userref = database.ref('users');
 
+
+var storageRef = firebase.storage().ref();
+storageRef.child('images/logo.jpg').getDownloadURL().then(function(url) {
+    var img = document.getElementById('mylogo');
+    img.src = url;
+}, function(error) {});
+
 function createUser() {
     email = document.getElementById("createEmail").value;
     password = document.getElementById("createPassword").value;
