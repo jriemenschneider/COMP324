@@ -253,6 +253,7 @@ function saveBrandItem(loc) {
     localStorage.setItem('product', JSON.stringify(item));
 }
 
+
 //Retrieves the product location which is brand_name used to find a product in the DB
 function getProductLocator() {
     let product = JSON.parse(window.localStorage.getItem('product'));
@@ -362,6 +363,7 @@ function displayFilterType(button, filter) {
     }
 }
 
+//Displays the filters and storing on in-stock page when in a condensed view
 function displayMobileFilters(action) {
     if (action == 'filter') {
         if ($('#mobile-sort')[0].style.display == 'flex') {
@@ -380,6 +382,28 @@ function displayMobileFilters(action) {
     }
 }
 
+//Dislpays the in-stock page with data from Firebase
+function displayInStock(products) {
+    let page = document.getElementById("in-stock-main");
+    let content = "";
+    for (let i = 0; i < products.length; i++) {
+        content += `
+            <div class = "in-stock-item" >
+                <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "in-stock-img">
+                        <img src = "${products[i].img}">
+                    </p>
+                    <div class = "in-stock-text">
+                        <p><strong>${products[i].brand}</strong></p>
+                        <p class = 'in-stock-item-name'>${products[i].name}</p>
+                        <p>${products[i].price}</p>
+                    </div>
+                </a>
+            </div>
+        `
+    }
+    page.innerHTML = content;
+}
 
 
 

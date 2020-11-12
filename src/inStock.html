@@ -7,6 +7,23 @@
         <script src="jquery-3.5.1.min.js"></script>
     </head>
     <body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="databasescripts.js"></script>
+        <script>
+            var ref = database.ref('items')
+            ref.once('value')
+            .then((snapshot) => {
+                let products = snapshot.val();   
+                products = Object.values(products);
+                displayInStock(products)
+            });
+        </script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -140,18 +157,7 @@
             </div>
 
             <div id = "in-stock-main">
-                <div class = "in-stock-item" >
-                    <a href=product.html onclick="saveCurrentItem(this)">
-                        <p class = "in-stock-img">
-                            <img src = "InStockImages/Pleasures-Freaks T-Shirt.jpg">
-                        </p>
-                        <div class = "in-stock-text">
-                            <p><strong>PLEASURES</strong></p>
-                            <p class = 'in-stock-item-name'>Freaks T-Shirt</p>
-                            <p>$38</p>
-                        </div>
-                    </a>
-                </div>
+                <!--
                 <div class = "in-stock-item">
                     <a href=product.html onclick="saveCurrentItem(this)">
                         <p class = "in-stock-img">
@@ -164,6 +170,18 @@
                         </div>
                     </a>
                 </div>
+                <div class = "in-stock-item" >
+                        <a href=product.html onclick="saveCurrentItem(this)">
+                            <p class = "in-stock-img">
+                                <img src = "InStockImages/Pleasures-Freaks T-Shirt.jpg">
+                            </p>
+                            <div class = "in-stock-text">
+                                <p><strong>PLEASURES</strong></p>
+                                <p class = 'in-stock-item-name'>Freaks T-Shirt</p>
+                                <p>$38</p>
+                            </div>
+                        </a>
+                    </div>
                 <div class = "in-stock-item">
                     <a href=product.html onclick="saveCurrentItem(this)">
                         <p class = "in-stock-img">
@@ -199,7 +217,7 @@
                             <p>$399</p>
                         </div>
                     </a>
-                </div>                                  
+                </div>-->                                  
             </div>
         </div>
 
