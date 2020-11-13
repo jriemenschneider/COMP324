@@ -4,8 +4,18 @@
         <title>Calendar</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
     </head>
     <body>
+                 <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+        <script src="databasescripts.js"></script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -34,7 +44,7 @@
                 </div>
                 <div id = "logo">
                     <a href = "index.html">
-                        <img src="logo.jpg" alt="Thread Core">
+                        <img id="mylogo">
                     </a>
                 </div>
                 <div id = "nav-bar-right">
@@ -228,16 +238,16 @@
                 <div id = "footer-left">
                     <p>Follow Us</p>
                     <div id = "follow-icons">
-                        <p></p>
-                        <p></p>
-                        <p></p>
+                        <img id="facebooklogo">
+                        <img id="twitterlogo">
+                        <img id="instagramlogo">
                     </div>
                 </div>
                 <div id = "footer-middle">
                     <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                     <div id = "email-container">
                             <input type="email" id="email" name="email">
-                            <button type="button">Subscribe</button>
+                            <button id="sub-btn">Subscribe</button>
                     </div>
                 </div>
                 <div id = "footer-right">
