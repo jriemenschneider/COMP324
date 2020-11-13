@@ -40,7 +40,30 @@
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
-                        <li><a href=#>PROFILE</a></li>
+                        <li><button class="modalbtn" onclick="document.getElementById('id01').style.display='block'" >PROFILE</button></li> 
+                            <div id="id01" class="modal">
+                            
+                                <form class= "modal-content animate" action="/action_page.php">
+                                    <div class="logincontainer" width="auto">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                                        <h1 id="LogIn">LOGIN</h1>
+                                        <label for="uname"><b>Email</b></label>
+                                        <input type="email" placeholder="Enter Email" name="uname" required>
+
+                                        <label for="psw"><b>Password</b></label>
+                                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                                        <button type="submit" class="loginbutton">Login</button>
+                                    </div>
+
+                                    <div class="logincontainer" >
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
+                                        <span class="psw"><a href="#">Forgot Password?</a></span>
+                                        <span class="login"> Not a member? <a href="SignUp.html">Sign Up</a></span>
+                                    </div>
+                                </form>
+                            </div> 
                         <li><a href=saved.html>SAVED</a></li>
                         <li id = "cart"><a href=Cart.html>CART</a></li>
                     </ul>
