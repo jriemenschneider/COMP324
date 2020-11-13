@@ -7,6 +7,14 @@
         <script src="script.js"></script>
     </head>
     <body>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    <script src="databasescripts.js"></script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -20,7 +28,7 @@
                         <a href=saved.html>SAVED</a>
                     </div>
                 </div>
-                
+                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
                 <button class="cartbtn">CART</button>
             </div>
 
@@ -49,9 +57,9 @@
             </div>
         </nav>
 
-        <div id = "titleTest">
+        <div id = "title">
             <br>
-            <h1>MY CART</h1>
+            <h1>CART</h1>
         </div>
         <div id= "Content">
             <li id= "Items">
@@ -94,7 +102,7 @@
                 <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                 <div id = "email-container">
                         <input type="email" id="email" name="email">
-                        <button type="button">Subscribe</button>
+                        <button type="sub-btn">Subscribe</button>
                 </div>
             </div>
             <div id = "footer-right">
