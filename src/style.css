@@ -438,6 +438,17 @@ a {
     text-decoration: none;
     display: inline-block;
 }
+.full-nav ul li button{
+    font-family: 'Roboto';
+    font-size: 1.5vw;
+    font: bolder;
+    color: black;
+    padding-top: 20px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
+}
 
 
 nav ul li img{
@@ -1063,6 +1074,192 @@ img{
     margin-top: 3%;
     margin-bottom: 4%;
 }
+/* ------------------------------- MOLLY LOGIN DROP DOWN ------------------------ */
+form {
+    border: 1px solid #f1f1f1;
+}
+/* large input fields */
+.logincontainer h1 {
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    font-family: 'Roboto';
+    font-weight: bolder;
+}
+input[type=Email], input[type=password] {
+    width: 100%;
+    padding: 12px 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 
- 
+/* modal (background) */
+.modal {
+    display: none; /*didn't change this*/
+    position: fixed; 
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-right: 0px;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+/* content box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    border: 1px solid #888; 
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 65%;
+}
 
+/* style for buttons */
+.loginbutton {
+    background-color: black;
+    font-family: 'Roboto';
+    font-size: 1.5vw;
+    font: bolder;
+    color:white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    width:100%;
+    cursor: pointer;
+}
+.loginbutton:hover {
+    opacity: 0.8;
+}
+/* style for profile nav button */
+.navbtn button{
+    background-color: white;
+    border: none;
+    width: 100%;
+}
+.modalbtn{
+    background-color: white;
+    border: none;
+    width: 100%;
+    color: black;
+    }
+/* style for cancel button */
+#cancelbtn button{
+    width: 80%;
+    padding: 10px 18px;
+    font-family: 'Roboto';
+}
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: block;
+    /* right: 25px; */
+    /* top: 0; */
+    margin-bottom: 0px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  /* Close button on hover */
+  .close:hover,
+  .close:focus {
+    color: gray;
+    cursor: pointer;
+  }
+
+.logincontainer {
+    padding: 10px;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span.psw {
+    float: right;
+    vertical-align: bottom;
+}
+
+
+/* zoom animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* span and cancel for small screen */
+@media screen and (max-width:300px){
+    span.psw{
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+/* Molly drop page------------ */
+#drop-main {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#drop-container {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.drop-item {
+    width: 16em;
+    height: 29em;
+    margin: auto 0 auto 25px;
+    padding: 1em;
+}
+
+.drop img {
+    height: 100%;
+    margin: 0;
+    padding-left: 0;
+    width: 100%;
+}
+
+.drop-text {
+    height: 20%;
+    vertical-align: bottom;
+    margin-top: 0;
+}
+
+.drop-text p {
+   margin: 0.2em 0.2em;
+   text-decoration: none;
+    font-family: 'Roboto';
+    color: black;
+    width:100%;
+}
+/* vertical rule */
+.vr {
+    border-left: 3px solid black;
+    height: 180px;
+  }

@@ -382,6 +382,7 @@ function displayMobileFilters(action) {
     }
 }
 
+
 //Dislpays the in-stock page with data from Firebase
 function displayInStock(products) {
     let page = document.getElementById("in-stock-main");
@@ -402,8 +403,24 @@ function displayInStock(products) {
             </div>
         `
     }
-    page.innerHTML = content;
 }
+
+page.innerHTML = content;
+
+//---------------------------Molly's Drop-down JS
+
+function displayModal(){
+
+var modal = document.getElementById('id01');
+
+//when user clicks outside, it closes
+window.onclick= function(event){
+    if(event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
 
 
 
