@@ -20,7 +20,7 @@ window.onload = function() {
     }
 
     if (this.document.title == "Product") {
-        this.displayProduct()
+        //this.displayProduct()
     }
 
     //Sets cart to correct number in nav bar
@@ -254,9 +254,16 @@ function saveBrandItem(loc) {
 }
 
 
-//Displays a product on product page
-function displayProduct() {
+//Retrieves the product location which is brand_name used to find a product in the DB
+function getProductLocator() {
     let product = JSON.parse(window.localStorage.getItem('product'));
+    let locator = product.brand.toLowerCase() + '_' +  product.name.toLowerCase()
+    return locator;
+}
+
+
+//Displays a product on product page
+function displayProduct(product) {
     let ele = document.getElementById("product-page-container");
     ele.innerHTML = `
          <div id = "product-page-image">
@@ -268,8 +275,8 @@ function displayProduct() {
                 <h2 class = "product-description">${product.name}</h2>
                 <h2 class = "product-description">${product.price}</h2>
             </div>
-            <h3>Color: N/A</h3>
-            <h3>Drop: N/A</h3>
+            <h3>Color: ${product.color}</h3>
+            <h3>Drop: ${product.drop}</h3>
             <div class = "size-dropdown">
                 <div class = "size-selector">
                     <button onclick = "openSizeSelector(this)">Select Size</button>
@@ -356,6 +363,7 @@ function displayFilterType(button, filter) {
     }
 }
 
+//Displays the filters and storing on in-stock page when in a condensed view
 function displayMobileFilters(action) {
     if (action == 'filter') {
         if ($('#mobile-sort')[0].style.display == 'flex') {
@@ -374,6 +382,31 @@ function displayMobileFilters(action) {
     }
 }
 
+
+//Dislpays the in-stock page with data from Firebase
+function displayInStock(products) {
+    let page = document.getElementById("in-stock-main");
+    let content = "";
+    for (let i = 0; i < products.length; i++) {
+        content += `
+            <div class = "in-stock-item" >
+                <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "in-stock-img">
+                        <img src = "${products[i].img}">
+                    </p>
+                    <div class = "in-stock-text">
+                        <p><strong>${products[i].brand}</strong></p>
+                        <p class = 'in-stock-item-name'>${products[i].name}</p>
+                        <p>${products[i].price}</p>
+                    </div>
+                </a>
+            </div>
+        `
+    }
+}
+
+page.innerHTML = content;
+
 //---------------------------Molly's Drop-down JS
 
 function displayModal(){
@@ -386,7 +419,8 @@ window.onclick= function(event){
         modal.style.display = "none";
     }
 }
-}
+
+
 
 
 
