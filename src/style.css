@@ -160,8 +160,10 @@ a {
 .saved-item {
     width: 16em;
     height: 29em;
-    margin: auto 0 auto 25px;
+    margin: auto 0;
     padding: 1em;
+    justify-self: center;
+    align-self: center;
 }
 
 .in-stock-img,
@@ -203,6 +205,7 @@ a {
     
 }
 
+
 #left-side-full {
     max-width: 25em;
     min-width: 20em;
@@ -217,10 +220,10 @@ a {
 
 #in-stock-main,
 #saved-items-main {
+    display: grid;
+    grid: auto / repeat(3, 1fr);
+    grid-gap: 40px 25px;
     width: 75%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 #saved-items-main {
@@ -435,6 +438,17 @@ a {
     text-align:center;
     text-decoration: none;
     display: inline-block;
+}
+.full-nav ul li button{
+    font-family: 'Roboto';
+    font-size: 1.5vw;
+    font: bolder;
+    color: black;
+    padding-top: 20px;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+    outline: none;
 }
 
 
@@ -1068,7 +1082,7 @@ form {
     border: 1px solid #f1f1f1;
 }
 /* large input fields */
-.container h1{
+.logincontainer h1 {
     text-align: center;
     display: block;
     margin-right: auto;
@@ -1077,7 +1091,7 @@ form {
     font-family: 'Roboto';
     font-weight: bolder;
 }
-.container input[type=Email], .container input[type=password] {
+input[type=Email], input[type=password] {
     width: 100%;
     padding: 12px 5px;
     margin-left: auto;
@@ -1090,8 +1104,8 @@ form {
 
 /* modal (background) */
 .modal {
-    display: block;
-    position: fixed;
+    display: none; /*didn't change this*/
+    position: fixed; 
     margin-left: auto;
     margin-right: auto;
     z-index: 1;
@@ -1104,6 +1118,7 @@ form {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
+    font-family: 'Roboto';
 }
 /* content box */
 .modal-content {
@@ -1114,11 +1129,19 @@ form {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 70%;
+    height: 65%;
 }
 
+#loginbtn {
+    padding: 10px 18px;
+    font-family: 'Roboto';
+    height: 25px;
+    text-align: center;
+    margin-top: 15px;
+    width: 91%;
+}
 /* style for buttons */
-.container button {
+.loginbutton {
     background-color: black;
     font-family: 'Roboto';
     font-size: 1.5vw;
@@ -1130,7 +1153,7 @@ form {
     width:100%;
     cursor: pointer;
 }
-button:hover {
+.loginbutton:hover {
     opacity: 0.8;
 }
 /* style for profile nav button */
@@ -1144,9 +1167,9 @@ button:hover {
     border: none;
     width: 100%;
     color: black;
-}
+    }
 /* style for cancel button */
-.cancelbtn button{
+#cancelbtn button{
     width: 80%;
     padding: 10px 18px;
     font-family: 'Roboto';
@@ -1154,9 +1177,10 @@ button:hover {
 /* The Close Button */
 .close {
     /* Position it in the top right corner outside of the modal */
-    position: absolute;
-    right: 25px;
-    top: 0;
+    position: block;
+    /* right: 25px; */
+    /* top: 0; */
+    margin-bottom: 0px;
     color: #000;
     font-size: 35px;
     font-weight: bold;
@@ -1165,11 +1189,11 @@ button:hover {
   /* Close button on hover */
   .close:hover,
   .close:focus {
-    color: red;
+    color: gray;
     cursor: pointer;
   }
 
-.container {
+.logincontainer {
     padding: 10px;
     width: 90%;
     display: block;

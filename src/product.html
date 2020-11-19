@@ -7,15 +7,28 @@
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
     </head>
     <body>
-            <!-- The core Firebase JS SDK is always required and must be listed first -->
-            <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-            <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-            <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
-            <script src="databasescripts.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="databasescripts.js"></script>
+        <script>
+
+            let locator = getProductLocator();
+            
+            var ref = database.ref('items').orderByChild('locator').equalTo(locator);
+            console.log(ref);
+            ref.once('value')
+            .then((snapshot) => {
+                let product = snapshot.val();   
+                product = Object.values(product);
+                displayProduct(product[0]);
+            });
+
+        </script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -50,7 +63,30 @@
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
-                        <li><a href=#>PROFILE</a></li>
+                        <li><button class="modalbtn" id="profile" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button></li> 
+                            <div id="id01" class="modal">
+                            
+                                <form class= "modal-content animate" action="/action_page.php">
+                                    <div class="logincontainer" width="auto">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                                        <h1 id="LogIn">LOGIN</h1>
+                                        <label for="uname"><b>Email</b></label>
+                                        <input type="email" placeholder="Enter Email" id="semail" name="uname" required>
+
+                                        <label for="psw"><b>Password</b></label>
+                                        <input type="password" placeholder="Enter Password" id="spassword" name="psw" required>
+
+                                        <div class="loginbutton" id="loginbtn" onclick="signIn()">Login</div>
+                                    </div>
+
+                                    <div class="logincontainer" >
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
+                                        <span class="psw"><a href="#">Forgot Password?</a></span>
+                                        <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
+                                    </div>
+                                </form>
+                            </div> 
                         <li><a href=saved.html>SAVED</a></li>
                         <li id = "cart"><a href=Cart.html>CART</a></li>
                     </ul>
@@ -59,6 +95,7 @@
         </nav>
 
         <div id = "product-page-container">
+            <!--
             <div id = "product-page-image">
                 <img src = "InStockImages/Jacquemus-Le T-Shirt Jacques.jpg">
             </div>
@@ -68,7 +105,7 @@
                     <h2 class = "product-description">Le T-Shirt Jacques</h2>
                     <h2 class = "product-description">$130</h2>
                 </div>
-                <h3>Color: White</h3>
+                <h3>Color: DEFAULT</h3>
                 <h3>Drop: Jacquemus SS20</h3>
                 <div class = "size-dropdown">
                     <div class = "size-selector">
@@ -80,6 +117,7 @@
                <button id = "save-item-button" onclick = "addItem(this, 'savedItems')">Save Item</button>
                
             </div>
+        -->
         </div>
 
 

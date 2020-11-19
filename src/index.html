@@ -8,14 +8,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
       </head>
       <body>
-          <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-          <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-          <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-          <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
-          <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-          <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
-          <script src="databasescripts.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="databasescripts.js"></script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -50,7 +50,30 @@
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
-                        <li><a href=#>PROFILE</a></li>
+                        <li><button class="modalbtn" id="profile" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button></li> 
+                            <div id="id01" class="modal">
+                            
+                                <form class= "modal-content animate" action="/action_page.php">
+                                    <div class="logincontainer" width="auto">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                                        <h1 id="LogIn">LOGIN</h1>
+                                        <label for="uname"><b>Email</b></label>
+                                        <input type="email" placeholder="Enter Email" id="semail" name="uname" required>
+
+                                        <label for="psw"><b>Password</b></label>
+                                        <input type="password" placeholder="Enter Password" id="spassword" name="psw" required>
+
+                                        <div class="loginbutton" id="loginbtn" onclick="signIn()">Login</div>
+                                    </div>
+
+                                    <div class="logincontainer" >
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
+                                        <span class="psw"><a href="#">Forgot Password?</a></span>
+                                        <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
+                                    </div>
+                                </form>
+                            </div> 
                         <li><a href=saved.html>SAVED</a></li>
                         <li id = "cart"><a href=Cart.html>CART</a></li>
                     </ul>
@@ -297,13 +320,31 @@
                 <li>About</li>
             </div>
         </footer>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- The core Firebase JS SDK is always required and must be listed first
 <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script> -->
 
+<!-- <script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyD8wJ0bFPY0Q9sQ2v4B2EXL_KWDwXZwNs0",
+    authDomain: "comp-224.firebaseapp.com",
+    databaseURL: "https://comp-224.firebaseio.com",
+    projectId: "comp-224",
+    storageBucket: "comp-224.appspot.com",
+    messagingSenderId: "344747179562",
+    appId: "1:344747179562:web:16d2b4aeb3917950ee0d53",
+    measurementId: "G-4R99TYPPK8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  console.log(firebase.database());
+</script> -->
 
     </body>
 </html>

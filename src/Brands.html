@@ -42,24 +42,25 @@
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
-                        <li><button class="modalbtn" onclick="document.getElementById('id01').style.display='block'" >PROFILE</button></li> 
+                        <li><button class="modalbtn" id="profile" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button></li> 
                             <div id="id01" class="modal">
-                                <span onclick="document.getElementById('id01').style.display='none'" 
-                                class="close" title="Close Modal">&times;</span>
                             
                                 <form class= "modal-content animate" action="/action_page.php">
-                                    <div class="container" width="auto">
+                                    <div class="logincontainer" width="auto">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                                        <h1 id="LogIn">LOGIN</h1>
                                         <label for="uname"><b>Email</b></label>
-                                        <input type="email" placeholder="Enter Email" name="uname" required>
+                                        <input type="email" placeholder="Enter Email" id="semail" name="uname" required>
 
                                         <label for="psw"><b>Password</b></label>
-                                        <input type="password" placeholder="Enter Password" name="psw" required>
+                                        <input type="password" placeholder="Enter Password" id="spassword" name="psw" required>
 
-                                        <button type="submit">Login</button>
+                                        <div class="loginbutton" id="loginbtn" onclick="signIn()">Login</div>
                                     </div>
 
-                                    <div class="container" style="background-color:#f1f1f1">
-                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                    <div class="logincontainer" >
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
                                         <span class="psw"><a href="#">Forgot Password?</a></span>
                                         <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
                                     </div>
