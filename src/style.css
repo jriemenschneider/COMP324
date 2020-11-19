@@ -10,6 +10,7 @@ body{
 
 a {
     text-decoration: none;
+    color:black;
 }
 
 .filter{
@@ -468,6 +469,7 @@ nav ul li img{
     width:100%;
     display: flex;
     justify-content: center;
+    font-family: 'Roboto';
 
 }
 
@@ -1061,6 +1063,7 @@ img{
     margin-top:0px;
     padding-left:8px;
     /*padding-top: 0px;*/
+    
 }
 
 .SignInContent button{
@@ -1096,6 +1099,7 @@ input[type=Email], input[type=password] {
     display: block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    
 }
 
 /* modal (background) */
@@ -1272,3 +1276,46 @@ span.psw {
     border-left: 3px solid black;
     height: 180px;
   }
+
+/*Profile Page Specifics-Jaimie*/
+#ProfileSpecs{
+    font-family: 'Playfair Display';
+    font-size: 27px;
+    font-weight: normal;
+    margin-left: 15%;
+}
+#ProfileList{
+    width:20%;
+    float: left;
+    margin-right: 3%;
+    margin-left: 15%;
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
+#ProfileLogIn button{
+    width: 40%;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    padding-top: .2%;
+    padding-bottom: .2%;
+    outline-color: black;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    margin-left: 38%;
+}
+#ProfileLogIn p{
+    margin-bottom: 3px; 
+    font-family: 'Roboto';
+    font-weight: 300;
+    margin-top: 2.5%;
+    font-size: 15px;
+}
+#ProfileLogIn input{
+    margin-top: 0px;
+}
+#ProfilePageHR{
+    margin-left:15%;
+    width:65%;
+}

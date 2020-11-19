@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Saved</title>
+        <title>ThreadCore User Profile Page</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
     </head>
     <body>
-                 <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
         <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
+     https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
@@ -26,7 +26,7 @@
                         <a href="#">DROPS</a>
                         <a href=inStock.html>IN STOCK</a>
                         <a href=#>PROFILE</a>
-                        <a href=#>SAVED</a>
+                        <a href=saved.html>SAVED</a>
                     </div>
                 </div>
                 <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
@@ -57,31 +57,29 @@
                 </div>
             </div>
         </nav>
-
         <div id = "title">
             <br>
-            <h1>Saved</h1>
+            <h1>MY PROFILE</h1>
         </div>
-
-        <div id = "saved-items-container">
-            <div id = "saved-items-main">
-                <div class = "saved-item">
-                    <a href=# id = "remove-button">X</a>
-                    <a href=product.html onclick="saveCurrentItem(this)">
-                        <p class = "saved-item-img">
-                            <img src = "InStockImages/Pleasures-Freaks T-Shirt.jpg">
-                        </p>
-                        <div class = "saved-item-text">
-                            <p><strong>PLEASURES</strong></p>
-                            <p class = 'saved-item-name'>Freaks T-Shirt</p>
-                            <p>$38</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <h2 id="ProfileSpecs">Full Name</h2>
+        <hr id="ProfilePageHR">
         
+        <div id="ProfileList">
+            <h3>Profile Details</h3>
+            <p><a href="">Orders</a></p>
+            <p><a href="">Saved Items</a></p>
+            <p><a href="">Settings</a></p>
+        </div>
+        <div id="ProfileLogIn">
+            <p id="userEmail">Email</p>
+            <input type="email" placeholder="firstnamelastname@email.com"/>
+            <p id="userPassword">Password</p>
+            <input type="password" placeholder="***************"/>
+            <br>
+            <button>Edit Profile</button>
+        </div>
         <hr>
+        
         <footer>
                 <div id = "footer-left">
                     <p>Follow Us</p>
@@ -95,7 +93,7 @@
                     <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                     <div id = "email-container">
                             <input type="email" id="email" name="email">
-                            <button id="sub-btn">Subscribe</button>
+                            <button type="button" id = "sub-btn">Subscribe</button>
                     </div>
                 </div>
                 <div id = "footer-right">

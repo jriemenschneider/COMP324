@@ -6,9 +6,18 @@ var config = {
     databaseURL: "https://comp-224.firebaseio.com/",
     storageBucket: "comp-224.appspot.com"
 };
-firebase.initializeApp(config); 
+firebase.initializeApp(config); //This is where the issue is stemming from for me
 const database = firebase.database();
+var rootRef = firebase.database().ref();
 const userref = database.ref('users');
+const storageRef = firebase.storage().ref();
+
+
+storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
+    var img = document.getElementById('mylogo');
+    img.src = url;
+}, function(error) {});
+
 
 function createUser() {
     email = document.getElementById("createEmail").value;
