@@ -144,7 +144,7 @@ function removeItem(button, location) {
 */
 function displayCart() {
     let list = JSON.parse(window.localStorage.getItem('cartItems'));
-    let ele = document.getElementById('Content');
+    let ele = document.getElementById('cartContent');
     let totalPrice = 0;
     
 
@@ -173,7 +173,7 @@ function displayCart() {
             </li>
             `
         }
-
+        console.log(ele)
         ele.innerHTML = cart + `
         <li id="OrderSummary">
             <h1>Order Summary</h1>
@@ -403,9 +403,10 @@ function displayInStock(products) {
             </div>
         `
     }
+    page.innerHTML = content;
 }
 
-page.innerHTML = content;
+
 
 //---------------------------Molly's Drop-down JS
 
@@ -420,7 +421,7 @@ window.onclick= function(event){
     }
 }
 
-
+}
 
 
 
