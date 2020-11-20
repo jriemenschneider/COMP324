@@ -1091,7 +1091,7 @@ form {
     font-family: 'Roboto';
     font-weight: bolder;
 }
-input[type=Email], input[type=password] {
+.logincontainer input[type=Email], .logincontainer input[type=password] {
     width: 100%;
     padding: 12px 5px;
     margin-left: auto;
@@ -1293,6 +1293,10 @@ span.psw {
     font-weight: 300;
 }
 
+#ProfileLogIn {
+    padding-left: 0px;
+    margin-left: 0px;
+}
 #ProfileLogIn button{
     width: 40%;
     font-size: 18px;
