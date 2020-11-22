@@ -20,7 +20,7 @@
             let locator = getProductLocator();
             
             var ref = database.ref('items').orderByChild('locator').equalTo(locator);
-            console.log(ref);
+            console.log('r', ref);
             ref.once('value')
             .then((snapshot) => {
                 let product = snapshot.val();   

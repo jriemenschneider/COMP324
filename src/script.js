@@ -34,8 +34,9 @@ window.onload = function() {
 
 /*
 *   Adds an item to the cart or saved items list, currently saves the brand, name, and price as an object
-*/
+*
 function addItem(button, location) {
+
     //Gets the array of items already in the cart from local storage
     let list = JSON.parse(window.localStorage.getItem(location));
     if(list == null) {
@@ -46,11 +47,7 @@ function addItem(button, location) {
     let details = button.parentElement.getElementsByClassName("product-description");
     let b = details[0].textContent;
     let n = details[1].textContent;
-    let p = details[2].textContent;
-
-    //Gets url for item image
-    let i = button.parentElement.parentElement.getElementsByTagName('div')[0].getElementsByTagName("img")[0].src;
-
+ 
 
     //Gets the size of the item
     let s = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('div')[2].getElementsByTagName('button')[0].innerText;
@@ -80,7 +77,6 @@ function addItem(button, location) {
                 list[i].qty += 1;
             }
         }
-        console.log(i);
 
         //Add item to the array and save it in the local storage
         if (!found) {
@@ -93,6 +89,62 @@ function addItem(button, location) {
             updateNav(list);
         }
     }
+    let email = firebase.auth().currentUser.email;
+    let ref = database.ref("users").orderByChild('email').equalTo(email)
+    ref.once('value').then((snapshot) => {
+                let user = snapshot.val();   
+                console.log('***', product);
+            });
+}*/
+
+function addItem(button, location) {
+    let user = firebase.auth().currentUser;
+    let userid = user.uid
+    let email = user.email;
+    let item = [];
+
+    //Gets the item details from the HTML and creates the locator
+    let details = button.parentElement.getElementsByClassName("product-description");
+    let b = details[0].textContent;
+    let n = details[1].textContent;
+    let locator = b.toLowerCase() + "_" + n.toLowerCase();
+
+    let ref = database.ref("users").orderByChild('email').equalTo(email)
+    ref.once('value').then((snapshot) => {
+        let user = snapshot.val();   
+        user = Object.values(user);
+        if (location == "cartItems") {
+            let currentItems = user[0].cartitems;
+            //Gets the size of the item
+            let s = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('div')[2].getElementsByTagName('button')[0].innerText;
+            if (s.length > 11) {
+                s = s.slice(13, 14);
+            } else {
+                s = null;
+            }
+            item = [locator, s, 1];
+
+            let dup = false;
+            for (let i = 0; i < currentItems.length; i++) {
+                if (currentItems[i][0] == locator && currentItems[i][1] == s) {
+                    currentItems[i][2] += 1;
+                    dup = true;
+                }
+            }
+            if(!dup) {
+                currentItems.push(item);
+            }
+            console.log(currentItems);
+            firebase.database().ref('users/' + userid + '/cartitems').set(currentItems);
+
+        } else {
+            item = [locator, 1]; 
+        }
+
+
+
+    });
+
 }
 
 
@@ -412,15 +464,14 @@ function displayInStock(products) {
 
 function displayModal(){
 
-var modal = document.getElementById('id01');
+    var modal = document.getElementById('id01');
 
-//when user clicks outside, it closes
-window.onclick= function(event){
-    if(event.target == modal) {
-        modal.style.display = "none";
+    //when user clicks outside, it closes
+    window.onclick= function(event){
+        if(event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-}
-
 }
 
 
