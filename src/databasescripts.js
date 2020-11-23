@@ -10,6 +10,7 @@ var rootRef = firebase.database().ref();
 const userref = database.ref('users');
 const storageRef = firebase.storage().ref();
 const user = firebase.auth().currentUser;
+const name = "";
 
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
@@ -19,8 +20,9 @@ storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
 window.onload = function() {
     authStateListener();
     
-    if (this.document.title == 'ProfilePage') {
-        userProfile();
+
+    if (document.title == 'Profile') {
+        userProfile(name);
     }
 }
 
@@ -34,7 +36,7 @@ function authStateListener() {
         var uid = user.uid;
         var fullNameRef = firebase.database().ref('users/' + uid + '/fullname');
         fullNameRef.on('value', (snapshot) =>{
-            var name = snapshot.val();
+            name = snapshot.val();
         });
         
         document.getElementById("profile").innerHTML = "PROFILE";
@@ -50,19 +52,17 @@ function authStateListener() {
     });
 }
 
-function userProfile() {
+function userProfile(name) {
+    console.log('enterd user profile');
     if (user) {
         // var user = firebase.auth().currentUser;
-        var userID = user.uid;
-        // document.getElementById("ProfileSpecs").innerHTML("active user");
-        // return firebase.database().ref('/users/' + userID).once('value').then((snapshot) => {
-        //     var name = (snapshot.val() && snapshot.val().fullname) || 'Error'; 
+        // var userID = user.uid;
+        // var fullNameRef = firebase.database().ref('users/' + userID + '/fullname');
+        // fullNameRef.on('value', (snapshot) =>{
+        //     var name = snapshot.val();
+        //     document.getElementById("ProfileSpecs").innerHTML = name;
         // });
-        var fullNameRef = firebase.database().ref('users/' + userID + '/fullname');
-        fullNameRef.on('value', (snapshot) =>{
-            var name = snapshot.val();
-            document.getElementById("ProfileSpecs").innerHTML = name;
-        });
+        document.getElementById("ProfileSpecs").innerHTML = name;
 
         
     }
@@ -131,10 +131,12 @@ function signOut() {
     // [START auth_sign_out]
     firebase.auth().signOut().then(() => {
       // Sign-out successful.
+      location.href = "index.html";
       document.getElementById("profile").innerHTML = "LOGIN";
       document.getElementById("profile").onclick = function () {
         document.getElementById('id01').style.display='block';
-    };
+        };
+        
     }).catch((error) => {
       // An error happened.
     });
