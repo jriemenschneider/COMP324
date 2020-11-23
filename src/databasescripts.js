@@ -1,5 +1,3 @@
-
-
 var config = {
     apiKey: "AIzaSyD8wJ0bFPY0Q9sQ2v4B2EXL_KWDwXZwNs0",
     authDomain: "comp-224.firebaseapp.com",
@@ -11,13 +9,67 @@ const database = firebase.database();
 var rootRef = firebase.database().ref();
 const userref = database.ref('users');
 const storageRef = firebase.storage().ref();
-
+const user = firebase.auth().currentUser;
+const name = "";
 
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
     img.src = url;
 }, function(error) {});
 
+window.onload = function() {
+    authStateListener();
+    
+
+    if (document.title == 'Profile') {
+        userProfile(name);
+    }
+}
+
+function authStateListener() {
+    // [START auth_state_listener]
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        
+        var uid = user.uid;
+        var fullNameRef = firebase.database().ref('users/' + uid + '/fullname');
+        fullNameRef.on('value', (snapshot) =>{
+            name = snapshot.val();
+        });
+        
+        document.getElementById("profile").innerHTML = "PROFILE";
+        document.getElementById("profile").setAttribute('href', 'ProfilePage.html');
+        document.getElementById("profile").onclick = function () {
+            location.href = "ProfilePage.html";
+        };
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+}
+
+function userProfile(name) {
+    console.log('enterd user profile');
+    if (user) {
+        // var user = firebase.auth().currentUser;
+        // var userID = user.uid;
+        // var fullNameRef = firebase.database().ref('users/' + userID + '/fullname');
+        // fullNameRef.on('value', (snapshot) =>{
+        //     var name = snapshot.val();
+        //     document.getElementById("ProfileSpecs").innerHTML = name;
+        // });
+        document.getElementById("ProfileSpecs").innerHTML = name;
+
+        
+    }
+    else {
+        document.getElementById("ProfileSpecs").textContent = "no user";
+    }
+}
 
 function createUser() {
     email = document.getElementById("createEmail").value;
@@ -42,7 +94,10 @@ function createUser() {
 }
 
 function signIn() {
-    
+    if (firebase.auth().currentUser) {
+        firebase.auth().signOut();
+    }
+
     email = document.getElementById("semail").value;
     password = document.getElementById("spassword").value;
 
@@ -53,6 +108,7 @@ function signIn() {
         // [START_EXCLUDE]
         if (errorCode === 'auth/wrong-password') {
           alert('Wrong password.');
+          return;
         } else {
           alert(errorMessage);
         }
@@ -64,6 +120,25 @@ function signIn() {
 
     if (firebase.auth().currentUser) {
         document.getElementById("profile").innerHTML = "PROFILE";
-        
+        document.getElementById("profile").setAttribute('href', 'ProfilePage.html');
+        document.getElementById("profile").onclick = function () {
+            location.href = "ProfilePage.html";
+        };
     }
 }
+
+function signOut() {
+    // [START auth_sign_out]
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      location.href = "index.html";
+      document.getElementById("profile").innerHTML = "LOGIN";
+      document.getElementById("profile").onclick = function () {
+        document.getElementById('id01').style.display='block';
+        };
+        
+    }).catch((error) => {
+      // An error happened.
+    });
+    // [END auth_sign_out]
+  }
