@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html onload = displayCart()>
     <head>
         <title>Cart</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
-        <script src="script.js"></script>
     </head>
     <body>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
@@ -15,6 +14,7 @@
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
         <script src="databasescripts.js"></script>
+        <script src="script.js"></script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -78,7 +78,6 @@
                 </div>
             </div>
         </nav>
-
         <div id = "title">
             <br>
             <h1>CART</h1>
@@ -134,7 +133,5 @@
                 <li><a href = # onclick = displayCart()>About</a></li>
             </div>
         </footer>
-
     </body>
-
     </html>

@@ -5,7 +5,7 @@
 *   This function will call immediatly when the page loads.
 */
 window.onload = function() {
-
+    test();
     //If on the in-cart page, display the items
     if (this.document.title == 'Cart') {
         displayCart();
@@ -13,6 +13,7 @@ window.onload = function() {
 
     if (this.document.title == 'In Stock') {
         //this.inStockPictures();
+        test();
     }
 
     if (this.document.title == "Saved") {
@@ -28,6 +29,10 @@ window.onload = function() {
     this.updateNav(list);
     
 
+}
+
+function test() {
+    console.log(firebase.auth().currentUser, "AHAHAH");
 }
 
 
@@ -145,7 +150,11 @@ function addItem(button, location) {
             firebase.database().ref('users/' + userid + '/cartitems').set(currentItems);
 
         } else {
-            item = [locator, 1]; 
+            let savedItems = user[0].saveditems;
+            if (!savedItems.includes(locator)) {
+                savedItems.push(locator)
+                firebase.database().ref('users/' + userid + '/saveditems').set(savedItems);
+            } 
         }
 
 
@@ -254,7 +263,7 @@ function displayCart() {
 
     function displayCart() {
         let user = firebase.auth().currentUser;
-        let userid = user.uid
+        console.log(firebase.auth(), user);
         let email = user.email;
 
         let ele = document.getElementById('cartContent');
@@ -273,7 +282,7 @@ function displayCart() {
                 let size = ci[i][1];
                 let qty = ci[i][2];
                 
-                //Reetrieves item from the DB
+                //Retrieves item from the DB
                 var ref = database.ref('items').orderByChild('locator').equalTo(locator);
                 ref.once('value').then((snapshot) => {
                     let product = snapshot.val();   
@@ -317,6 +326,7 @@ function displayCart() {
 
 
 //Displays the list of saved items
+/*
 function displaySavedItems() {
     let list = JSON.parse(window.localStorage.getItem('savedItems'));
     let ele = document.getElementById('saved-items-main');
@@ -348,6 +358,45 @@ function displaySavedItems() {
         }
     }
     ele.innerHTML = items;
+}*/
+
+function displaySavedItems() {
+    let user = firebase.auth().currentUser;
+    console.log(firebase.auth(), user);
+    let email = user.email;
+    let ele = document.getElementById('saved-items-main');
+
+    let ref = database.ref("users").orderByChild('email').equalTo(email)
+    ref.once('value').then((snapshot) => {
+        let user = snapshot.val();   
+        user = Object.values(user);
+        let si = user[0].saveditems;
+        console.log(si, 'UUU')
+
+        for (let i = 1; i < si.length; i++) {
+             //Retrieves item from the DB
+             var ref = database.ref('items').orderByChild('locator').equalTo(si[i]);
+             ref.once('value').then((snapshot) => {
+                let product = snapshot.val();   
+                product = Object.values(product)[0];
+                ele.innerHTML += `
+                <div class = "saved-item">
+                <a href=# onclick = "removeItem(this, 'savedItems')">X</a>
+                    <a href=product.html onclick="saveCurrentItem(this)">
+                        <p class = "saved-item-img">
+                            <img src = "${product.img}">
+                        </p>
+                        <div class = "saved-item-text">
+                            <p><strong>${product.brand}</strong></p>
+                            <p class = 'saved-item-name'>${product.name}</p>
+                            <p>${product.price}</p>
+                        </div>
+                    </a>
+                </div>
+                `
+            });
+        }
+    });
 }
 
 

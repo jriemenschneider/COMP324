@@ -10,7 +10,7 @@ var rootRef = firebase.database().ref();
 const userref = database.ref('users');
 const storageRef = firebase.storage().ref();
 const user = firebase.auth().currentUser;
-const name = "";
+let name = "";
 
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
@@ -82,9 +82,9 @@ function createUser() {
         userref.child(user.uid).set({
             // "user": user.value,
             "fullname": name,
-            "saveditems": ['none'],
+            "saveditems": Set(),
             "email": email,
-            "cartitems": ['none']
+            "cartitems": [0]
         });
     }, function(error) {
     // Handle Errors here.
