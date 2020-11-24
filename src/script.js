@@ -5,7 +5,6 @@
 *   This function will call immediatly when the page loads.
 */
 window.onload = function() {
-    test();
     //If on the in-cart page, display the items
     if (this.document.title == 'Cart') {
         displayCart();
@@ -29,10 +28,6 @@ window.onload = function() {
     this.updateNav(list);
     
 
-}
-
-function test() {
-    console.log(firebase.auth().currentUser, "AHAHAH");
 }
 
 
@@ -113,7 +108,6 @@ function addItem(button, location) {
     let b = details[0].textContent;
     let n = details[1].textContent;
     let p = details[2].textContent;
-    console.log("P", p)
     let locator = b.toLowerCase() + "_" + n.toLowerCase();
 
     //Finds the current user
@@ -205,6 +199,44 @@ function removeItem(button, location) {
         displaySavedItems();
     }
 }*/
+
+function removeItem(button, location) {
+    let user = firebase.auth().currentUser;
+    let userid = user.uid
+    let email = user.email;
+     
+    let itemToRemoveBrand = null;
+    let itemToRemoveName = null;
+    let itemToRemoveSize = null;
+    
+    //Gets details if a cart item is being removed
+    if (location == 'cartItems') {
+        
+    
+    //Gets details if a saved item is being removed
+    } else {
+        itemToRemoveBrand = button.parentElement.getElementsByTagName('div')[0].getElementsByTagName('p')[0].innerText;
+        itemToRemoveName = button.parentElement.getElementsByTagName('div')[0].getElementsByTagName('p')[1].innerText;
+        
+        //Finds the current user
+        let ref = database.ref("users").orderByChild('email').equalTo(email)
+        ref.once('value').then((snapshot) => {
+            let user = snapshot.val();   
+            user = Object.values(user);
+            let items = user[0].saveditems;
+            for (let i = 0; i < items.length; i++) {
+                console.log(items[i], itemToRemoveBrand.toLowerCase() + "_" + itemToRemoveName.toLowerCase())
+                if (itemToRemoveBrand.toLowerCase() + "_" + itemToRemoveName.toLowerCase() == items[i]) {
+                    items.splice(i, 1);
+                }
+            }
+            console.log(items);
+            firebase.database().ref('users/' + userid + '/saveditems').set(items);
+        });
+    }
+
+
+}
 
 
 /*
@@ -365,13 +397,14 @@ function displaySavedItems() {
     console.log(firebase.auth(), user);
     let email = user.email;
     let ele = document.getElementById('saved-items-main');
+    ele.innerHTML = "";
 
     let ref = database.ref("users").orderByChild('email').equalTo(email)
     ref.once('value').then((snapshot) => {
         let user = snapshot.val();   
         user = Object.values(user);
         let si = user[0].saveditems;
-        console.log(si, 'UUU')
+        //console.log(si, 'UUU')
 
         for (let i = 1; i < si.length; i++) {
              //Retrieves item from the DB
@@ -420,7 +453,7 @@ function saveBrandItem(loc) {
         price: container.getElementsByTagName('h3')[0].innerText,
         img: loc.getElementsByTagName('img')[0].src
     }
-    console.log(item);
+    //console.log(item);
     localStorage.setItem('product', JSON.stringify(item));
 }
 
