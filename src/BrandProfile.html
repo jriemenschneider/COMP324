@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Brand Profile</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="jquery-3.5.1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
+    </head>
+    <body>
+                     <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    <script src="databasescripts.js"></script>
+    <script src="script.js"></script>
+    
+  <script>
+      //function getBrandRef(locator){
+        var ref = database.ref('brands').orderByChild("locator");
+        console.log(ref);
+        ref.once('value')
+        .then((snapshot) => {
+            let BrandProfile = snapshot.val();   
+            BrandProfile = Object.values(BrandProfile);
+            displayBrandInfo(BrandProfile[0]);//is this right? It is supposed to grab all of the brands I believe one-by-one!
+        });
+    //}
+    </script>
+        <nav>
+            <div class="mobile-nav">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                    <div class="dropdown-content" id="nav-dropdown">
+                        <a href="Brands.html">BRANDS</a>
+                        <a href="calendar.html">CALENDAR</a>
+                        <a href="#">DROPS</a>
+                        <a href=inStock.html>IN STOCK</a>
+                        <a href=#>PROFILE</a>
+                        <a href=saved.html>SAVED</a>
+                    </div>
+                </div>
+                <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
+                <button class="cartbtn">CART</button>
+            </div>
+            <script src="databasescripts.js"></script>
+            <div class="full-nav">
+                <div id = "nav-bar-left">
+                    <ul>
+                        <li><a href=Brands.html>BRANDS</a></li>
+                        <li><a href=calendar.html>CALENDAR</a></li>
+                        <li><a href=#>DROPS</a></li>
+                        <li><a href=inStock.html>INSTOCK</a></li>
+                    </ul>
+                </div>
+                <div id = "logo">
+                    <a href = "index.html">
+                        <img id="mylogo">
+                    </a>
+                </div>
+                <div id = "nav-bar-right">
+                    <ul>
+                        <li><a href=#>SEARCH</a></li>
+                        <li><a href=#>PROFILE</a></li>
+                        <li><a href=saved.html>SAVED</a></li>
+                        <li id = "cart"><a href=Cart.html>CART</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="brand-profile-container">
+        <!--<div id = "title2">
+            <br>
+            <h1>Cherry LA</h1>
+        </div>
+        <div class= "flex-container">
+            <div class = "pictureContainers">
+                <img src="CherryLALogo.jpg" width=auto height=500 >
+            </div>
+            <div class = "text">
+                <br><br><br><br><br><br>
+                <p>Cherry is an American clothing brand founded and based out of Los Angeles, CA.
+                Using innovative cut & sew styles with tasteful yet provocative graphics, Cherry puts 
+                a modern twist on classic styles to outfit those who think differently and 
+                confident in doing so.
+                 To wear Cherry is to celebrate those who forever in pursuit of their wildest and 
+                craziest dreams, yet never forget the friends, families, and communities who make these
+                dreams, yet never forget the friends, families, and  communities who make these dreams
+                possible and our days memorable.
+                All products are made in South Central, CA.</p>
+                
+                
+            </div>   
+        </div>
+        <div id= "title">
+            <h2 style= "margin:20px"> DROP 1: WINTER</h2>
+        </div>
+        <div class= "drop1">
+            <div id = "subfont">
+                <div class = "pictureContainers" onclick = "saveBrandItem(this)">
+                    <a href = "product.html">
+                    <img alt="Object 1"  src="CherryBPImages/CherryFall:Winter1.png" width=auto height= 200 > 
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>QUILTED FLANNEL SHIRT JACKET</h2>
+                    <h3>$210.00</h3>
+                </div>
+               
+            </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/CherryFall:Winter2.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>POWER TELIER WORK JACKET</h2>
+                    <h3>$355.00</h3>
+                </div>
+            </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/CherryFall:Winter3.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>POWER MOTOCROSS SHIRT</h2>
+                    <h3>$75.00</h3>
+                </div>    
+            </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/CherryFall:Winter4.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>POWER ATELIER HOODIE</h2>
+                    <h3>$185.00</h3>
+                </div>    
+            </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/CherryFall:Winter5.png" width=auto height= 200 >
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>POWER ATELIER SWEATPANTS</h2>
+                    <h3>$185.00</h3>
+                </div>    
+            </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/CherryFall:Winter6.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div classs = "captionContainer">
+                    <h2>POWER ATELIER WORK JACKET</h2>
+                    <h3>$355.00</h3>
+                </div>    
+            </div>
+        <br> 
+        <br>
+        <div id= "drop2">
+            <h2 style= "margin:20px"> DROP 2: TOGETHER WE STAND</h2>
+        </div>
+        <div class= "flex-container">
+            <div id = "subfont"> 
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/TogetherWeStand1.png" width=auto height= 200>
+                    </a>
+                </div> 
+                <div class = "captionContainer">
+                    <h2> "TOGETHER WE STAND" </h2>
+                    <h3>$185.00</h3>
+                </div>    
+            </div>
+            <div id = "subfont"> 
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/TogetherWeStand2.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>"TOGETHER WE STAND" </h2>
+                    <h3>$135.00</h3>
+                </div>
+            </div>
+            <div id = "subfont"> 
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/TogetherWeStand3.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">    
+                    <h2>"TOGETHER WE STAND"</h2>
+                    <h3>$185.00</h3>
+                </div>    
+            </div>
+            <div id = "subfont"> 
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/TogetherWeStand4.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>"TOGETHER WE STAND"</h2>
+                    <h3>$65.00</h3>
+               </div> 
+            </div>
+            <div id = "subfont"> 
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/TogetherWeStand6.png" width=auto height= 200>
+                    </a>
+                </div>
+                    <div class = "captionContainer">    
+                    <h2>BIKER SHORTS</h2>
+                    <h3>$55.00</h3>
+                </div>
+            </div>
+            <div id = "subfont"> 
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="CherryBPImages/TogetherWeStand5.png" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">    
+                    <h2>AMERICAN CLASSIC LONG SLEEVE T-SHIRT</h2>
+                    <h3>$70.00</h3>
+                </div>    
+            </div>
+        </div>
+    </div>-->
+</div>
+        <br>
+        <footer>
+            <div id = "footer-left">
+                <p>Follow Us</p>
+                <div id = "follow-icons">
+                    <img id="facebooklogo">
+                    <img id="twitterlogo">
+                    <img id="instagramlogo">
+                </div>
+            </div>
+            <div id = "footer-middle">
+                <br>
+                <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
+                <div id = "email-container">
+                        <input type="email" id="email" name="email">
+                        <button id="sub-btn">Subscribe</button>
+                </div>
+            </div>
+            <div id = "footer-right">
+                <li><a href = #>FAQs</a></li>
+                <li><a href = #>Contact</a></li>
+                <li><a href = #>About</a></li>
+            </div>
+        </footer>
+        
+    </body>
+</html>

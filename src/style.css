@@ -1031,6 +1031,7 @@ img{
     padding-left: 20;
 
 }
+
 #text li {
     list-style-type:none;
 }
@@ -1039,6 +1040,9 @@ img{
     display: flex;
     justify-content: left;
     margin: 30px;
+}
+#drop1{
+    width:100%;
 }
 .captionContainer{
     margin:20px;

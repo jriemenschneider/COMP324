@@ -4,6 +4,7 @@
 /*
 *   This function will call immediatly when the page loads.
 */
+
 window.onload = function() {
 
     //If on the in-cart page, display the items
@@ -16,11 +17,14 @@ window.onload = function() {
     }
 
     if (this.document.title == "Saved") {
-        this.displaySavedItems()
+        this.displaySavedItems();
     }
 
     if (this.document.title == "Product") {
         //this.displayProduct()
+    }
+    if (this.document.title == "Brand Profile"){
+        //this.displayBrandInfo(BrandProfile);
     }
 
     //Sets cart to correct number in nav bar
@@ -405,6 +409,174 @@ function displayInStock(products) {
     }
 }
 
+
+
+//Displays a brand's info on BrandProfile page(In progress)
+function displayBrandInfo(BrandProfile){
+    let ele = document.getElementById('brand-profile-container');
+    ele.innerHTML = `
+    <div id = "title2">
+        <br>
+        <h1>${BrandProfile.brand}</h1>
+    </div>
+    <div class= "flex-container">
+        <div class = "pictureContainers">
+            <img src="${BrandProfile.logo}" width=auto height=500 >
+        </div>
+        <div class = "text">
+            <br><br><br><br><br><br>
+            <p>${BrandProfile.info}</p>
+        </div>   
+    </div>
+    <div id= "title">
+        <h2 style= "margin:20px"> ${BrandProfile.drop1}</h2>
+    </div>
+    <div class="flex-container" >
+        <div id = "subfont">
+            <div class = "pictureContainers" onclick = "saveBrandItem(this)">
+                <a href = "product.html">
+                <img alt="Object 1"  src="${BrandProfile.drop1item1img}" width=auto height= 200 > 
+                </a>
+            </div>
+            <div class = "captionContainer">
+                <h2>${BrandProfile.drop1item1name}</h2>
+                <h3>${BrandProfile.drop1item1price}</h3>
+            </div>
+           
+        </div>
+        <div id = "subfont">
+            <div class = "pictureContainers">
+                <a href=>
+                <img alt="Object 1" src="${BrandProfile.drop1item2img}" width=auto height= 200>
+                </a>
+            </div>
+            <div class = "captionContainer">
+                <h2>${BrandProfile.drop1item2name}</h2>
+                <h3>${BrandProfile.drop1item2price}</h3>
+            </div>
+        </div>
+        <div id = "subfont">
+            <div class = "pictureContainers">
+                <a href=>
+                <img alt="" src="${BrandProfile.drop1item3img}" width=auto height= 200>
+                </a>
+            </div>
+            <div class = "captionContainer">
+                <h2>${BrandProfile.drop1item3name}</h2>
+                <h3>${BrandProfile.drop1item3price}</h3>
+            </div>    
+        </div>
+        <div id = "subfont">
+            <div class = "pictureContainers">
+                <a href=>
+                <img alt="Object 1" src="${BrandProfile.drop1item4img}" width=auto height= 200>
+                </a>
+            </div>
+            <div class = "captionContainer">
+                <h2>${BrandProfile.drop1item4name}</h2>
+                <h3>${BrandProfile.drop1item4price}</h3>
+            </div>    
+        </div>
+        <div id = "subfont">
+            <div class = "pictureContainers">
+                <a href=>
+                <img alt="Object 1" src="${BrandProfile.drop1item5img}" width=auto height= 200 >
+                </a>
+            </div>
+            <div class = "captionContainer">
+                <h2>${BrandProfile.drop1item5name}</h2>
+                <h3>${BrandProfile.drop1item5price}</h3>
+            </div>    
+        </div>
+        <div id = "subfont">
+            <div class = "pictureContainers">
+                <a href=>
+                <img alt="Object 1" src="${BrandProfile.drop1item6img}" width=auto height= 200>
+                </a>
+            </div>
+            <div classs = "captionContainer">
+                <h2>${BrandProfile.drop1item6name}</h2>
+                <h3>${BrandProfile.drop1item6price}</h3>
+            </div>    
+        </div>
+    </div>
+    <div id= "title">
+        <h2 style= "margin:20px"> ${BrandProfile.drop2}</h2>
+    </div>
+    <div class="flex-container" >
+            <div class= "flex-container">
+                <div id = "subfont"> 
+                    <div class = "pictureContainers">
+                        <a href=>
+                        <img alt="Object 1" src="${BrandProfile.drop2item1img}" width=auto height= 200>
+                        </a>
+                    </div> 
+                    <div class = "captionContainer">
+                        <h2>${BrandProfile.drop2item1name}</h2>
+                        <h3>${BrandProfile.drop2item1price}</h3>
+                    </div>    
+                </div>
+                <div id = "subfont"> 
+                    <div class = "pictureContainers">
+                        <a href=>
+                        <img alt="Object 1" src="${BrandProfile.drop2item2img}" width=auto height= 200>
+                        </a>
+                    </div>
+                    <div class = "captionContainer">
+                        <h2>${BrandProfile.drop2item2name}</h2>
+                        <h3>${BrandProfile.drop2item2price}</h3>
+                    </div>
+                </div>
+                <div id = "subfont"> 
+                    <div class = "pictureContainers">
+                        <a href=>
+                        <img alt="Object 1" src="${BrandProfile.drop2item3img}" width=auto height= 200>
+                        </a>
+                    </div>
+                    <div class = "captionContainer">    
+                        <h2>${BrandProfile.drop2item3name}</h2>
+                        <h3>${BrandProfile.drop2item3price}</h3>
+                    </div>    
+                </div>
+                <div id = "subfont"> 
+                    <div class = "pictureContainers">
+                        <a href=>
+                        <img alt="Object 1" src="${BrandProfile.drop2item4img}" width=auto height= 200>
+                        </a>
+                    </div>
+                    <div class = "captionContainer">
+                        <h2>${BrandProfile.drop2item4name}</h2>
+                        <h3>${BrandProfile.drop2item4price}</h3>
+                   </div> 
+                </div>
+                <div id = "subfont"> 
+                    <div class = "pictureContainers">
+                        <a href=>
+                        <img alt="Object 1" src="${BrandProfile.drop2item5img}" width=auto height= 200>
+                        </a>
+                    </div>
+                        <div class = "captionContainer">    
+                        <h2>${BrandProfile.drop2item5name}</h2>
+                        <h3>${BrandProfile.drop2item5price}</h3>
+                    </div>
+                </div>
+                <div id = "subfont"> 
+                    <div class = "pictureContainers">
+                        <a href=>
+                        <img alt="Object 1" src="${BrandProfile.drop2item6img}" width=auto height= 200>
+                        </a>
+                    </div>
+                    <div class = "captionContainer">    
+                        <h2>${BrandProfile.drop2item6name}</h2>
+                        <h3>${BrandProfile.drop2item6price}</h3>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    `
+}
+
+
 page.innerHTML = content;
 
 //---------------------------Molly's Drop-down JS
@@ -419,8 +591,4 @@ window.onclick= function(event){
         modal.style.display = "none";
     }
 }
-
-
-
-
-
+}
