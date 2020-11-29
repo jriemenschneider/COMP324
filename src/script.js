@@ -38,8 +38,9 @@ window.onload = function() {
 
 /*
 *   Adds an item to the cart or saved items list, currently saves the brand, name, and price as an object
-*/
+*
 function addItem(button, location) {
+
     //Gets the array of items already in the cart from local storage
     let list = JSON.parse(window.localStorage.getItem(location));
     if(list == null) {
@@ -50,11 +51,7 @@ function addItem(button, location) {
     let details = button.parentElement.getElementsByClassName("product-description");
     let b = details[0].textContent;
     let n = details[1].textContent;
-    let p = details[2].textContent;
-
-    //Gets url for item image
-    let i = button.parentElement.parentElement.getElementsByTagName('div')[0].getElementsByTagName("img")[0].src;
-
+ 
 
     //Gets the size of the item
     let s = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('div')[2].getElementsByTagName('button')[0].innerText;
@@ -84,7 +81,6 @@ function addItem(button, location) {
                 list[i].qty += 1;
             }
         }
-        console.log(i);
 
         //Add item to the array and save it in the local storage
         if (!found) {
@@ -97,12 +93,75 @@ function addItem(button, location) {
             updateNav(list);
         }
     }
+    let email = firebase.auth().currentUser.email;
+    let ref = database.ref("users").orderByChild('email').equalTo(email)
+    ref.once('value').then((snapshot) => {
+                let user = snapshot.val();   
+                console.log('***', product);
+            });
+}*/
+
+function addItem(button, location) {
+    let user = firebase.auth().currentUser;
+    let userid = user.uid
+    let email = user.email;
+    let item = [];
+
+    //Gets the item details from the HTML and creates the locator
+    let details = button.parentElement.getElementsByClassName("product-description");
+    let b = details[0].textContent;
+    let n = details[1].textContent;
+    let p = details[2].textContent;
+    console.log("P", p)
+    let locator = b.toLowerCase() + "_" + n.toLowerCase();
+
+    //Finds the current user
+    let ref = database.ref("users").orderByChild('email').equalTo(email)
+    ref.once('value').then((snapshot) => {
+        let user = snapshot.val();   
+        user = Object.values(user);
+        if (location == "cartItems") {
+            //Retrieves the list of cart items for this user
+            let currentItems = user[0].cartitems;
+
+            //Gets the size of the item
+            let s = button.parentElement.parentElement.getElementsByTagName('div')[1].getElementsByTagName('div')[2].getElementsByTagName('button')[0].innerText;
+            if (s.length > 11) {
+                s = s.slice(13, 14);
+            } else {
+                s = null;
+            }
+            item = [locator, s, 1];
+
+            //Looks to see if the item has already been added, will increment qty if it is
+            let dup = false;
+            for (let i = 0; i < currentItems.length; i++) {
+                if (currentItems[i][0] == locator && currentItems[i][1] == s) {
+                    currentItems[i][2] += 1;
+                    dup = true;
+                }
+            }
+            if(!dup) {
+                currentItems.push(item);
+            }
+            
+            currentItems[0] += parseInt(p.slice(1));
+            firebase.database().ref('users/' + userid + '/cartitems').set(currentItems);
+
+        } else {
+            item = [locator, 1]; 
+        }
+
+
+
+    });
+
 }
 
 
 /*
 *   Removes item from cart or saved items list
-*/
+*
 function removeItem(button, location) {
     //Gets the array of items already in the cart from local storage
     let list = JSON.parse(window.localStorage.getItem(location));
@@ -140,15 +199,15 @@ function removeItem(button, location) {
     } else {
         displaySavedItems();
     }
-}
+}*/
 
 
 /*
 *   Basis for displaying the items in the cart once on the in-cart page
-*/
+*
 function displayCart() {
     let list = JSON.parse(window.localStorage.getItem('cartItems'));
-    let ele = document.getElementById('Content');
+    let ele = document.getElementById('cartContent');
     let totalPrice = 0;
     
 
@@ -177,7 +236,7 @@ function displayCart() {
             </li>
             `
         }
-
+        console.log(ele)
         ele.innerHTML = cart + `
         <li id="OrderSummary">
             <h1>Order Summary</h1>
@@ -195,6 +254,69 @@ function displayCart() {
         `           
         }
         updateNav(list);
+    }*/
+
+    function displayCart() {
+        let user = firebase.auth().currentUser;
+        let userid = user.uid
+        let email = user.email;
+
+        let ele = document.getElementById('cartContent');
+
+        let ref = database.ref("users").orderByChild('email').equalTo(email)
+        ref.once('value').then((snapshot) => {
+            let user = snapshot.val();   
+            user = Object.values(user);
+            let ci = user[0].cartitems;
+            let totalPrice = ci[0];
+
+            for (let i = 1; i < ci.length; i++) {
+
+                //Sets the details of the specific order nize and quantity
+                let locator = ci[i][0];
+                let size = ci[i][1];
+                let qty = ci[i][2];
+                
+                //Reetrieves item from the DB
+                var ref = database.ref('items').orderByChild('locator').equalTo(locator);
+                ref.once('value').then((snapshot) => {
+                    let product = snapshot.val();   
+                    product = Object.values(product)[0];
+                    
+                    totalPrice += product.price * qty;
+                    //Prints details to the screen
+                    ele.innerHTML += `
+                    <li id= "Items">
+                        <hr>
+                        <a href=# onclick = "removeItem(this, 'cartItems')">X</a>
+                        <img src="${product.img}">
+                        <h2>${product.brand}</h2>
+                        <h3>${product.name}</h3>
+                        <br>
+                        <h4 id="SameLine">SIZE ${size}&#x2228</h4>
+                        <h4 id="SameLine">QTY ${qty} &#x2228</h4>
+                        <h5 id="Price">${product.price}</h5>
+                        <hr>
+                    </li>
+                    `
+                });
+            }
+            ele.innerHTML += `
+            <li id="OrderSummary">
+                <h1>Order Summary</h1>
+                <h3 id="subSummary">SUBTOTAL</h3>
+                <h3 id="subSummary">$ ${totalPrice}</h3>
+                <h3 id="subSummary">SHIPPING</h3>
+                <h3 id="subSummary">$ 5</h3>
+                <h3 id="subSummary">SALES TAX</h3>
+                <h3 id="subSummary">$ 3.07</h3>
+                <h2 id="Total">TOTAL</h2>
+                <h2 id="Total">$ ${totalPrice + 8.07}</h2>
+                <a href="#" id="Checkout">CHECKOUT</a> 
+                <!--Will eventually link to the checkout page--> 
+            </li>
+            `
+        });
     }
 
 
@@ -407,6 +529,7 @@ function displayInStock(products) {
             </div>
         `
     }
+    page.innerHTML = content;
 }
 
 function getMeToBrandProfile(name){
@@ -594,18 +717,20 @@ function displayBrandInfo(BrandProfile, name){
 
 
 
-page.innerHTML = content;
-
 //---------------------------Molly's Drop-down JS
 
 function displayModal(){
 
-var modal = document.getElementById('id01');
+    var modal = document.getElementById('id01');
 
-//when user clicks outside, it closes
-window.onclick= function(event){
-    if(event.target == modal) {
-        modal.style.display = "none";
+    //when user clicks outside, it closes
+    window.onclick= function(event){
+        if(event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 }
-}
+
+
+
+
