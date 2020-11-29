@@ -4,7 +4,7 @@ var config = {
     databaseURL: "https://comp-224.firebaseio.com/",
     storageBucket: "comp-224.appspot.com"
 };
-firebase.initializeApp(config); //This is where the issue is stemming from for me
+firebase.initializeApp(config); //this is causing me issues again
 const database = firebase.database();
 var rootRef = firebase.database().ref();
 const userref = database.ref('users');
@@ -13,6 +13,18 @@ var user = firebase.auth().currentUser;
 
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/facebooklogo.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('facebooklogo');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/instagramlogo.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('instagramlogo');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/twitterlogo.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('twitterlogo');
     img.src = url;
 }, function(error) {});
 
