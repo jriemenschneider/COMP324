@@ -1327,3 +1327,14 @@ span.psw {
     margin-left:15%;
     width:65%;
 }
+
+#BrandInfo{
+    border: none;
+    background-color: white;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-left:0px;
+    padding-left:0px;
+    text-align: left;
+}

@@ -17,19 +17,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
     <script src="databasescripts.js"></script>
     <script src="script.js"></script>
-    
-  <script>
-      //function getBrandRef(locator){
-        var ref = database.ref('brands').orderByChild("locator");
-        console.log(ref);
-        ref.once('value')
-        .then((snapshot) => {
-            let BrandProfile = snapshot.val();   
-            BrandProfile = Object.values(BrandProfile);
-            displayBrandInfo(BrandProfile[0]);//is this right? It is supposed to grab all of the brands I believe one-by-one!
-        });
-    //}
-    </script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -46,7 +33,6 @@
                 <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
                 <button class="cartbtn">CART</button>
             </div>
-            <script src="databasescripts.js"></script>
             <div class="full-nav">
                 <div id = "nav-bar-left">
                     <ul>
@@ -241,6 +227,19 @@
         </div>
     </div>-->
 </div>
+<script>
+    var name = sessionStorage.getItem("n");
+    console.log(name);
+    var ref = database.ref('brands').orderByChild("brandid");
+    ref.once('value')
+    .then((snapshot) => {
+        let BrandProfile = snapshot.val(); 
+        BrandProfile = Object.values(BrandProfile);
+        console.log(BrandProfile);
+        displayBrandInfo(BrandProfile, name);
+    })
+    
+</script>
         <br>
         <footer>
             <div id = "footer-left">

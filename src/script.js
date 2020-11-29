@@ -245,7 +245,7 @@ function saveCurrentItem(loc) {
     localStorage.setItem('product', JSON.stringify(item)); 
 }
 
-function saveBrandItem(loc) {
+/*function saveBrandItem(loc) {
     let container = loc.parentElement.getElementsByTagName('div')[1];
     const item = {
         brand: document.getElementById('title2').getElementsByTagName('h1')[0].innerText,
@@ -255,7 +255,7 @@ function saveBrandItem(loc) {
     }
     console.log(item);
     localStorage.setItem('product', JSON.stringify(item));
-}
+}*/
 
 
 //Retrieves the product location which is brand_name used to find a product in the DB
@@ -409,172 +409,189 @@ function displayInStock(products) {
     }
 }
 
-
-
-//Displays a brand's info on BrandProfile page(In progress)
-function displayBrandInfo(BrandProfile){
-    let ele = document.getElementById('brand-profile-container');
-    ele.innerHTML = `
-    <div id = "title2">
-        <br>
-        <h1>${BrandProfile.brand}</h1>
-    </div>
-    <div class= "flex-container">
-        <div class = "pictureContainers">
-            <img src="${BrandProfile.logo}" width=auto height=500 >
+function getMeToBrandProfile(name){
+    sessionStorage.setItem("n" , name);
+    //save name to pass along somehow, then call name from BrandProfile html inline script
+}
+//Displays a brand's info on BrandProfile page
+function displayBrandInfo(BrandProfile, name){
+    console.log(typeof(BrandProfile));
+    for( var i=0; i<BrandProfile.length; i++){
+        console.log(typeof(BrandProfile[i]));
+        name.trim();
+        var brandid=JSON.stringify(BrandProfile[i].brandid);
+        console.log(brandid);
+        if(brandid===name){//need to find a way for it to be given the name
+            let ele=document.getElementById('brand-profile-container');
+            ele.innerHTML = `
+            <div id = "title2">
+            <br>
+            <h1>${BrandProfile[i].brand}</h1>
         </div>
-        <div class = "text">
-            <br><br><br><br><br><br>
-            <p>${BrandProfile.info}</p>
-        </div>   
-    </div>
-    <div id= "title">
-        <h2 style= "margin:20px"> ${BrandProfile.drop1}</h2>
-    </div>
-    <div class="flex-container" >
-        <div id = "subfont">
-            <div class = "pictureContainers" onclick = "saveBrandItem(this)">
-                <a href = "product.html">
-                <img alt="Object 1"  src="${BrandProfile.drop1item1img}" width=auto height= 200 > 
-                </a>
+        <div class= "flex-container">
+            <div class = "pictureContainers">
+                <img src="${BrandProfile[i].logo}" width=auto height=500 >
             </div>
-            <div class = "captionContainer">
-                <h2>${BrandProfile.drop1item1name}</h2>
-                <h3>${BrandProfile.drop1item1price}</h3>
-            </div>
+            <div class = "text">
+                <br><br><br><br><br><br>
+                <p>${BrandProfile[i].info}</p>
+            </div>   
+        </div>
+        <div id= "title">
+            <h2 style= "margin:20px"> ${BrandProfile[i].drop1}</h2>
+        </div>
+        <div class="flex-container" >
+            <div id = "subfont">
+                <div class = "pictureContainers" onclick = "saveBrandItem(this)">
+                    <a href = "product.html">
+                    <img alt="Object 1"  src="${BrandProfile[i].drop1item1img}" width=auto height= 200 > 
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>${BrandProfile[i].drop1item1name}</h2>
+                    <h3>${BrandProfile[i].drop1item1price}</h3>
+                </div>
            
-        </div>
-        <div id = "subfont">
-            <div class = "pictureContainers">
-                <a href=>
-                <img alt="Object 1" src="${BrandProfile.drop1item2img}" width=auto height= 200>
-                </a>
             </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="Object 1" src="${BrandProfile[i].drop1item2img}" width=auto height= 200>
+                    </a>
+                </div>
+                <div class = "captionContainer">
+                    <h2>${BrandProfile[i].drop1item2name}</h2>
+                    <h3>${BrandProfile[i].drop1item2price}</h3>
+                </div>
+            </div>
+            <div id = "subfont">
+                <div class = "pictureContainers">
+                    <a href=>
+                    <img alt="" src="${BrandProfile[i].drop1item3img}" width=auto height= 200>
+                    </a>
+                </div>
             <div class = "captionContainer">
-                <h2>${BrandProfile.drop1item2name}</h2>
-                <h3>${BrandProfile.drop1item2price}</h3>
-            </div>
-        </div>
-        <div id = "subfont">
-            <div class = "pictureContainers">
-                <a href=>
-                <img alt="" src="${BrandProfile.drop1item3img}" width=auto height= 200>
-                </a>
-            </div>
-            <div class = "captionContainer">
-                <h2>${BrandProfile.drop1item3name}</h2>
-                <h3>${BrandProfile.drop1item3price}</h3>
+                <h2>${BrandProfile[i].drop1item3name}</h2>
+                <h3>${BrandProfile[i].drop1item3price}</h3>
             </div>    
         </div>
         <div id = "subfont">
             <div class = "pictureContainers">
                 <a href=>
-                <img alt="Object 1" src="${BrandProfile.drop1item4img}" width=auto height= 200>
+                <img alt="Object 1" src="${BrandProfile[i].drop1item4img}" width=auto height= 200>
                 </a>
             </div>
             <div class = "captionContainer">
-                <h2>${BrandProfile.drop1item4name}</h2>
-                <h3>${BrandProfile.drop1item4price}</h3>
+                <h2>${BrandProfile[i].drop1item4name}</h2>
+                <h3>${BrandProfile[i].drop1item4price}</h3>
             </div>    
         </div>
         <div id = "subfont">
             <div class = "pictureContainers">
                 <a href=>
-                <img alt="Object 1" src="${BrandProfile.drop1item5img}" width=auto height= 200 >
+                <img alt="Object 1" src="${BrandProfile[i].drop1item5img}" width=auto height= 200 >
                 </a>
             </div>
             <div class = "captionContainer">
-                <h2>${BrandProfile.drop1item5name}</h2>
-                <h3>${BrandProfile.drop1item5price}</h3>
+                <h2>${BrandProfile[i].drop1item5name}</h2>
+                <h3>${BrandProfile[i].drop1item5price}</h3>
             </div>    
         </div>
         <div id = "subfont">
             <div class = "pictureContainers">
                 <a href=>
-                <img alt="Object 1" src="${BrandProfile.drop1item6img}" width=auto height= 200>
+                <img alt="Object 1" src="${BrandProfile[i].drop1item6img}" width=auto height= 200>
                 </a>
             </div>
             <div classs = "captionContainer">
-                <h2>${BrandProfile.drop1item6name}</h2>
-                <h3>${BrandProfile.drop1item6price}</h3>
+                <h2>${BrandProfile[i].drop1item6name}</h2>
+                <h3>${BrandProfile[i].drop1item6price}</h3>
             </div>    
         </div>
     </div>
     <div id= "title">
-        <h2 style= "margin:20px"> ${BrandProfile.drop2}</h2>
+        <h2 style= "margin:20px"> ${BrandProfile[i].drop2}</h2>
     </div>
     <div class="flex-container" >
             <div class= "flex-container">
                 <div id = "subfont"> 
                     <div class = "pictureContainers">
                         <a href=>
-                        <img alt="Object 1" src="${BrandProfile.drop2item1img}" width=auto height= 200>
+                        <img alt="Object 1" src="${BrandProfile[i].drop2item1img}" width=auto height= 200>
                         </a>
                     </div> 
                     <div class = "captionContainer">
-                        <h2>${BrandProfile.drop2item1name}</h2>
-                        <h3>${BrandProfile.drop2item1price}</h3>
+                        <h2>${BrandProfile[i].drop2item1name}</h2>
+                        <h3>${BrandProfile[i].drop2item1price}</h3>
                     </div>    
                 </div>
                 <div id = "subfont"> 
                     <div class = "pictureContainers">
                         <a href=>
-                        <img alt="Object 1" src="${BrandProfile.drop2item2img}" width=auto height= 200>
+                        <img alt="Object 1" src="${BrandProfile[i].drop2item2img}" width=auto height= 200>
                         </a>
                     </div>
                     <div class = "captionContainer">
-                        <h2>${BrandProfile.drop2item2name}</h2>
-                        <h3>${BrandProfile.drop2item2price}</h3>
+                        <h2>${BrandProfile[i].drop2item2name}</h2>
+                        <h3>${BrandProfile[i].drop2item2price}</h3>
                     </div>
                 </div>
                 <div id = "subfont"> 
                     <div class = "pictureContainers">
                         <a href=>
-                        <img alt="Object 1" src="${BrandProfile.drop2item3img}" width=auto height= 200>
+                        <img alt="Object 1" src="${BrandProfile[i].drop2item3img}" width=auto height= 200>
                         </a>
                     </div>
                     <div class = "captionContainer">    
-                        <h2>${BrandProfile.drop2item3name}</h2>
-                        <h3>${BrandProfile.drop2item3price}</h3>
+                        <h2>${BrandProfile[i].drop2item3name}</h2>
+                        <h3>${BrandProfile[i].drop2item3price}</h3>
                     </div>    
                 </div>
                 <div id = "subfont"> 
                     <div class = "pictureContainers">
                         <a href=>
-                        <img alt="Object 1" src="${BrandProfile.drop2item4img}" width=auto height= 200>
+                        <img alt="Object 1" src="${BrandProfile[i].drop2item4img}" width=auto height= 200>
                         </a>
                     </div>
                     <div class = "captionContainer">
-                        <h2>${BrandProfile.drop2item4name}</h2>
-                        <h3>${BrandProfile.drop2item4price}</h3>
+                        <h2>${BrandProfile[i].drop2item4name}</h2>
+                        <h3>${BrandProfile[i].drop2item4price}</h3>
                    </div> 
                 </div>
                 <div id = "subfont"> 
                     <div class = "pictureContainers">
                         <a href=>
-                        <img alt="Object 1" src="${BrandProfile.drop2item5img}" width=auto height= 200>
+                        <img alt="Object 1" src="${BrandProfile[i].drop2item5img}" width=auto height= 200>
                         </a>
                     </div>
                         <div class = "captionContainer">    
-                        <h2>${BrandProfile.drop2item5name}</h2>
-                        <h3>${BrandProfile.drop2item5price}</h3>
+                        <h2>${BrandProfile[i].drop2item5name}</h2>
+                        <h3>${BrandProfile[i].drop2item5price}</h3>
                     </div>
                 </div>
                 <div id = "subfont"> 
                     <div class = "pictureContainers">
                         <a href=>
-                        <img alt="Object 1" src="${BrandProfile.drop2item6img}" width=auto height= 200>
+                        <img alt="Object 1" src="${BrandProfile[i].drop2item6img}" width=auto height= 200>
                         </a>
                     </div>
                     <div class = "captionContainer">    
-                        <h2>${BrandProfile.drop2item6name}</h2>
-                        <h3>${BrandProfile.drop2item6price}</h3>
+                        <h2>${BrandProfile[i].drop2item6name}</h2>
+                        <h3>${BrandProfile[i].drop2item6price}</h3>
                     </div>    
                 </div>
             </div>
         </div>
     `
+    break;
+        }
+        }
+
+    
 }
+
+
+
 
 
 page.innerHTML = content;
