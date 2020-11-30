@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Product</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="script.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <title>Profile</title>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
         <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
+     https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
         <script src="databasescripts.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
+    </head>
+    <body>
         <script> 
-            addEventListener('DOMContentLoaded', (event) => {
-                console.log('The DOM is fully loaded.');
-                authStateListener();
-            });</script>
-        <script>
-
-            let locator = getProductLocator();
-            
-            var ref = database.ref('items').orderByChild('locator').equalTo(locator);
-            console.log('r', ref);
-            ref.once('value')
-            .then((snapshot) => {
-                let product = snapshot.val();   
-                product = Object.values(product);
-                displayProduct(product[0]);
-            });
-
-        </script>
+        addEventListener('DOMContentLoaded', (event) => {
+            console.log('The DOM is fully loaded.');
+            authStateListener();
+        });</script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -98,41 +85,30 @@
                 </div>
             </div>
         </nav>
-
-        <div id = "product-page-container">
-            <!--
-            <div id = "product-page-image">
-                <img src = "InStockImages/Jacquemus-Le T-Shirt Jacques.jpg">
-            </div>
-            <div id = "product-page-description">
-                <div id = "product-page-details">
-                    <h1 class = "product-description">Jacquemus</h1>
-                    <h2 class = "product-description">Le T-Shirt Jacques</h2>
-                    <h2 class = "product-description">$130</h2>
-                </div>
-                <h3>Color: DEFAULT</h3>
-                <h3>Drop: Jacquemus SS20</h3>
-                <div class = "size-dropdown">
-                    <div class = "size-selector">
-                        <button onclick = "openSizeSelector(this)">Select Size</button>
-                    </div>
-                </div>
-                
-               <button id = "add-to-cart-button" onclick = "addItem(this, 'cartItems')">Add To Bag</button>
-               <button id = "save-item-button" onclick = "addItem(this, 'savedItems')">Save Item</button>
-               
-            </div>
-        -->
+        <div id = "title">
+            <br>
+            <h1>MY PROFILE</h1>
         </div>
-
-
-
-
-
-
-
-
+        <h2 id="ProfileSpecs">Full Name</h2>
+        <hr id="ProfilePageHR">
+        
+        <div id="ProfileList">
+            <h3>Profile Details</h3>
+            <p><a href="">Orders</a></p>
+            <p><a href="">Saved Items</a></p>
+            <p><a href="">Settings</a></p>
+        </div>
+        <div id="ProfileLogIn">
+            <p>Email</p>
+            <input id="userEmail" type="email" placeholder="firstnamelastname@email.com" disabled/>
+            <p>Password</p>
+            <input id="userPassword" type="password" placeholder="***************" disabled/>
+            <br>
+            <button>Edit Profile</button>
+            <button onclick="signOut()">Log Out</button>
+        </div>
         <hr>
+        
         <footer>
                 <div id = "footer-left">
                     <p>Follow Us</p>
@@ -146,7 +122,7 @@
                     <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
                     <div id = "email-container">
                             <input type="email" id="email" name="email">
-                            <button id="sub-btn">Subscribe</button>
+                            <button type="button" id = "sub-btn">Subscribe</button>
                     </div>
                 </div>
                 <div id = "footer-right">
