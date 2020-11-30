@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Brands</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="script.js"></script>
-        <!--<script src="databasescripts.js"></script>-->
+        <script src="jquery-3.5.1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
     </head>
     <body>
+                         <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    <script src="databasescripts.js"></script>
+    <script src="script.js"></script>
+    <script> 
+        addEventListener('DOMContentLoaded', (event) => {
+            console.log('The DOM is fully loaded.');
+            authStateListener();
+        });</script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -24,7 +39,7 @@
                 <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
                 <button class="cartbtn">CART</button>
             </div>
-            <script src="databasescripts.js"></script>
+            
             <div class="full-nav">
                 <div id = "nav-bar-left">
                     <ul>
@@ -177,7 +192,7 @@
                     <td class="Alphabet" id="A">A</td>
                     <td>
                         <p>A.P.C.</p>
-                        <p>ACNE STUDIOS</p>
+                        <a href="BrandProfile.html"><button id="BrandInfo" onclick="getMeToBrandProfile('&quot;3&quot;')">ACNE STUDIOS</button></a>
                         <P>ADER ERROR</P>
                         <p>ASICS</p>
                     </td>
@@ -209,7 +224,7 @@
                     <td class="Alphabet" id="C">C</td>
                     <td>
                         <p>CONVERSE</p>
-                        <a href = "CherryLABP.html"><p>CHERRY LA</p></a>
+                        <a href="BrandProfile.html"><button id="BrandInfo" name="one" onclick="getMeToBrandProfile('&quot;1&quot;')">CHERRY LA</button></a>
                     </td>
                     <td>
                         <p>COMMON PROJECTS</p>
@@ -227,6 +242,195 @@
                         <p>DICKIES</p>
                     </td>
                 </tr>
+                <tr>
+                    <td class="Alphabet">E</td>
+                    <td>
+                        <p>ELEVEN PARIS</p>
+                    </td>
+                    <td>
+                        <p>EYTYS</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">F</td>
+                    <td>
+                        <p>FARFETCH</p>
+                    </td>
+                    <td>
+                        <a href="BrandProfile.html"><button id="BrandInfo" onclick="getMeToBrandProfile('&quot;2&quot;')">FEAR OF GOD</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">G</td>
+                    <td>
+                        <p>GOLDEN GOOSE</p>
+                    </td>
+                    <td>
+                        <p>GOLF WANG</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">G</td>
+                    <td>
+                        <p>HELMUT LANG</p>
+                    </td>
+                    <td>
+                        <p>HUMAN MADE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">I</td>
+                    <td>
+                        <p>I LOVE UGLY</p>
+                    </td>
+                    <td>
+                        <p>IISE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">J</td>
+                    <td>
+                        <p>JUICE</p>
+                    </td>
+                    <td>
+                        <p>JUUN.J</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">K</td>
+                    <td>
+                        <p>K-WAY</p>
+                    </td>
+                    <td>
+                        <p>KENZO</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">L</td>
+                    <td>
+                        <p>LOUIS VUITTON</p>
+                    </td>
+                    <td>
+                        <p>LVMH</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">M</td>
+                    <td>
+                        <p>MAISON MARGIELA</p>
+                    </td>
+                    <td>
+                        <p>MSGM</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">N</td>
+                    <td>
+                        <p>NAMACHECKO</p>
+                    </td>
+                    <td>
+                        <p>NIKE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">O</td>
+                    <td>
+                        <p>OBEY</p>
+                    </td>
+                    <td>
+                        <p>OFF WHITE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">P</td>
+                    <td>
+                        <p>P.A.M</p>
+                    </td>
+                    <td>
+                        <p>PRADA</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">Q</td>
+                    <td>
+                        <p>QASIMI</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">R</td>
+                    <td>
+                        <p>RAG & BONES</p>
+                    </td>
+                    <td>
+                        <p>READYMADE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">S</td>
+                    <td>
+                        <p>SAINT LAURENT</p>
+                    </td>
+                    <td>
+                        <p>STUSSY</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">T</td>
+                    <td>
+                        <p>TAKAHIROMIYASHITA THESOLOIST.</p>
+                    </td>
+                    <td>
+                        <p>THISISNEVERTHAT</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">U</td>
+                    <td>
+                        <p>UMBRO</p>
+                    </td>
+                    <td>
+                        <p>UNIQLO</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">V</td>
+                    <td>
+                        <p>VANS</p>
+                    </td>
+                    <td>
+                        <p>VETEMENTS</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">W</td>
+                    <td>
+                        <p>WALTER VAN BEIRENDONCK</p>
+                    </td>
+                    <td>
+                        <p>WOOYOUNGMI</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">X</td>
+                    <td>
+                        <p>X-LARGE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">Y</td>
+                    <td>
+                        <p>YANG LI</p>
+                    </td>
+                    <td>
+                        <p>YEEZY</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Alphabet">Z</td>
+                    <td>
+                        <p>ZARA</p>
+                    </td>
+                </tr>
             </table>
         </div>
         <hr>
@@ -235,9 +439,9 @@
             <div id = "footer-left">
                 <p>Follow Us</p>
                 <div id = "follow-icons">
-                    <p></p>
-                    <p></p>
-                    <p></p>
+                    <img id="facebooklogo">
+                    <img id="twitterlogo">
+                    <img id="instagramlogo">
                 </div>
             </div>
             <div id = "footer-middle">

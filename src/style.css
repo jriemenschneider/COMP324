@@ -1031,6 +1031,7 @@ img{
     padding-left: 20;
 
 }
+
 #text li {
     list-style-type:none;
 }
@@ -1039,6 +1040,9 @@ img{
     display: flex;
     justify-content: left;
     margin: 30px;
+}
+#drop1{
+    width:100%;
 }
 .captionContainer{
     margin:20px;
@@ -1322,4 +1326,15 @@ span.psw {
 #ProfilePageHR{
     margin-left:15%;
     width:65%;
+}
+
+#BrandInfo{
+    border: none;
+    background-color: white;
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-left:0px;
+    padding-left:0px;
+    text-align: left;
 }

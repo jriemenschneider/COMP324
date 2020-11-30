@@ -4,39 +4,60 @@ var config = {
     databaseURL: "https://comp-224.firebaseio.com/",
     storageBucket: "comp-224.appspot.com"
 };
-firebase.initializeApp(config); //This is where the issue is stemming from for me
+firebase.initializeApp(config); //this is causing me issues again
 const database = firebase.database();
 var rootRef = firebase.database().ref();
 const userref = database.ref('users');
 const storageRef = firebase.storage().ref();
-const user = firebase.auth().currentUser;
-let name = "";
+var user = firebase.auth().currentUser;
 
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
     img.src = url;
 }, function(error) {});
+storageRef.child('images/facebooklogo.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('facebooklogo');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/instagramlogo.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('instagramlogo');
+    img.src = url;
+}, function(error) {});
+storageRef.child('images/twitterlogo.png').getDownloadURL().then(function(url) {
+    var img = document.getElementById('twitterlogo');
+    img.src = url;
+}, function(error) {});
 
 window.onload = function() {
+    console.log("window loaded");
     authStateListener();
     
 
-    if (document.title == 'Profile') {
-        userProfile(name);
-    }
+    
 }
+
+// document.onload = function() {
+//     if (this.document.title == 'Profile') {
+//         console.log("on profile page");
+//         userProfile();
+//     }
+// }
 
 function authStateListener() {
     // [START auth_state_listener]
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+          console.log("there is a user");
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         
         var uid = user.uid;
         var fullNameRef = firebase.database().ref('users/' + uid + '/fullname');
         fullNameRef.on('value', (snapshot) =>{
-            name = snapshot.val();
+            var name = snapshot.val();
+            if (document.getElementById("ProfileSpecs")) {
+                userProfile(name);
+            }
         });
         
         document.getElementById("profile").innerHTML = "PROFILE";
@@ -53,8 +74,8 @@ function authStateListener() {
 }
 
 function userProfile(name) {
-    console.log('enterd user profile');
-    if (user) {
+    console.log("enterd user profile");
+    if (firebase.auth().currentUser) {
         // var user = firebase.auth().currentUser;
         // var userID = user.uid;
         // var fullNameRef = firebase.database().ref('users/' + userID + '/fullname');
@@ -63,10 +84,13 @@ function userProfile(name) {
         //     document.getElementById("ProfileSpecs").innerHTML = name;
         // });
         document.getElementById("ProfileSpecs").innerHTML = name;
+        document.getElementById("userEmail").placeholder = firebase.auth().currentUser.email;
+
 
         
     }
     else {
+        console.log("no user");
         document.getElementById("ProfileSpecs").textContent = "no user";
     }
 }
