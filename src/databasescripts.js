@@ -106,9 +106,9 @@ function createUser() {
         userref.child(user.uid).set({
             // "user": user.value,
             "fullname": name,
-            "saveditems": ['none'],
+            "saveditems": Set(),
             "email": email,
-            "cartitems": ['none']
+            "cartitems": [0]
         });
     }, function(error) {
     // Handle Errors here.
