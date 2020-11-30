@@ -16,7 +16,7 @@ window.onload = function() {
     }
 
     if (this.document.title == "Saved") {
-        this.displaySavedItems()
+        displaySavedItems()
     }
 
     if (this.document.title == "Product") {
@@ -141,7 +141,9 @@ function addItem(button, location) {
             }
             
             currentItems[0] += parseInt(p.slice(1));
-            firebase.database().ref('users/' + userid + '/cartitems').set(currentItems);
+            if (s) {
+                firebase.database().ref('users/' + userid + '/cartitems').set(currentItems);
+            }
 
         } else {
             let savedItems = user[0].saveditems;
@@ -211,7 +213,32 @@ function removeItem(button, location) {
     
     //Gets details if a cart item is being removed
     if (location == 'cartItems') {
-        
+        itemToRemoveBrand = button.parentElement.getElementsByTagName("h2")[0].innerText;
+        itemToRemoveName = button.parentElement.getElementsByTagName("h3")[0].innerText;
+        itemToRemoveSize = button.parentElement.getElementsByTagName("h4")[0].innerText.slice(5,6);
+        //Finds the current user
+        let ref = database.ref("users").orderByChild('email').equalTo(email)
+        ref.once('value').then((snapshot) => {
+            let user = snapshot.val();   
+            user = Object.values(user);
+            let items = user[0].cartitems;
+            for (let i = 1; i < items.length; i++) {
+                if (itemToRemoveBrand.toLowerCase() + "_" + itemToRemoveName.toLowerCase() == items[i][0] && itemToRemoveSize == items[i][1]) {
+                    //Retrieves item from the DB
+                    var ref2 = database.ref('items').orderByChild('locator').equalTo(items[i][0]);
+                    ref2.once('value').then((snapshot) => {
+                        let product = snapshot.val();   
+                        product = Object.values(product)[0];
+                        price = product.price;
+                        items[0] -= (parseInt(product.price.slice(1)) * items[i][2]);
+                        items.splice(i, 1);
+                        firebase.database().ref('users/' + userid + '/cartitems').set(items);
+                    });
+                }
+            }
+        });
+
+
     
     //Gets details if a saved item is being removed
     } else {
@@ -225,18 +252,28 @@ function removeItem(button, location) {
             user = Object.values(user);
             let items = user[0].saveditems;
             for (let i = 0; i < items.length; i++) {
-                console.log(items[i], itemToRemoveBrand.toLowerCase() + "_" + itemToRemoveName.toLowerCase())
+                //console.log(items[i], itemToRemoveBrand.toLowerCase() + "_" + itemToRemoveName.toLowerCase())
                 if (itemToRemoveBrand.toLowerCase() + "_" + itemToRemoveName.toLowerCase() == items[i]) {
                     items.splice(i, 1);
                 }
             }
-            console.log(items);
             firebase.database().ref('users/' + userid + '/saveditems').set(items);
         });
     }
 
-
+    //Sleep function to give the DB time to update
+    sleep(750).then(() => {
+        if (location == 'cartItems') {
+            displayCart();
+        } else {
+            displaySavedItems();
+        }
+    });
 }
+
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
 
 
 /*
@@ -294,11 +331,12 @@ function displayCart() {
     }*/
 
     function displayCart() {
+        console.log("DISPLAY CART");
         let user = firebase.auth().currentUser;
-        console.log(firebase.auth(), user);
         let email = user.email;
 
         let ele = document.getElementById('cartContent');
+        ele.innerHTML = "";
 
         let ref = database.ref("users").orderByChild('email').equalTo(email)
         ref.once('value').then((snapshot) => {
@@ -306,6 +344,7 @@ function displayCart() {
             user = Object.values(user);
             let ci = user[0].cartitems;
             let totalPrice = ci[0];
+            console.log(ci);
 
             for (let i = 1; i < ci.length; i++) {
 
@@ -393,6 +432,7 @@ function displaySavedItems() {
 }*/
 
 function displaySavedItems() {
+    console.log("DISPLAY SAVED")
     let user = firebase.auth().currentUser;
     console.log(firebase.auth(), user);
     let email = user.email;
