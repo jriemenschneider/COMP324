@@ -21,11 +21,9 @@
                 authStateListener();
             });</script>
         <script>
-
-            let locator = getProductLocator();
             
-            var ref = database.ref('items').orderByChild('locator').equalTo(locator);
-            console.log('r', ref);
+            var ref = database.ref('items').orderByChild('locator')
+            //console.log('r', ref);
             ref.once('value')
             .then((snapshot) => {
                 let product = snapshot.val();   
@@ -93,7 +91,7 @@
                                     <div class="logincontainer" >
                                         <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
                                         <span class="psw"><a href="#">Forgot Password?</a></span>
-                                        <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
+                                        <span class="login"> Not a member? <a href="SignUp.html">Sign Up</a></span>
                                     </div>
                                 </form>
                             </div> 

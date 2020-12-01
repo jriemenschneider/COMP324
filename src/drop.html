@@ -21,14 +21,15 @@
        
        
         <script>
-            var ref = database.ref('products').orderByChild("brandid");
+            var ref = database.ref('products').orderByChild('brandid')
             ref.once('value')
             .then((snapshot) => {
-                let info = snapshot.val();   
-                info = Object.values(info);
-                displayDropProduct(info).onclick= function() {displayProduct(info)};
+                let product = snapshot.val();   
+                product = Object.values(product);
+                displayDropProduct(product);
             });
-        </script> 
+
+        </script>
         <!-- Matt's but also doesnt work -->
        <!-- <script>
             var ref = database.ref('products')
@@ -100,7 +101,7 @@
                                 <div class="logincontainer" >
                                     <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
                                     <span class="psw"><a href="#">Forgot Password?</a></span>
-                                    <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
+                                    <span class="login"> Not a member? <a href="SignUp.html">Sign Up</a></span>
                                 </div>
                             </form>
                         </div> 
