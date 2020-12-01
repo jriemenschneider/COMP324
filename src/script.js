@@ -854,6 +854,44 @@ function displayModal(){
     }
 }
 
+//Dislpays the in-stock page with data from Firebase
+function displayDropProduct(info) {
+    let page = document.getElementById("drop-main");
+    let content = "";
+    for (let i = 0; i < info.length; i++) {
+        content += `
+            <div class = "drop-item" >
+                <a href=product.html onclick="saveCurrentItem(this)">
+                    <p class = "drop img">
+                        <img src = "${info[i].img}">
+                    </p>
+                    <div class = "drop-text">
+                        <p><strong>${info[i].brand}</strong></p>
+                        <p>${info[i].name}</p>
+                        <p>${info[i].price}</p>
+                    </div>
+                </a>
+            </div>
+        `
+    }
+    page.innerHTML = content;
+}
 
-
-
+//drops dropdown
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  
