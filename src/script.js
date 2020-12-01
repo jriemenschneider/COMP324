@@ -256,7 +256,7 @@ function displaySavedItems() {
                     ele.innerHTML += `
                     <div class = "saved-item">
                     <a href=# onclick = "removeItem(this, 'savedItems')">X</a>
-                        <a href=product.html onclick="saveCurrentItem(this)">
+                        <a href=product.html onclick="saveCurrentItem(product)">
                             <p class = "saved-item-img">
                                 <img src = "${product.img}">
                             </p>
