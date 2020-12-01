@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
         <title>DROP</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
+        <script src="jquery-3.5.1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
         <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+        https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
         <script src="databasescripts.js"></script>
-        <script src="jquery-3.5.1.min.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="script.js"></script>
-        <script src="jquery-3.5.1.min.js"></script>
-    </head>
-    <body>
+       
+       
+        <script>
+            var ref = database.ref('products').orderByChild("brandid");
+            ref.once('value')
+            .then((snapshot) => {
+                let info = snapshot.val();   
+                info = Object.values(info);
+                displayDropProduct(info).onclick= function() {displayProduct(info)};
+            });
+        </script> 
+        <!-- Matt's but also doesnt work -->
+       <!-- <script>
+            var ref = database.ref('products')
+            ref.once('value')
+            .then((snapshot) => {
+                let products = snapshot.val();   
+                products = Object.values(products);
+                displayDropProduct(products)
+            });
+        </script> -->
+        
+    
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -40,41 +63,47 @@
                     <ul>
                         <li><a href=Brands.html>BRANDS</a></li>
                         <li><a href=calendar.html>CALENDAR</a></li>
-                        <li><a href=#>DROPS</a></li>
+                        <div class= "dropdown">
+                        <li><button onclick="myFunction () " class= "dropbtn">DROPS</button></li>
+                            <div id= "myDropdown" class="dropdown-content">
+                                <a href="drop.html">THE SEVENTH COLLECTION</a>
+                            </div>
+                        </div>
                         <li><a href=inStock.html>INSTOCK</a></li>
                     </ul>
                 </div>
                 <div id = "logo">
                     <a href = "index.html">
-                        <img src="logo.jpg" alt="Thread Core">
+                        <img id="mylogo">
                     </a>
                 </div>
                 <div id = "nav-bar-right">
                     <ul>
                         <li><a href=#>SEARCH</a></li>
-                        <li><button class="modalbtn" onclick="document.getElementById('id01').style.display='block'" >PROFILE</button></li> 
-                            <div id="id01" class="modal">
-                                <span onclick="document.getElementById('id01').style.display='none'" 
-                                class="close" title="Close Modal">&times;</span>
+                        <li><button class="modalbtn" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button></li> 
+                        <div id="id01" class="modal">
                             
-                                <form class= "modal-content animate" action="/action_page.php">
-                                    <div class="container" width="auto">
-                                        <label for="uname"><b>Email</b></label>
-                                        <input type="email" placeholder="Enter Email" name="uname" required>
+                            <form class= "modal-content animate" action="/action_page.php">
+                                <div class="logincontainer" width="auto">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
-                                        <label for="psw"><b>Password</b></label>
-                                        <input type="password" placeholder="Enter Password" name="psw" required>
+                                    <h1 id="LogIn">LOGIN</h1>
+                                    <label for="uname"><b>Email</b></label>
+                                    <input type="email" placeholder="Enter Email" id="semail" name="uname" required>
 
-                                        <button type="submit">Login</button>
-                                    </div>
+                                    <label for="psw"><b>Password</b></label>
+                                    <input type="password" placeholder="Enter Password" id="spassword" name="psw" required>
 
-                                    <div class="container" style="background-color:#f1f1f1">
-                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                        <span class="psw"><a href="#">Forgot Password?</a></span>
-                                        <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
-                                    </div>
-                                </form>
-                            </div> 
+                                    <div class="loginbutton" id="loginbtn" onclick="signIn()">Login</div>
+                                </div>
+
+                                <div class="logincontainer" >
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
+                                    <span class="psw"><a href="#">Forgot Password?</a></span>
+                                    <span class="login"> Not a member? <a href="SignIn.html">Sign Up</a></span>
+                                </div>
+                            </form>
+                        </div> 
                         <li><a href=saved.html>SAVED</a></li>
                         <li id = "cart"><a href=Cart.html>CART</a></li>
                     </ul>
@@ -88,7 +117,9 @@
         </div>
         <div class= "flex-container">
             <div class = "pictureContainers" style="margin-left: 130px;">
-                <h1>Fear Of God</h1>
+                <div id= title>
+                    <br><br><br><h1>Fear Of God</h1>
+                </div>
             </div>
             <div class="vr" style="margin-left: 80px;"></div>
             <div class = "text" style="margin-left: 50px;">
@@ -171,7 +202,7 @@
             </div>
 
             <div id = "drop-main">
-                <div class = "drop-item">
+                <!-- <div class = "drop-item">
                     <a href=product.html onclick="saveCurrentItem(this)">
                         <p class = "drop img">
                             <img src = "DropImages/FEAR OF GOD-The Negro Leagues.jpg">
@@ -278,7 +309,7 @@
                         <p>$230</p>
                     </div>
                     </a>
-                </div>                                    
+                </div>                                     -->
             </div>
         </div>
 
@@ -291,10 +322,10 @@
                 <div id = "footer-left">
                     <p>Follow Us</p>
                     <div id = "follow-icons">
-                        <p></p>
-                        <p></p>
-                        <p></p>
-                    </div>
+                        <img id="facebooklogo">
+                        <img id="twitterlogo">
+                        <img id="instagramlogo">
+                    </div>  
                 </div>
                 <div id = "footer-middle">
                     <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
