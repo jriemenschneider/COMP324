@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Product</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>About</title> 
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
-    </head>
-    <body>
+      </head>
+      <body>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
@@ -14,26 +15,13 @@
         https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
         <script src="databasescripts.js"></script>
         <script> 
             addEventListener('DOMContentLoaded', (event) => {
                 console.log('The DOM is fully loaded.');
                 authStateListener();
             });</script>
-        <script>
-
-            let locator = getProductLocator();
-            
-            var ref = database.ref('items').orderByChild('locator').equalTo(locator);
-            console.log('r', ref);
-            ref.once('value')
-            .then((snapshot) => {
-                let product = snapshot.val();   
-                product = Object.values(product);
-                displayProduct(product[0]);
-            });
-
-        </script>
         <nav>
             <div class="mobile-nav">
                 <div class="dropdown">
@@ -41,16 +29,16 @@
                     <div class="dropdown-content" id="nav-dropdown">
                         <a href="Brands.html">BRANDS</a>
                         <a href="calendar.html">CALENDAR</a>
-                        <a href="#">DROPS</a>
+                        <a href="drop.html">DROPS</a>
                         <a href=inStock.html>IN STOCK</a>
                         <a href=#>PROFILE</a>
                         <a href=saved.html>SAVED</a>
+
                     </div>
                 </div>
                 <img id = "mobile-logo" src="logo.jpg" alt="Thread Core">
                 <button class="cartbtn">CART</button>
             </div>
-
             <div class="full-nav">
                 <div id = "nav-bar-left">
                     <ul>
@@ -98,62 +86,85 @@
                 </div>
             </div>
         </nav>
-
-        <div id = "product-page-container">
-            <!--
-            <div id = "product-page-image">
-                <img src = "InStockImages/Jacquemus-Le T-Shirt Jacques.jpg">
-            </div>
-            <div id = "product-page-description">
-                <div id = "product-page-details">
-                    <h1 class = "product-description">Jacquemus</h1>
-                    <h2 class = "product-description">Le T-Shirt Jacques</h2>
-                    <h2 class = "product-description">$130</h2>
-                </div>
-                <h3>Color: DEFAULT</h3>
-                <h3>Drop: Jacquemus SS20</h3>
-                <div class = "size-dropdown">
-                    <div class = "size-selector">
-                        <button onclick = "openSizeSelector(this)">Select Size</button>
-                    </div>
-                </div>
+        <p id = "aboutPageHeader">What is Thread Core?</p>
+       
+            <p id = "normalText">Thread Core is a high-end ecommerce space for individual artists or brands to showcase their products
+                to a larger audience that they cannot reach on their own.  We serve as a marketplace for customers to access
+                individual artists and smaller brands all in one place.  This application gives subscribers early access
+                to exclusive drops, and the ability to keep up with sought after and trending fashion.  </p>
+            <br>
+            <p id = "normalText">
+                Thread Core has collaborated with brands like:
+                <ul>
+                    <div id="normalText">Yeezy</div>
+                    <div id="normalText">Cherry LA</div>
+                    <div id="normalText">Dr. Marten</div>
+                    <div id="normalText">Alexander Wang</div>
+                    <div id="normalText">Burberry</div>
+                    <br>
+                    <br>
+                    
+                </ul>
+        
                 
-               <button id = "add-to-cart-button" onclick = "addItem(this, 'cartItems')">Add To Bag</button>
-               <button id = "save-item-button" onclick = "addItem(this, 'savedItems')">Save Item</button>
-               
-            </div>
-        -->
-        </div>
+            </p>
+            <p id = "normalText">
+                <a href="brands.html">
+                    Click here to view all of our collaborations!
+                </a>
+                <br><br><br>
+            </p>
+           
 
-
-
-
-
-
-
-
-        <hr>
-        <footer>
-                <div id = "footer-left">
-                    <p>Follow Us</p>
-                    <div id = "follow-icons">
-                        <img id="facebooklogo">
-                        <img id="twitterlogo">
-                        <img id="instagramlogo">
+            
+                <footer>
+                    <div id = "footer-left">
+                        <p>Follow Us</p>
+                        <div id = "follow-icons">
+                            <img id="facebooklogo">
+                            <img id="twitterlogo">
+                            <img id="instagramlogo">
+                        </div>
                     </div>
-                </div>
-                <div id = "footer-middle">
-                    <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
-                    <div id = "email-container">
-                            <input type="email" id="email" name="email">
-                            <button id="sub-btn">Subscribe</button>
+                    <div id = "footer-middle">
+                        <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
+                        <div id = "email-container">
+                                <input type="email" id="email" name="email">
+                                <button id="sub-btn">Subscribe</button>
+                        </div>
                     </div>
-                </div>
-                <div id = "footer-right">
-                    <li><a href="faq.html">FAQs</a></li>
-                    <li><a href = #>Contacts</a></li>
-                    <li><a href = "about.html">About</a></li>
-                </div>
-            </footer>
-    </body>
-</html>
+                    <div id = "footer-right">
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li>Contact</li>
+                        <li><a href="about.html">About</a></li> 
+                    </div>
+                    
+                </footer>
+                <!-- The core Firebase JS SDK is always required and must be listed first
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        
+        TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <!-- <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script> -->
+        
+        <!-- <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+            apiKey: "AIzaSyD8wJ0bFPY0Q9sQ2v4B2EXL_KWDwXZwNs0",
+            authDomain: "comp-224.firebaseapp.com",
+            databaseURL: "https://comp-224.firebaseio.com",
+            projectId: "comp-224",
+            storageBucket: "comp-224.appspot.com",
+            messagingSenderId: "344747179562",
+            appId: "1:344747179562:web:16d2b4aeb3917950ee0d53",
+            measurementId: "G-4R99TYPPK8"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+          console.log(firebase.database());
+        </script> -->
+        
+        </body>
+    </html>
