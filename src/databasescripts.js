@@ -14,6 +14,8 @@ var user = firebase.auth().currentUser;
 storageRef.child('logo.jpg').getDownloadURL().then(function(url) {
     var img = document.getElementById('mylogo');
     img.src = url;
+    var img2= document.getElementById('mobile-logo');
+    img2.src=url;
 }, function(error) {});
 storageRef.child('images/facebooklogo.png').getDownloadURL().then(function(url) {
     var img = document.getElementById('facebooklogo');
