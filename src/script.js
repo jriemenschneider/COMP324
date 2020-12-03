@@ -228,7 +228,10 @@ function sleep (time) {
             });
         });
     }
+    
+function findTotalPrice() {
 
+}
 
 //Displays the list of saved items
 function displaySavedItems() {
@@ -348,7 +351,6 @@ function saveCurrentItem(loc) {
         price: loc.getElementsByTagName('p')[3].innerText,
         img: loc.getElementsByTagName('img')[0].src
     }
-    
     localStorage.setItem('product', JSON.stringify(item)); 
 }
 
