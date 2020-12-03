@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html onload = displayCart()>
     <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Cart</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
     </head>
     <body>
+        <script src="https://www.paypal.com/sdk/js?client-id=AQTTDsVRM8ONa_BT1FLNV9rKpu8mn0sUbpRmTADWcVU3oTYfEPN96roiC9mW3_lcXVOo_U8HNbhDRIbM&currency=USD"></script>
+
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
         <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -121,7 +125,9 @@
                 <a href="#" id="Checkout">CHECKOUT</a> 
                 <!--Will eventually link to the checkout page or paypal API--
             </li>-->
+        
         </div>
+        
         <hr>
         <footer>
             <div id = "footer-left">
