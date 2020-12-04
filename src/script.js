@@ -230,7 +230,20 @@ function sleep (time) {
     }
     
 function findTotalPrice() {
-
+    sleep(1000).then(() => {
+        let ele = document.getElementById("amount-div");
+        console.log(ele);
+        let user = firebase.auth().currentUser;
+        console.log(firebase.auth(), user);
+        let email = user.email;
+        let ref = database.ref("users").orderByChild('email').equalTo(email)
+            ref.once('value').then((snapshot) => {
+                let user = snapshot.val();   
+                user = Object.values(user);
+                let ci = user[0].cartitems;
+                ele.innerHTML = `<input id="amount" type="number" value="${ci[0]}">`
+            });
+    });
 }
 
 //Displays the list of saved items
