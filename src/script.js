@@ -25,6 +25,8 @@ window.onload = function() {
 
 
 
+
+
 /*
 *   Adds an item to the cart or saved items list, currently saves the brand, name, and price as an object
 */
@@ -163,71 +165,71 @@ function sleep (time) {
 /*
 *   Basis for displaying the items in the cart once on the in-cart page
 */
-    function displayCart() {
-        console.log("DISPLAY CART");
-        console.log(user);
+function displayCart() {
+    console.log("DISPLAY CART");
+    console.log(user);
 
-        sleep(1000).then(() => {
-            let user = firebase.auth().currentUser;
-            let ele = document.getElementById('cartContent');
-            ele.innerHTML = "";
-            let email = user.email;
-            let ref = database.ref("users").orderByChild('email').equalTo(email)
-            ref.once('value').then((snapshot) => {
-                let user = snapshot.val();   
-                user = Object.values(user);
-                let ci = user[0].cartitems;
-                let totalPrice = ci[0];
+    sleep(1000).then(() => {
+        let user = firebase.auth().currentUser;
+        let ele = document.getElementById('cartContent');
+        ele.innerHTML = "";
+        let email = user.email;
+        let ref = database.ref("users").orderByChild('email').equalTo(email)
+        ref.once('value').then((snapshot) => {
+            let user = snapshot.val();   
+            user = Object.values(user);
+            let ci = user[0].cartitems;
+            let totalPrice = ci[0];
 
-                for (let i = 1; i < ci.length; i++) {
+            for (let i = 1; i < ci.length; i++) {
 
-                    //Sets the details of the specific order nize and quantity
-                    let locator = ci[i][0];
-                    let size = ci[i][1];
-                    let qty = ci[i][2];
+                //Sets the details of the specific order nize and quantity
+                let locator = ci[i][0];
+                let size = ci[i][1];
+                let qty = ci[i][2];
+                
+                //Retrieves item from the DB
+                var ref = database.ref('items').orderByChild('locator').equalTo(locator);
+                ref.once('value').then((snapshot) => {
+                    let product = snapshot.val();   
+                    product = Object.values(product)[0];
                     
-                    //Retrieves item from the DB
-                    var ref = database.ref('items').orderByChild('locator').equalTo(locator);
-                    ref.once('value').then((snapshot) => {
-                        let product = snapshot.val();   
-                        product = Object.values(product)[0];
-                        
-                        totalPrice += product.price * qty;
-                        //Prints details to the screen
-                        ele.innerHTML += `
-                        <li id= "Items">
-                            <hr>
-                            <a href=# onclick = "removeItem(this, 'cartItems')">X</a>
-                            <img src="${product.img}">
-                            <h2>${product.brand}</h2>
-                            <h3>${product.name}</h3>
-                            <br>
-                            <h4 id="SameLine">SIZE ${size}&#x2228</h4>
-                            <h4 id="SameLine">QTY ${qty} &#x2228</h4>
-                            <h5 id="Price">${product.price}</h5>
-                            <hr>
-                        </li>
-                        `
-                    });
-                }
-                ele.innerHTML += `
-                <li id="OrderSummary">
-                    <h1>Order Summary</h1>
-                    <h3 id="subSummary">SUBTOTAL</h3>
-                    <h3 id="subSummary">$ ${totalPrice}</h3>
-                    <h3 id="subSummary">SHIPPING</h3>
-                    <h3 id="subSummary">$ 5</h3>
-                    <h3 id="subSummary">SALES TAX</h3>
-                    <h3 id="subSummary">$ 3.07</h3>
-                    <h2 id="Total">TOTAL</h2>
-                    <h2 id="Total">$ ${totalPrice + 8.07}</h2>
-                    <a href="#" id="Checkout">CHECKOUT</a> 
-                    <!--Will eventually link to the checkout page--> 
-                </li>
-                `
-            });
+                    totalPrice += product.price * qty;
+                    //Prints details to the screen
+                    ele.innerHTML += `
+                    <li id= "Items">
+                        <hr>
+                        <a href=# onclick = "removeItem(this, 'cartItems')">X</a>
+                        <img src="${product.img}">
+                        <h2>${product.brand}</h2>
+                        <h3>${product.name}</h3>
+                        <br>
+                        <h4 id="SameLine">SIZE ${size}&#x2228</h4>
+                        <h4 id="SameLine">QTY ${qty} &#x2228</h4>
+                        <h5 id="Price">${product.price}</h5>
+                        <hr>
+                    </li>
+                    `
+                });
+            }
+            ele.innerHTML += `
+            <li id="OrderSummary">
+                <h1>Order Summary</h1>
+                <h3 id="subSummary">SUBTOTAL</h3>
+                <h3 id="subSummary">$ ${totalPrice}</h3>
+                <h3 id="subSummary">SHIPPING</h3>
+                <h3 id="subSummary">$ 5</h3>
+                <h3 id="subSummary">SALES TAX</h3>
+                <h3 id="subSummary">$ 3.07</h3>
+                <h2 id="Total">TOTAL</h2>
+                <h2 id="Total">$ ${totalPrice + 8.07}</h2>
+                <a href="#" id="Checkout">CHECKOUT</a> 
+                <!--Will eventually link to the checkout page--> 
+            </li>
+            `
         });
-    }
+    });
+}
     
 function findTotalPrice() {
     sleep(1000).then(() => {
@@ -299,6 +301,7 @@ function getProductLocator() {
 
 //Displays a product on product page
 function displayProduct(product) {
+    console.log("P", product);
     let ele = document.getElementById("product-page-container");
     ele.innerHTML = `
          <div id = "product-page-image">

@@ -29,7 +29,14 @@
             .then((snapshot) => {
                 let product = snapshot.val();   
                 product = Object.values(product);
-                displayProduct(product[0]);
+                let locator = getProductLocator();
+                console.log("HERE", product, locator);
+                for (let i = 0; i < product.length; i++) {
+                    if(product[i].locator == locator) {
+                        displayProduct(product[i]);
+                        break;
+                    }
+                }
             });
 
         </script>
