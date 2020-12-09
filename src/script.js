@@ -210,6 +210,7 @@ function displayCart() {
                         <hr>
                     </li>
                     `
+                    
                 });
             }
             ele.innerHTML += `
@@ -223,10 +224,9 @@ function displayCart() {
                 <h3 id="subSummary">$ 3.07</h3>
                 <h2 id="Total">TOTAL</h2>
                 <h2 id="Total">$ ${totalPrice + 8.07}</h2>
-                <a href="#" id="Checkout">CHECKOUT</a> 
-                <!--Will eventually link to the checkout page--> 
-            </li>
-            `
+                <a href="checkoutButton.html" id="Checkout">CHECKOUT</a> 
+                </li>`
+                sessionStorage.setItem("total", JSON.stringify(totalPrice + 8.07))
         });
     });
 }
