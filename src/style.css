@@ -908,9 +908,9 @@ a{
     width: 100%;
     display: flex;
     border-color: white ;
-    border-width: 3px;
-    /* margin-left: 50px; 
-    margin-right: 40px;  */
+    border-width: 1%;
+    /* margin-left: 50px; */
+    padding-left: 5%;  
     /*justify-content: center; */
 }
 
@@ -918,10 +918,17 @@ a{
     display: flex;
     flex-direction: row;
     margin: 1px;
-    /*justify-content: center; */
+    /*justify-content: center; XX */
     
     
 }
+.flex-containerB{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
 .shopNow{
     background-color:#ebebeb;
     /* margin-top: 5px; */
