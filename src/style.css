@@ -905,12 +905,12 @@ a{
 
 .mainColumn{
     height: 100%;
-    width: 100%;
+    max-width: 100%;
     display: flex;
     border-color: white ;
     border-width: 1%;
     /* margin-left: 50px; */
-    padding-left: 5%;  
+    padding-left: 3%;  
     /*justify-content: center; */
 }
 
