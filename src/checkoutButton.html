@@ -3,30 +3,111 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title> PayPal Smart Payment </title>
+    <title>Checkout</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="script.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="script.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;500&family=Syne+Tactile&display=swap" rel="stylesheet">
+      </head>
+      <body>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+        <script src="databasescripts.js"></script>
+        <script> 
+            addEventListener('DOMContentLoaded', (event) => {
+                console.log('The DOM is fully loaded.');
+                authStateListener();
+            });</script>
+        <nav>
+            <div class="mobile-nav">
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="showDropdown()">MENU</button>
+                    <div class="dropdown-content" id="nav-dropdown">
+                        <a href="Brands.html">BRANDS</a>
+                        <a href="calendar.html">CALENDAR</a>
+                        <a href="drop.html">DROPS</a>
+                        <a href=inStock.html>IN STOCK</a>
+                        <a href=#>PROFILE</a>
+                        <a href=saved.html>SAVED</a>
 
+                    </div>
+                </div>
+                <img id = "mobile-logo">
+                <button class="cartbtn">CART</button>
+            </div>
+            <div class="full-nav">
+                <div id = "nav-bar-left">
+                    <ul>
+                        <li><a href=Brands.html>BRANDS</a></li>
+                        <li><a href=calendar.html>CALENDAR</a></li>
+                        <div class= "dropdown">
+                            <li><button onclick="myFunction () " class= "dropbtn">DROPS</button></li>
+                                <div id= "myDropdown" class="dropdown-content">
+                                    <a href="drop.html">THE SEVENTH COLLECTION</a>
+                                </div>
+                        </div>
+                        <li><a href=inStock.html>INSTOCK</a></li>
+                    </ul>
+                </div>
+                <div id = "logo">
+                    <a href = "index.html">
+                        <img id="mylogo">
+                    </a>
+                </div>
+                <div id = "nav-bar-right">
+                    <ul>
+                        <li><a href=#>SEARCH</a></li>
+                        <li><button class="modalbtn" id="profile" onclick="document.getElementById('id01').style.display='block'" >LOGIN</button></li> 
+                            <div id="id01" class="modal">
+                            
+                                <form class= "modal-content animate" action="/action_page.php">
+                                    <div class="logincontainer" width="auto">
+                                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                                        <h1 id="LogIn">LOGIN</h1>
+                                        <label for="uname"><b>Email</b></label>
+                                        <input type="email" placeholder="Enter Email" id="semail" name="uname" required>
+
+                                        <label for="psw"><b>Password</b></label>
+                                        <input type="password" placeholder="Enter Password" id="spassword" name="psw" required>
+
+                                        <div class="loginbutton" id="loginbtn" onclick="signIn()">Login</div>
+                                    </div>
+
+                                    <div class="logincontainer" >
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn" class="loginbutton">Cancel</button>
+                                        <span class="psw"><a href="#">Forgot Password?</a></span>
+                                        <span class="login"> Not a member? <a href="SignUp.html">Sign Up</a></span>
+                                    </div>
+                                </form>
+                            </div> 
+                        <li><a href=saved.html>SAVED</a></li>
+                        <li id = "cart"><a href=Cart.html>CART</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 </head>
-<body>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
-    <script src="databasescripts.js"></script>
-    <script> 
-        addEventListener('DOMContentLoaded', (event) => {
-            console.log('The DOM is fully loaded.');
-            authStateListener();
-        });</script>
 
+<body>
+    <p id = "aboutPageHeader">Cart Checkout</p>
+    
+    <script>
+        var total = JSON.parse(sessionStorage.getItem("total"));
+        document.write("Total Price:   $" , total)
+    </script>
 <!-- Trigger/Open The Modal -->
-<button id="myBtn">Check Out</button>
+<br>
+<br>
+<button id="Checkout">CHECKOUT</button>
 
 <!-- The Modal -->
 <div id="myModal" class="pmodal">
@@ -37,13 +118,42 @@
     <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>
     <div id= "amount-div">
-      <input id="amount" type="number" value="100">
+        
+      <input id="amount" type="number" value="findTotalPrice()">
     </div>
+</div>
 
+
+</div>
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AQTTDsVRM8ONa_BT1FLNV9rKpu8mn0sUbpRmTADWcVU3oTYfEPN96roiC9mW3_lcXVOo_U8HNbhDRIbM&currency=USD"></script>
-
+    <script src="https://www.paypal.com/sdk/js?client-id=AWyh1Grh6Al5R5ubim02Z1Ma049a5WIbVdnMiRJ0hNAD2Q7B1eVk6yOMcstcWqXV3YvL9qTnTj3r4PAO&currency=USD"></script>
     <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: JSON.parse(sessionStorage.getItem("total"))
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+    <!-- <script>
         var amount = document.getElementById("amount").value;
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
@@ -70,33 +180,31 @@
 
 
         }).render('#paypal-button-container');
-    </script>
+    </script> -->
     
-  </div>
-
-</div>
+  
 
 <script>
-// Get the modal
+
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
+var btn = document.getElementById("Checkout");
+
+
 var span = document.getElementsByClassName("pclose")[0];
 
-// When the user clicks the button, open the modal 
+
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+
 span.onclick = function() {
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -107,5 +215,53 @@ window.onclick = function(event) {
     findTotalPrice();
 
 </script>
+<footer>
+    <div id = "footer-left">
+        <p>Follow Us</p>
+        <div id = "follow-icons">
+            <img id="facebooklogo">
+            <img id="twitterlogo">
+            <img id="instagramlogo">
+        </div>
+    </div>
+    <div id = "footer-middle">
+        <p>DON'T MISS OUT ON THE NEXT DROP! SUBSCRIBE TO OUR NEWSLETTER</p>
+        <div id = "email-container">
+                <input type="email" id="email" name="email">
+                <button id="sub-btn">Subscribe</button>
+        </div>
+    </div>
+    <div id = "footer-right">
+        <li><a href="faq.html">FAQs</a></li>
+        <li>Contact</li>
+        <li><a href="about.html">About</a></li> 
+    </div>
+    
+</footer>
+<!-- The core Firebase JS SDK is always required and must be listed first
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+TODO: Add SDKs for Firebase products that you want to use
+https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script> -->
+
+<!-- <script>
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+apiKey: "AIzaSyD8wJ0bFPY0Q9sQ2v4B2EXL_KWDwXZwNs0",
+authDomain: "comp-224.firebaseapp.com",
+databaseURL: "https://comp-224.firebaseio.com",
+projectId: "comp-224",
+storageBucket: "comp-224.appspot.com",
+messagingSenderId: "344747179562",
+appId: "1:344747179562:web:16d2b4aeb3917950ee0d53",
+measurementId: "G-4R99TYPPK8"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+console.log(firebase.database());
+</script> -->
 </body>
 </html>
